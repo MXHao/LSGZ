@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "search-bar": "/components/search/search"
+  },
+  "navigationBarTitleText": "遛食儿"
+}

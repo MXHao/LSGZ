@@ -1,0 +1,178 @@
+/* pages/Evaluation/Evaluation.wxss */
+
+page {
+  background: #fff;
+  border-top: 1rpx solid #ededed;
+}
+
+.content {
+  padding: 30rpx;
+}
+
+.Evaluation {
+  box-shadow: 0rpx 0rpx 20rpx #e5e5e5;
+  border-radius: 10rpx;
+  padding: 0 30rpx;
+}
+
+.EvaluationTitle {
+  font-weight: 600;
+  padding: 30rpx 0;
+  font-size: 30rpx;
+  border-bottom: 1rpx solid #ededed;
+}
+
+.EvaluationList {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20rpx 0;
+  margin-bottom: 30rpx;
+}
+
+.EvaluationListNew {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20rpx 0;
+  height: 200rpx;
+}
+
+.card {
+  margin-bottom: 25rpx;
+  border: 5rpx solid #888;
+  border-radius: 20rpx;
+  padding: 25rpx;
+  background-color: white;
+}
+
+.item-title, .item-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.item-title {
+  border-bottom: 1rpx solid #eee;
+  padding-bottom: 25rpx;
+  align-items: center;
+  line-height: 70rpx;
+  font-weight: 700;
+}
+
+.item-content {
+  line-height: 70rpx;
+}
+
+.image-container {
+  margin-right: 25rpx;
+  width: 40rpx;
+  display: flex;
+  align-items: center;
+}
+
+.title-image {
+  height: 40rpx;
+}
+
+.content-image {
+  height: 70rpx;
+}
+
+.image-container image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.title-text, .content-text {
+  width: 575rpx;
+}
+
+/* feedback.wxss */
+
+.content-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.content-body .note {
+  line-height: 70rpx;
+  font-size: 30rpx;
+}
+
+.listLeftNew {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.listLeftNew image {
+  width: 100%;
+  height: 100%;
+}
+
+.listRightNew {
+  margin-left: 2%;
+  flex: 1;
+}
+.listRight{
+  margin-left: 2%
+}
+.commodityTitle {
+  margin-bottom: 20rpx;
+  font-weight: 600;
+  font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.group{
+  padding: 10rpx 0
+}
+.group textarea{
+  background: var(--ghostWhite);
+  width: 100%;
+  border-radius: 10rpx;
+  height: 200rpx;
+  padding: 10rpx
+}
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+.cu-form-group{
+  padding:0;
+
+}
+.grid.grid-square>view>text[class*="cuIcon-"] {
+font-size:52rpx;
+position:absolute;
+color:var(--blue);
+margin:auto;
+top:0;
+bottom:0;
+left:0;
+right:0;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+.EvaluationButton{
+  position: fixed;
+  width: 100%;
+  bottom: 0%;
+  background: #fff;
+  padding: 30rpx;
+  z-index: 99
+}
+.EvaluationButton button{
+  background: #36d3d5;
+  color: #fff;
+  border-radius: 50rpx;
+
+}
+button::after{
+border:none;
+}

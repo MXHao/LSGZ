@@ -1,0 +1,113 @@
+<!--pages/NewOffer/NewOffer.wxml-->
+<scroll-view class='Spike' scroll-x>
+<!-- wx:for="{{timeList}}" data-index='{{item}}' wx:key='index' -->
+  <!-- <view class='Spikelist' bindtap='SetColor'>
+    <view class='Spiketime'>09:00</view>
+    <view class='Spikettxt'>已经结束</view>
+  </view>
+  <view class='Spikelist'>
+    <view class='Spiketime'>10:00</view>
+    <view class='Spikettxt'>已经结束</view>
+  </view> -->
+  <view class="Spikelist {{index==indexBindClass?'SpikelistOn':''}}" wx:for="{{timeList}}" data-index='{{item}}'  wx:key='index'  bindtap='filterTime'>
+    <view class='Spiketime'>{{item}}:00</view>
+    <view class='Spikettxt' wx:if="{{item==nowTime}}">进行中</view>
+    <view class='Spikettxt' wx:if="{{item>nowTime}}">即将开始</view>
+    <view class='Spikettxt' wx:if="{{item<nowTime}}">已经结束</view>
+  </view>
+</scroll-view>
+<!-- <view class='recommend'>
+  <view class='recommendTitle'>
+    特价推荐
+  </view>
+  <view class='recommendcontent'>
+    <view class='recommendlist'>
+      <view class='recommendimg'>
+        <image src="/assets/img/home/Offerimg.jpg"></image>
+      </view>
+      <view class='recommendtext'>
+        ￥69.9
+      </view>
+      <view class='text'>
+        已抢4432件
+      </view>
+    </view>
+    <view class='recommendlist'>
+      <view class='recommendimg'>
+        <image src="/assets/img/home/Offerimg.jpg"></image>
+      </view>
+      <view class='recommendtext'>
+        ￥69.9
+      </view>
+      <view class='text'>
+        已抢4432件
+      </view>
+    </view>
+    <view class='recommendlist'>
+      <view class='recommendimg'>
+        <image src="/assets/img/home/Offerimg.jpg"></image>
+      </view>
+      <view class='recommendtext'>
+        ￥69.9
+      </view>
+      <view class='text'>
+        已抢4432件
+      </view>
+    </view>
+    <view class='recommendlist'>
+      <view class='recommendimg'>
+        <image src="/assets/img/home/Offerimg.jpg"></image>
+      </view>
+      <view class='recommendtext'>
+        ￥69.9
+      </view>
+      <view class='text'>
+        已抢4432件
+      </view>
+    </view>
+  </view>
+</view> -->
+<!-- table -->
+<view class='spikecontent'>
+  <view class='spiketop'>
+    <view class='spikeLeft'>{{timeList[indexBindClass]==nowTime?'进行中':'即将开始'}}</view>
+    <view wx:if="{{spikeLastTime[0]}}" class='spikeRight'>
+      <text>{{timeList[indexBindClass]==nowTime?'距结束：':'距开始：'}}</text>
+      <text class="spikeNum">{{spikeLastTime[0]}}{{spikeLastTime[1]}}</text>
+      <text>：</text>
+      <text class="spikeNum">{{spikeLastTime[3]}}{{spikeLastTime[4]}}</text>
+      <text>：</text>
+      <text class="spikeNum">{{spikeLastTime[6]}}{{spikeLastTime[7]}}</text>
+    </view>
+  </view>
+  <view class='grouplist'  wx:for='{{showProduct}}' data-index='{{item}}' wx:key='index'>
+    <view class='groupimg'>
+      <image src="{{item.m}}" mode="aspectFill"></image>
+    </view>
+    <view class='groupcontent'>
+      <view class='groupTitle'>
+       {{item.n}}
+      </view>
+      <view class='grouptexts'>
+        省￥{{item.pp-item.sp}}
+      </view>
+      <view class='contentbox'>
+        <view class='progress'>
+          <!-- <view class="flex margin-top">
+            <view class="cu-progress round">
+              <view class="bg-red" style="width:{{loading?'80%':''}};"></view>
+            </view>
+            <text class="margin-left">80%</text>
+          </view> -->
+          <view>
+            <text class='grouptext'>¥{{item.sp}} </text>
+            <text>¥{{item.pp}}</text>
+          </view>
+        </view>
+        <view  class="groupbutton" bindtap='GroupDetails' data-target="{{item}}">
+          <button>{{timeList[indexBindClass]==nowTime?'立刻秒杀':'即将开始'}}</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

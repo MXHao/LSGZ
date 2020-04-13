@@ -1,0 +1,22 @@
+<!--pages/membership-open/membership-open.wxml-->
+<view class="cuIcon-back lg text-gray" bindtap="goBack"></view>
+<view class='navTop'>
+  <image src="{{titleImg}}"></image>
+</view>
+<view class="member-box">
+  <view class="member-title"  wx:if="{{ismember!=1}}">选择开通时长</view>
+  <view class="member-list"  wx:if="{{ismember!=1}}">
+    <view class="type-item active{{currentIndex == index?'':'active'}}" wx:for="{{sysParam.plusMoney}}" wx:key="index" data-index="{{index}}" bindtap="selectMember">
+      <view class="item-time">{{item.month}}个月</view>
+      <view class="item-bottom">
+        <text class="price-icon">￥</text>
+        <text class="item-price">{{item.price}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="member-title">会员尊享特权</view>
+  <view class="privilege">{{plusText}}</view>
+</view>
+<view bindtap="buy" class="open-bottom" wx:if="{{ismember!=1}}" hidden="{{isbtnShow}}">
+  <view class="open-btn">立即开通</view>
+</view>

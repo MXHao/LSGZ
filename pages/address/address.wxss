@@ -1,0 +1,205 @@
+.container{
+  padding:0 30rpx 20rpx;
+  border-top:1px solid #E6E6E6;
+}
+page{
+  background: #fff
+}
+.block{
+  margin-top:30rpx;
+  width:100%;
+  min-height: 240rpx;
+  border-radius:10rpx;
+  background-color: #ffffff;
+  box-shadow: 0 2rpx 8px 2rpx rgba(198, 201, 208, 0.5);
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 20rpx 0 50rpx;
+  /* justify-content: space-between; */
+}
+.blockOn{
+  border-bottom: 8rpx solid #36d3d5;
+}
+.selectAddress{
+  border-bottom: 6rpx solid #36d3d5;  
+}
+.block view{
+  
+}
+.padding-xl{
+  padding: 0;
+  background: #fff
+}
+.addbox{
+  height: 100rpx
+}
+.block .left image{
+  width:57rpx;
+  height:57rpx;
+  margin:0 30rpx;
+}
+.middle {
+  width: 70%;
+  line-height: 50rpx;
+}
+.middle .title > text{
+  font-size:30rpx;
+  color:#333;
+  font-weight:600;
+
+}
+.middle .title .phone{
+  margin-left:30rpx;
+}
+.middle .address{
+  /* margin-top:26rpx; */
+  font-size:26rpx;
+  color:#666; 
+  width: 100%; 
+ overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+}
+.right{
+  position: absolute;
+  right:30rpx;
+}
+.right image{
+  width:34rpx;
+  height: 34rpx;
+}
+.defaultAddress {
+  position: absolute;
+  right: 20rpx;
+  bottom: 15rpx;
+  width: 200rpx;
+}
+.blue {
+  color: #36d3d5
+}
+.gray {
+  color: gray
+}
+radio .wx-radio-input {
+  width: 32rpx; 
+  height: 32rpx;
+}
+radio::before,
+checkbox::before {
+	font-family: "cuIcon";
+	content: "\e645";
+	position: absolute;
+	color: var(--white) !important;
+	top: 50%;
+	margin-top: -8px;
+	right: 3px;
+	font-size: 26rpx;
+	line-height: 16px;
+	pointer-events: none;
+	transform: scale(1, 1);
+	transition: all 0.3s ease-in-out 0s;
+	z-index: 9;
+}
+
+.addBox{
+    margin-top:30rpx;
+    width:100%;
+    height: 180rpx;
+    border-radius:10rpx;
+    background-color: #ffffff;
+    box-shadow: 0 2rpx 8px 2rpx rgba(198, 201, 208, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.addBox .add{
+  display: flex;
+}
+.addBox .add image{
+  width:50rpx;
+  height: 50rpx;
+  margin-right:30rpx;
+}
+.addBox .add text{
+  font-weight: 600;
+  font-size:30rpx;
+  color:#111;
+}
+.container button{
+  margin-top:30rpx;
+  background:#36D3D5;
+  border-radius:50rpx;
+  color:#fff;
+  font-size: 32rpx;
+  line-height: 94rpx;
+  height:94rpx;
+}
+.addbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-top: 1rpx solid #E6E6E6;
+  border-bottom: 1rpx solid #E6E6E6;
+  height: 100rpx
+}
+.addName{
+  display: flex;
+  border-right: 1rpx solid #E6E6E6;
+  width: 300rpx;
+}
+.addName label{
+  width: 150rpx;
+  color: #999
+}
+.addIhone{
+  display: flex;
+  width: 380rpx;
+}
+.addIhone label{
+  width: 130rpx;
+  color: #999
+}
+.position{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  padding: 0 20rpx
+}
+.message{
+  border-top: 1rpx solid #e6e6e6;
+    border-bottom: 1rpx solid #e6e6e6;
+}
+.message textarea{
+  text-align: left;
+  padding: 20rpx;
+  width: 100%;
+  height: 200rpx
+}
+.message input {
+  text-align: left;
+  padding: 20rpx;
+  width: 100%;
+  height: 200rpx
+}
+.messagebutton{
+  padding: 0 30rpx 30rpx 30rpx
+}
+.cu-dialog {
+  vertical-align: top;
+  top: 200rpx;
+  animation: cu-dialog 0.5s
+}
+@keyframes cu-dialog{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 100%;
+  }
+}

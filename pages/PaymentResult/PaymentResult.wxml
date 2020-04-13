@@ -1,0 +1,55 @@
+<!--pages/PaymentResult/PaymentResult.wxml-->
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<view class="toast">
+  <view class="successIcon">
+    <image src="/assets/img/home/success.png"></image>
+  </view>
+  <view class="toast-text">支付成功</view>
+  <view class="toast-price">实付：{{moneySwitch.moneySwitch(price,2)}}</view>
+  <view class="toast-handle">
+    <view class="toast-button" bindtap="goHome">返回首页</view>
+    <view class="toast-button" bindtap="goOrder">查看订单</view>
+  </view>
+</view>
+<!-- 体验券弹窗 -->
+<view  wx:if="{{isShow}}" class="mask" catchtouchmove="preventTouchMove">
+  <view wx:if="{{isShow}}" class="boxClosed cuIcon-close lg text-gray" bindtap="cloeseBox"></view>
+  <scroll-view wx:if="{{isShow}}" scroll-y class="couponBox">
+    <view class="box-title">已领取的体验券</view>
+    <view  class="boxItem" wx:for="{{coupon}}" wx:key="index">
+      <view class="item-icon">
+        <text class="cuIcon-ticket lg "></text>
+      </view>
+      <view class="box-middle">
+       <view class="midContent">{{item.couponName}}</view>
+       <view class="midDate">{{item.useEndDate}}</view>
+      </view>
+    </view>
+   </scroll-view>
+</view>
+<!-- 商品推荐 -->
+<view class="home-title" wx:for="{{cecommen}}" wx:key="index">
+  <view class="hometitle-left">
+    <image src="/assets/img/home/home-icon.png"></image>
+    <view class="home-text">商品推荐</view>
+  </view>
+</view>
+<view class="recommend">
+<view class="show-list-item" wx:for="{{cecommen}}" wx:key="index">
+        <view class="item-img" bindtap='productDetails' data-index="{{item}}">
+          <image src="{{item.m}}" mode="aspectFill"></image>
+        </view>
+        <view class="item-title">{{item.n}}</view>
+        <view class="item-price" bindtap='productDetails' data-index="{{item}}">
+          <text class="price-red">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+          <!-- <text class="price-gray">￥{{moneySwitch.moneySwitch(10, 2)}}</text> -->
+          <!-- <text class="price-v">v</text> -->
+          <!-- <view class="discount">遛食儿卡享{{plusDiscount}}折</view> -->
+        </view>
+        <view class="count">
+          <!-- <text class="sum-text">累计销量：</text>
+        <text class="sum-num">{{item.num}}</text>
+        <text class="add-to-cart cuIcon-cart lg text-gray" bindtap='addCart' data-index="{{item}}"></text> -->
+        </view>
+      </view>
+</view>

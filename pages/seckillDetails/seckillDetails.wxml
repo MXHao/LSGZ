@@ -1,0 +1,327 @@
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<import src="../../assets/wxParse/wxParse.wxml" />
+<access-box id="box" bindcancle="cancle" bindsuccess="render" access="{{access}}" />
+<view class='product'>
+  <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+    <swiper-item wx:for="{{swiperList.length == 0? 1:swiperList}}" wx:key="index">
+      <image src="{{swiperList.length == 0?details.pim:item}}" mode="aspectFill"></image>
+      <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
+    </swiper-item>
+  </swiper>
+</view>
+<view class='toplist'>
+  <view class='toplistLeft'>
+    <text>秒杀价</text>
+    <text>￥{{moneySwitch.moneySwitch(details.sp, 2)}}</text>
+    <text>￥{{moneySwitch.moneySwitch(details.pp, 2)}}</text>
+  </view>
+  <view wx:if="{{spikeLastTime[0]&&isStart!=3}}" class='toplistright'>
+    <text>{{isStart==0?'距离结束：':'距离开始：'}}</text>
+    <text>{{spikeLastTime[0]}}{{spikeLastTime[1]}}</text>
+    <text>：</text>
+    <text>{{spikeLastTime[3]}}{{spikeLastTime[4]}}</text>
+    <text>：</text>
+    <text>{{spikeLastTime[6]}}{{spikeLastTime[7]}}</text>
+  </view>
+</view>
+
+<!-- 秒杀须知 -->
+<view class='productTitle'>
+  <view class='Group' bindtap="showModal" data-target="group">
+    <view class='ListLeft'>已抢{{details.num}}件
+      <!-- <text>{{details.gt}}</text>人团 -->
+    </view>
+    <view class='ListRight'>
+      <text>秒杀须知</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+  <view class='title'>
+    {{details.n}}
+  </view>
+  <view bindtap='openCard' wx:if="{{sysParam.plusMoney.length>0&&user.isPlus==0}}" class='titlebox'>
+    <view class='boxleft'>
+      <view class='vip'>vip</view>
+      <view class='textcolor'>奇异遛食卡价
+        <text>{{sysParam.plusMoney[0].price}}</text>元</view>
+    </view>
+    <view class='boxRight'>
+      <text>开卡</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 活动 -->
+<view class='productList' bindtap="showModal" data-target="activity">
+  <view class='ListLeft'>
+    活动
+  </view>
+  <view class='ListZ'>
+    <!-- <view class='free'>
+      全是免配送费
+    </view> -->
+    <view class='freebox'>
+      <text>秒杀</text>
+      <text>比日常省15元</text>
+    </view>
+    <view class='freebox'>
+      <text>限购</text>
+      <text>比日常省15元</text>
+    </view>
+  </view>
+  <view class='ListRight'>
+    <text class='cuIcon-right lg text-gray'></text>
+  </view>
+</view>
+
+<!-- 参数 -->
+<view class='productList' bindtap="showModal" data-target="parameter">
+  <view class='ListLeft'>
+    参数
+  </view>
+  <view class='ListZ'>
+    <view>
+      商品编号，商品规格
+    </view>
+  </view>
+  <view class='ListRight'>
+    <text class='cuIcon-right lg text-gray'></text>
+  </view>
+</view>
+
+<!-- 服务说明 -->
+<view class='productList' bindtap="showModal" data-target="service">
+  <view class='ListLeft'>
+    服务说明
+  </view>
+  <view class='ListZ'>
+    <view>
+      正品保障 · 七天无理由退款
+    </view>
+  </view>
+  <view class='ListRight'>
+    <text class='cuIcon-right lg text-gray'></text>
+  </view>
+</view>
+
+
+
+
+<!-- 评价 -->
+<view wx-if="{{details.evS!=0}}" class='Evaluation'>
+  <view class='EvaluationTitle' bindtap='commentList'>
+    <view class='Evaluationleft'>
+      全部评论
+      <text wx-if="{{details.evS!=0}}">({{details.evS}})</text>
+    </view>
+    <view class='Evaluationright'>
+      <text>更多评价</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+  <view class='commentList' wx:for='{{details.ev}}' wx:for-index="keys" data-index='{{item}}' wx:key='index'>
+    <view class='Avatar'>
+      <view class='Avatarimg'>
+        <image src="{{item.mh}}"></image>
+      </view>
+      <view class='Avatatext'>
+        <view class='AvataName'>
+          <text class=" {{item.isPlus == 1 ? 'VipName':''}}">{{item.mn}}</text>
+          <text class="avataNameVip" wx:if="{{item.isPlus == 1}}">PLUS</text>
+        </view>
+        <view class='Avatatime'>
+          <text>{{item.t}}</text>
+          <!-- <text>{{item.t.slice(5,item.t.length)}}</text> -->
+        </view>
+      </view>
+      <view class='satr'>
+        <text class='cuIcon-favorfill lg text-gray' wx:for='{{item.ce}}' data-index='{{ite}}' wx:key='ite'></text>
+      </view>
+    </view>
+    <view class='EvaluationContent'>
+      {{item.c}}
+    </view>
+    <view class='Evaluationimg'>
+      <view class='imglist' wx:for='{{item.evM}}' wx:for-index="key" wx:key='index'>
+        <image src="{{item}}" mode="aspectFill" bindtap="clickImg"  data-id="{{key}}" data-ddid="{{keys}}"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 品牌 -->
+<view class='Brand'>
+  <view class='BrandBox'>
+    <view class='BrandLeft'>
+      <image src="{{details.bra.c}}" mode="aspectFit"></image>
+    </view>
+    <view class='BrandZ'>
+      <view>{{details.bra.n}}</view>
+      <!-- <text>授权品牌</text> -->
+    </view>
+    <view class='BrandRight' bindtap="toBrandDetails">
+      <text>进入品牌</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+  <view class='Brandtext'>
+    <view class='Brandcontent'>
+      <text>全部商品：</text>
+      <text>{{details.bra.all}}</text>
+    </view>
+    <view class='Brandcontent'>
+      <text>促销商品：</text>
+      <text>{{details.bra.g}}</text>
+    </view>
+  </view>
+</view>
+<!-- 详情图片 -->
+<view class='DetailsImg'>
+  <!-- <image src="/assets/img/home/Details.jpg"></image> -->
+
+  <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
+</view>
+
+
+<!-- 底部导航 -->
+<view class='DetailsBottom'>
+  <view class="cu-bar bg-white tabbar border shop">
+    <view class="action" open-type="contact">
+      <button open-type="contact" class='service_button' plain='true'></button>
+      <view class="cuIcon-service text-green">
+      </view>
+      客服
+    </view>
+    <!-- <view class="action" bindtap="goShopCart">
+      <view class="cuIcon-cart">
+        <view class="cu-tag badge">9</view>
+      </view>
+      购物车
+    </view> -->
+    <view class="action" >
+      <button open-type="share" class='service_button' plain='true'></button>
+      <view class="cuIcon-favor lg text-green">
+      </view>
+      分享
+    </view>
+    <button class="cu-btn bg-orange round shadow-blur" style="margin-left: 20rpx" bindtap="backHome">返回首页</button>
+    <view class="btn-group">
+      <view wx:if="{{details.purchaseStatus == '0'&&isBuyCount&&isStart==0}}" class="buyLimit">您的购买次数已达上限</view>
+      <button wx:elif="{{isStart==0}}" class="cu-btn bg-orange round shadow-blur" bindtap="showModal" data-target="buy">￥{{moneySwitch.moneySwitch(details.sp, 2)}} 一键秒杀</button>
+      <button class="cu-btn bg-orange round shadow-blur" wx:elif="{{isStart==1}}">即将开始</button>
+      <button class="cu-btn bg-orange round shadow-blur" wx:elif="{{isStart==2}}">已经结束</button>
+    </view>
+  </view>
+</view>
+
+
+<!-- 参数 -->
+<view class="cu-modal bottom-modal {{modalName=='parameter'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bulletservice">
+      <view class='bullet'>
+        产品规格
+      </view>
+      <view class='parameter'>
+        <template is="wxParse" data="{{wxParseData:article3.nodes}}" />
+      </view>
+
+      <button bindtap="hideModal">确定</button>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 活动 -->
+<view class="cu-modal bottom-modal {{modalName=='activity'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bulletservice">
+      <view class='bullet'>
+        活动详情
+      </view>
+      <view class='activity'>
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+      <button bindtap="hideModal">确定</button>
+    </view>
+  </view>
+</view>
+
+
+<!-- 秒杀须知 -->
+<view class="cu-modal bottom-modal {{modalName=='group'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bulletservice">
+      <view class='bullet'>
+        秒杀须知
+      </view>
+      <view class='Bulletbox'>
+        <template is="wxParse" data="{{wxParseData:article2.nodes}}" />
+      </view>
+      <button bindtap="hideModal">确定</button>
+    </view>
+  </view>
+</view>
+
+<!-- 服务说明 -->
+<view class="cu-modal bottom-modal {{modalName=='service'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bulletservice">
+      <view class='bullet'>
+        服务说明/拼团须知
+      </view>
+      <view class='Bulletbox'>
+        <view>{{serviceIntro}}</view>
+      </view>
+      <button bindtap="hideModal">确定</button>
+    </view>
+  </view>
+</view>
+
+<!-- 立即购买 -->
+<view class="cu-modal bottom-modal {{modalName=='buy'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bullet">
+      <view class='buy'>
+        <view class='buycontent'>
+          <view class='contentleft'>
+            <image src="{{details.pim}}" mode="aspectFill"></image>
+          </view>
+
+
+
+          <view class='contentright'>
+            <view class="right-title">{{details.n}}</view>
+            <view class="right-price">￥{{moneySwitch.moneySwitch(details.sp, 2)}}</view>
+            <view class='buybottom'>
+              <view wx:if="{{details.purchaseQuantity&&details.purchaseStatus == '0'}}" class='buybottomLeft'>
+                <!-- <view class='buybottomLeft'> -->
+
+                <text>购买数量</text>
+                <text>（限购{{details.purchaseQuantity}}件）</text>
+              </view>
+              <view class='buybottomRight'>
+                <view class="stepper">
+                  <!-- 减号 -->
+                  <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+                  <!-- 数值 -->
+                  <text>{{num}}</text>
+                  <!-- 加号 -->
+                  <text class="{{addminusStatus}}" bindtap="bindPlus">+</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <button bindtap="groupBuy">¥ {{moneySwitch.moneySwitch(details.sp, 2)}}一键秒杀</button>
+
+    </view>
+  </view>
+</view>

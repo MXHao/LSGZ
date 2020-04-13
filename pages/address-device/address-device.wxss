@@ -1,0 +1,245 @@
+.container{
+  padding:20rpx 30rpx 20rpx;
+  /* border-top:1px solid #E6E6E6; */
+}
+page{
+  background: #fff;
+  padding-top: 60rpx;
+}
+/* 搜索框 */
+.box {  
+  padding: 20rpx 0; 
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  /* border-bottom: 1rpx solid #eee; */
+  background: #fff;
+  box-shadow: 0 1rpx 10rpx rgba(0, 0, 0, 0.1)
+}
+
+.cu-bar .search-form {
+	background-color: #f5f5f5;
+	line-height: 64rpx;
+	height: 60rpx;
+	font-size: 30rpx;
+	color: #9a9a9a;
+	flex: 1;
+	display: flex;
+	align-items: center;
+  border-radius: 30rpx 30rpx;
+  margin: 0 30rpx;
+}
+.deviceSearch {
+  margin-left: 250rpx !important;
+}
+.cu-bar {
+  width: 100%;
+}
+.search-form {
+  width: 560rpx;
+}
+
+.cuIcon-searchshow {
+font-family: "cuIcon";
+font-size: inherit;
+font-style: normal;
+
+}
+.cu-btn {
+  margin: 0 -28rpx 0 10rpx;
+}
+/* 搜索框结束 */
+.block{
+  margin-top:30rpx;
+  width:100%;
+  min-height: 200rpx;
+  border-radius:10rpx;
+  background-color: #ffffff;
+  box-shadow: 0 2rpx 8px 2rpx rgba(198, 201, 208, 0.5);
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* justify-content: space-between; */
+  padding: 22rpx 0 10rpx;
+}
+.history {
+  color: #fff;
+  position: absolute;
+  top: 3rpx;
+  left: 3rpx;
+  font-size: 24rpx;
+  /* border-right: 1rpx solid #36d3d5;
+  border-bottom: 1rpx solid #36d3d5; */
+  border-radius: 7rpx;
+  background-color: rgba(22, 88, 22, 0.507);
+  padding: 0 0 0 10rpx;
+  box-shadow: 5rpx 5rpx 2rpx rgba(0, 0, 0, 0.3)
+}
+.blockOn{
+  border-bottom: 8rpx solid #f75252;
+}
+.selectAddress{
+  border-bottom: 6rpx solid #36d3d5;  
+}
+.block view{
+  
+}
+.padding-xl{
+  padding: 0;
+  background: #fff
+}
+.addbox{
+  height: 100rpx
+}
+.middle {
+  width: 60%;
+}
+.title {
+  /* display: flex; */
+
+}
+.block .left image{
+  width:57rpx;
+  height:57rpx;
+  margin:0 30rpx;
+}
+.name, .phone, .address {
+  font-size:30rpx;
+  color:#333;
+  font-weight:600;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+  text-align: justify;
+}
+/* .phone {
+  font-size:30rpx;
+  color:#333;
+  font-weight:600;
+} */
+.name {
+  /* flex: 6; */
+}
+.phone{
+  /* flex: 4; */
+  /* margin-left:30rpx; */
+}
+.middle {
+  /* margin-top:26rpx; */
+  font-size:26rpx;
+  color:#666;
+  white-space: nowrap; 
+  width: 56%; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+  line-height: 46rpx;
+}
+.right{
+  position: absolute;
+  right:30rpx;
+  top: 50%;
+  transform: translateY(-50%)
+}
+.right image{
+  width:34rpx;
+  height: 34rpx;
+}
+
+.addBox{
+    margin-top:30rpx;
+    width:100%;
+    height: 180rpx;
+    border-radius:10rpx;
+    background-color: #ffffff;
+    box-shadow: 0 2rpx 8px 2rpx rgba(198, 201, 208, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.addBox .add{
+  display: flex;
+}
+.addBox .add image{
+  width:50rpx;
+  height: 50rpx;
+  margin-right:30rpx;
+}
+.addBox .add text{
+  font-weight: 600;
+  font-size:30rpx;
+  color:#111;
+}
+.container button{
+  margin-top:30rpx;
+  background:#36D3D5;
+  border-radius:50rpx;
+  color:#fff;
+  font-size: 32rpx;
+  line-height: 94rpx;
+  height:94rpx;
+}
+.addbox{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-top: 1rpx solid #E6E6E6;
+  border-bottom: 1rpx solid #E6E6E6;
+  height: 100rpx
+}
+.addName{
+  display: flex;
+  border-right: 1rpx solid #E6E6E6
+}
+.addName label{
+  width: 30%;
+  color: #999
+}
+.addIhone{
+  display: flex
+}
+.addIhone label{
+  width: 30%;
+  color: #999
+}
+.position{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  padding: 0 20rpx
+}
+.message{
+  border-top: 1rpx solid #e6e6e6;
+    border-bottom: 1rpx solid #e6e6e6;
+}
+.message textarea{
+  text-align: left;
+  padding: 20rpx;
+  width: 100%;
+  height: 200rpx
+}
+.message input {
+  text-align: left;
+  padding: 20rpx;
+  width: 100%;
+  height: 200rpx
+}
+.messagebutton{
+  padding: 0 30rpx 30rpx 30rpx
+}
+.cu-dialog {
+  vertical-align: top;
+  top: 200rpx;
+  animation: cu-dialog 0.5s
+}
+@keyframes cu-dialog{
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 100%;
+  }
+}

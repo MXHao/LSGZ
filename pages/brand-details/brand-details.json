@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "帕特诺尔",
+  "usingComponents": {
+    "access-box": "/components/accessBox/accessBox"
+  }
+}

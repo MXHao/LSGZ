@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "access-box": "/components/accessBox/accessBox"
+  },
+    "navigationBarTitleText": "线下活动"
+}

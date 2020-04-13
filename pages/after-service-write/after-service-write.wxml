@@ -1,0 +1,144 @@
+<!--pages/after-service-write/after-service-write.wxml-->
+<!-- 填写列表 -->
+<view class="write-list">
+  <!-- 列表纵 -->
+  <view class="searchshow-list-column">
+    <!-- 子项 -->
+    <view wx:for="{{item.orderDesc}}" wx:key="index" wx:for-item="p" class="write-item">
+      <!-- 子项的上半部 -->
+      <view class="showlist-item-column">
+        <view class="item-img-column">
+          <image src="{{p.img}}"></image>
+        </view>
+        <view class="column-item-right">
+          <view class="item-title-column">{{p.productName}}</view>
+          <view class="item-price-column">
+            <text class="price-red">￥{{p.price}}</text>
+          </view>
+          <view class="count-column">
+            <text class="sum-text">数量：</text>
+            <text class="sum-num">×{{p.sNum}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- 子项的下半部 -->
+      <view class="item-bottom">
+        <view class="bottom-text">
+          <text style="font-size: 28rpx; font-weight: 700">申请数量</text>
+          <text style="font-size: 24rpx; color: #999">（最大申请数量：{{p.num-p.refundNum}}）</text>
+        </view>
+      </view>
+      <!-- 加减按钮 -->
+      <view class="add-move">
+        <text class="{{p.sNum > 0?'move':'disabled'}}" data-index="{{index}}" bindtap="bindMinus">
+        <text class="cuIcon-move lg"></text>
+        </text>
+        <input type="number" placeholder-class="center" class="cart-num" bindchange="bindManual" value="{{p.sNum}}">{{p.sNum}}</input>
+        <text class="{{p.sNum < (p.num-p.refundNum)?'add':'disabled'}}" data-index="{{index}}" bindtap="bindPlus">
+        <text class="cuIcon-add lg"></text>
+        </text>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+<!-- 填写信息 -->
+<view class="write-msg">
+  <view class="msg-list">
+    <!-- 收货状态 退款退货没有这一栏-->
+    <!-- <view class="write-state " bindtap="showBox1" wx:if="{{show==0}}">
+      <view class="contain">
+        <view class="title">
+          <text style="font-weight: 700; fot-size: 24rpx">收货状态</text>
+          <text style="fot-size: 24rpx; color: #999">（{{defaultValue1}}）</text>
+        </view>
+        <view class="cuIcon-right lg text-gray" style="font-size: 40rpx; color: #bbb"></view>
+      </view>
+    </view> -->
+    <!-- 申请原因 -->
+    <view class="write-reason" bindtap="showBox2">
+      <view class="contain">
+        <view class="title">
+          <text style="font-weight: 700; fot-size: 24rpx">申请原因</text>
+          <text style="fot-size: 24rpx; color: #999; white-space: nowrap; width: 100%; overflow: hidden; text-overflow:ellipsis;">（{{defaultValue2}}）</text>
+        </view>
+        <view class="cuIcon-right lg text-gray" style="font-size: 40rpx; color: #bbb"></view>
+      </view>
+    </view>
+    <!-- 退款金额 -->
+    <view class="write-amount">
+      <view class="contain">
+        <view class="title">
+          <text style="font-weight: 700; fot-size: 24rpx">退款金额</text>
+          <text style="fot-size: 30rpx; color: #ef4d4d; font-weight: 700">￥{{sumPrice}}</text>
+        </view>
+        <view class="cuIcon-right lg text-gray" style="font-size: 40rpx; color: #bbb"></view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 填写信息相关的弹窗 -->
+<!-- 收货状态弹窗 -->
+<view class="cover-box" hidden="{{flag1}}" bindtap="boxHidden1">
+  <view class="state-box" catchtap="StopBubbles">
+    <view class="box-title">收货状态</view>
+    <radio-group class="box-opt-list" bindchange="radioChange">
+      <view class="box-opt-item" wx:for="{{reasonList}}" wx:key="index">
+        <radio value="{{item.value}}" name="{{item.name}}" class="blue" />
+        <text class="box-item-text">{{item.value}}</text>
+      </view>
+    </radio-group>
+    <!-- 盒子按钮 -->
+    <view class="box-bottom" bindtap="boxHidden1">
+      <view class="box-confirm">
+        确定
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 申请原因弹窗 -->
+<view class="cover-box" hidden="{{flag2}}" bindtap="boxHidden2">
+  <view class="state-box" catchtap="StopBubbles">
+    <view class="box-title">退款原因</view>
+    <radio-group class="box-opt-list" bindchange="checkboxChange">
+      <view class="box-opt-item" wx:for="{{orderType == 'line'? stateList:stateList2}}" wx:key="index">
+        <radio value="{{item.value}}" name="{{item.name}}" class="blue" />
+        <text class="box-item-text">{{item.value}}</text>
+      </view>
+    </radio-group>
+    <!-- 盒子按钮 -->
+    <view class="box-bottom" bindtap="boxHidden2">
+      <view class="box-confirm">
+        确定
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 材料提交 -->
+
+<view class="write-data">
+  <view class="data-list">
+  <view class="write-title">材料上传：</view>
+    <view class="material" wx:for="{{imgs}}" wx:key="index">
+      <image bindtap="chooseImage" data-index="{{index}}" mode="aspectFill" src="{{item}}"></image>
+      <!-- 图片关闭按钮 -->
+      <view catchtap="cloesImg" data-index="{{index}}" class="deleteImg cuIcon-close lg text-gray"></view>
+    </view>
+    <view wx:if="{{imgs.length<4}}" data-index="-1" class="add-btn" bindtap="chooseImage">
+    <view class="cuIcon-camera lg" style="font-size: 48rpx;margin-top: 20rpx;"></view>
+    <view style="font-size: 28rpx; text-align: center">{{imgs.length}}/4</view>
+    </view>
+  </view>
+</view>
+<!-- 底部 -->
+<view bindtap="submit" class="cart-bottom">
+  <view class="btn-next">
+    提交
+  </view>
+</view>

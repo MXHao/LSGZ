@@ -1,0 +1,137 @@
+<!--pages/center/center.wxml-->
+<access-box id="box"  bindsuccess="render"  access="{{access}}" />
+<view class='navTop'>
+  <image src="/assets/img/home/center.png"></image>
+</view>
+<view class='center' catchtouchmove="preventTouchMove">
+  <view  class='centerBox'>
+    <view bindtap="login" class='centerContent'>
+      <view class='centerImg'>
+        <image wx:if="{{userInfo.mInfo.h}}" src="{{userInfo.mInfo.h}}"></image>
+        <image wx:else src="/assets/img/home/user.png"></image>
+      </view>
+      <view class='centertitle'>
+        <view class='titile'>{{userInfo.mInfo.n?userInfo.mInfo.n:'点击登陆'}}</view>
+        <!-- 0不是会员  1是会员 -->
+        <view class='titileName' wx-if="{{userInfo.mInfo.plus=='1'}}">
+          <text class="avataNameVip">PLUS</text> 
+        </view>
+      </view>
+    </view>
+    <view class='listicon'>
+      <view class='list' bindtap='MyOrder' data-target="0">
+        <image src="{{imgUrl}}/img/home/icon5.png"></image>
+        <view>全部订单</view>
+      </view>
+      <view class='list' bindtap='MyOrder' data-target="1">
+        <image src="{{imgUrl}}/img/home/icon4.png"></image>
+        <view>待付款</view>
+        <view class="cu-tag badge" wx:if="{{userInfo['noPay']&&userInfo['noPay'] != 0}}">
+          {{userInfo['noPay']}}
+        </view>
+      </view>
+      <view class='list' bindtap='MyOrder' data-target="3">
+        <image src="{{imgUrl}}/img/home/icon3.png"></image>
+        <view>待收货</view>
+        <view class="cu-tag badge" wx:if="{{userInfo['noTO']&&userInfo['noTO'] != 0}}">
+          {{userInfo['noTO']}}
+        </view>
+      </view>
+      <view class='list' bindtap='MyOrder' data-target="4">
+        <image src="{{imgUrl}}/img/home/icon2.png"></image>
+        <view>待评价</view>
+        <view class="cu-tag badge" wx:if="{{userInfo['noEval']&&userInfo['noEval'] != 0}}">
+          {{userInfo['noEval']}}
+        </view>
+      </view>
+      <view class='list' bindtap='afterSale'>
+        <image src="{{imgUrl}}/img/home/icon1.png"></image>
+        <view>退款/售后</view>
+      </view>
+    </view>
+  </view>
+  <view class='vip' bindtap="toOpenMember" wx-if="{{userInfo.mInfo.plus=='1'}}">
+    <view class='vipLeft'>
+      <text>遛食儿PLUS</text>
+    </view>
+    <view class='vipRight'>
+      <text>{{userInfo.mInfo.pt}}到期 查看特权</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+  <view class='centerContentbox'>
+    <view class='contentlist' bindtap='address'>
+      <view class='contentlistLeft'>
+        <view class='imgbox'>
+          <image src="{{imgUrl}}/img/home/imgbox4.png"></image>
+        </view>
+        <view>地址管理</view>
+      </view>
+      <view class='contentlistRight'>
+        <text></text>
+        <text class='cuIcon-right lg text-gray'></text>
+      </view>
+    </view>
+    <view class='contentlist' bindtap="toCoupon">
+      <view class='contentlistLeft'>
+        <view class='imgbox'>
+          <image src="{{imgUrl}}/img/home/imgbox3.png"></image>
+        </view>
+        <view>我的优惠券</view>
+      </view>
+      <view class='contentlistRight'>
+        <text></text>
+        <text class='cuIcon-right lg text-gray'></text>
+      </view>
+    </view>
+    <view class='contentlist'>
+    <button open-type="contact"  class='service_button' plain='true'></button>
+      <view class='contentlistLeft'>
+        <view class='imgbox'>
+          <image src="{{imgUrl}}/img/home/imgbox2.png"></image>
+        </view>
+        <view>在线客服</view>
+      </view>
+      <view class='contentlistRight'>
+        <text></text>
+        <text class='cuIcon-right lg text-gray'></text>
+      </view>
+    </view>
+    <view class='contentlist' bindtap="toOfflineOrder">
+      <view class='contentlistLeft'>
+        <view class='imgbox'>
+          <image src="/assets/img/home/imgbox5.png"></image>
+        </view>
+        <view>线下订单</view>
+      </view>
+      <view class='contentlistRight'>
+        <text></text>
+        <text class='cuIcon-right lg text-gray'></text>
+      </view>
+    </view>
+    <view class='contentlist' bindtap="toExperienceTicket">
+      <view class='contentlistLeft'>
+        <view class='imgbox'>
+          <image src="/assets/img/home/imgbox6.png"></image>
+        </view>
+        <view>我的体验券</view>
+      </view>
+      <view class='contentlistRight'>
+        <text></text>
+        <text class='cuIcon-right lg text-gray'></text>
+      </view>
+    </view>
+    <view class='contentlist' bindtap="toExperienceServiceTicket">
+      <view class='contentlistLeft'>
+        <view class='imgbox'>
+          <image src="/assets/img/home/imgbox7.png" mode="aspectFill"></image>
+        </view>
+        <view>我的服务券</view>
+      </view>
+      <view class='contentlistRight'>
+        <text></text>
+        <text class='cuIcon-right lg text-gray'></text>
+      </view>
+    </view>
+  </view>
+</view>

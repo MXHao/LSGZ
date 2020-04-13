@@ -1,0 +1,43 @@
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<access-box id="box" bindcancle="cancle" bindsuccess="render" access="{{access}}" />
+<view class='content'>
+  
+  <view class='Details'>
+    <view class='grouplist' wx:for='{{productList}}' data-index='{{item}}' wx:key='index'>
+      <view class='groupimg'>
+        <image src="{{item.pim}}" mode="aspectFill"></image>
+      </view>
+      <view class='groupcontent'>
+        <view class='groupTitle'>
+          {{item.pn}}
+        </view>
+        <view class='grouptext'>
+          ￥{{moneySwitch.moneySwitch(item.pp, 2)}}
+        </view>
+        <view class='contentbox'>
+          <view class='groupbox'>
+            <view class='Detailstext'>数量：</view>
+            <view class='Detailsbox'>
+              <view class="stepper">
+                {{item.num}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='form'>
+    </view>
+  </view>
+  </view>
+  <!-- 底部 -->
+  <view class='DetailsBottom'>
+    <view class='bottomLeft'>
+      <text>待支付：</text>
+      <text style="color: #f75252">¥ {{moneySwitch.moneySwitch(productList[0].pp*productList[0].num, 2)}}</text>
+      <text wx:if="{{moneySwitch.moneySwitch(productPrice, 2)>sumPrice}}" style="text-decoration:line-through;color: #aaa;font-size: 26rpx;">¥ {{moneySwitch.moneySwitch(productPrice, 2)}}</text>
+    </view>
+    <view class='bottomRight'>
+      <button bindtap="wechatPay">支付</button>
+    </view>
+  </view>

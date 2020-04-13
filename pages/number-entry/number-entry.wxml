@@ -1,0 +1,6 @@
+<!--pages/number-entry/number-entry.wxml-->
+<form class="apply-box">
+  <view class="title">请输入申请退货的快递单号：</view>
+  <input class="inputContent" placeholder="请输入单号" bindinput="inputT" placeholder-class="phcolor"></input>
+  <button class="btn" bindtap="submit" form-type="submit">确定</button>
+</form>

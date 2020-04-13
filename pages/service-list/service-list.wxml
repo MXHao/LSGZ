@@ -1,0 +1,52 @@
+<!--components/search-list/search-list.wxml-->
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<wxs module="retainNYR" src="../../assets/js/initTime.wxs"></wxs>
+<!-- <access-box id="box" bindcancle="cancle" bindsuccess="render" access="{{access}}" /> -->
+<!-- 搜索框 -->
+<view class="cu-bar search bg-white">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="总有一款适合你的服务券" confirm-type="search" value="{{searchValue}}" bindinput="bindKeyInput"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-greenblue shadow-blur round" bindtap='searchInput'>搜索</button>
+  </view>
+</view>
+<view class="noSearchResult" wx:if="{{isNoResult}}">
+  <image src="/assets/img/home/noResult.png"></image>
+</view>
+<!-- 导航切换 -->
+<view class="list-bar">
+  <view class="list-bar-text {{isTab1Active == true ?  'tab-active' : ''}}" bindtap="changeTab1">综合</view>
+  <view class="list-bar-text {{isTab2Active == true ?  'tab-active' : ''}}" bindtap="changeTab2">销量</view>
+  <view class="list-bar-text {{isTab3Active == true ?  'tab-active' : ''}}" bindtap="changeUpDown">价格
+    <view class="price-updown">
+      <view class="cuIcon-triangleupfill lg text-gray {{isActive == true ? 'triangle-active' : ''}}"></view>
+      <view class="cuIcon-triangledownfill lg text-gray {{!isActive == true ? 'triangle-active' : ''}}"></view>
+    </view>
+  </view>
+</view>
+<!-- 搜索列表纵 -->
+  <view class="searchshow-list-column">
+    <view class="showlist-item-column" bindtap='goDetails' wx:for="{{datas}}" data-index='{{item}}' wx:key='index'>
+      <view class="item-img-column">
+        <image src="{{item.listImg}}" mode="aspectFill"></image>
+      </view>
+      <view class="column-item-right">
+        <view class="item-title-column">{{item.name}}</view>
+        <view class="count-column">
+          <text class="sum-text">店铺：</text>
+          <text class="sum-num">{{item.shopName}}</text>
+        </view>
+        <view class="count-column">发放日期：{{item.grantStart}} 至 {{item.grantEnd}}</view>
+        <view class="item-price-column">
+          <text class="price-red">￥{{moneySwitch.moneySwitch(item.price, 2)}}</text>
+          <view class="saleNum">
+            <text class="sum-text">累计销量：</text>
+            <text class="sum-num">{{item.saleNum == null? 0:item.saleNum}}</text>
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>

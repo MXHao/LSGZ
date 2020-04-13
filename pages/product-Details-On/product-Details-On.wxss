@@ -1,0 +1,647 @@
+/* pages/product-Details/product-Details.wxss */
+
+@import "../../assets/wxParse/wxParse.wxss";
+.tower-swiper .tower-item {
+    transform: scale(calc(0.5 + var(--index) / 10));
+    margin-left: calc(var(--left) * 100rpx - 150rpx);
+    z-index: var(--index);
+}
+.avataNameVip {
+  background: #1b2556;
+  margin-left: 10rpx;
+  color: #ffd259;
+  font-size: 20rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 5rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.avataNameVip::after {
+  content: "";
+  position: absolute;
+  height: 60rpx;
+  width: 10rpx;
+  left: -10rpx;
+  background: #fff;
+  transform: rotate(15deg);
+  opacity: 0.2;
+  animation: vip 2s infinite;
+}
+
+@keyframes vip {
+  from {
+    left: -20rpx;
+  }
+
+  to {
+    left: 80rpx;
+  }
+}
+
+page {
+    background: #fff;
+    padding-bottom: 110rpx;
+}
+
+swiper[class*="-dot"] .wx-swiper-dots {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+.goShopCart{
+   overflow: inherit
+}
+.cuIcon-cart{
+  overflow: inherit
+}
+.product .screen-swiper {
+    height: 650rpx;
+}
+
+.toplist {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:20rpx 30rpx;
+    background-color: var(--bg-bule);
+    position: relative;
+}
+.boom {
+ display: flex;
+ justify-content: flex-start;
+ align-items: center;
+}
+.boom-content{
+  background: #78b72a;
+  padding: 5rpx 20rpx;
+  color: #fff;
+  font-size: 24rpx;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+.toplistLeft {
+    color: var(--size-colorBai);
+}
+
+.toplistLeft text:nth-child(1) {
+    font-size: 44rpx;
+    font-weight: 600;
+    margin-right: 18rpx;
+}
+
+.toplistLeft text:nth-child(2) {
+    text-decoration: line-through;
+}
+
+.toplistright {
+    color: var(--size-colorBai);
+}
+
+.productTitle {
+    padding:10rpx 30rpx;
+}
+
+.title {
+    font-size: 30rpx;
+    font-weight: 600;
+      overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.titlebox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f5f5f9;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    margin-top: 10rpx;
+}
+
+.boxleft {
+    display: flex;
+}
+
+.vip {
+    background-color: var(--bg-bule);
+    font-weight: 600;
+    color: var(--size-colorBai);
+    padding: 5rpx;
+    margin-right: 5px;
+    border-radius: 5rpx;
+}
+
+.textcolor text {
+    color: #3ed7d9;
+}
+
+.boxRight text {
+    color: #333;
+    font-size: 30rpx;
+}
+
+.productList {
+    padding: 30rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0rpx 8rpx 10rpx #f8f5f5;
+}
+
+.ListZ {
+    display: flex;
+    flex: 1;
+}
+
+.coupon {
+    background: var(--bg-red);
+    position: relative;
+    padding: 10rpx 15rpx;
+    border-radius: 8rpx;
+    margin-right: 40rpx;
+    color: #fff;
+    font-size: 20rpx;
+}
+
+.coupon::after {
+    content: "";
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 50%;
+    background: var(--bg-bai);
+    position: absolute;
+    left: -8rpx;
+    top: 35%;
+}
+
+.coupon::before {
+    content: "";
+    width: 15rpx;
+    height: 15rpx;
+    border-radius: 50%;
+    background: var(--bg-bai);
+    position: absolute;
+    right: -8rpx;
+    top: 35%;
+}
+
+.ListLeft {
+    color: #999;
+    font-size: 26rpx;
+    margin-right: 20rpx;
+}
+
+.ListRight text {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.Evaluation {
+    padding: 30rpx;
+    box-shadow: 0rpx 8rpx 10rpx #f8f5f5;
+}
+
+.EvaluationTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Evaluationright text {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.Avatar {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 0;
+    overflow: hidden;
+}
+
+.Avatarimg {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.Avatarimg image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.Avatatext {
+    flex: 1;
+    margin-left: 10rpx;
+}
+
+.Avatatime text {
+    color: #999;
+}
+
+.satr text {
+    color: var(--color-red);
+    font-size: 30rpx;
+}
+
+.EvaluationContent {
+    padding-bottom: 20rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.Evaluationimg {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.imglist {
+    width: 23%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    border-radius: 6rpx;
+    position: relative;
+    overflow: hidden;
+}
+
+.imglist image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    object-fit: cover;
+}
+
+.imglist:before {
+    content: "";
+    display: inline-block;
+    padding-bottom: 100%;
+    width: 0.1px;
+    /*必须要有数值，否则无法把高度撑起来*/
+    vertical-align: middle;
+}
+
+.imglist:nth-child(4n+0) {
+    margin-right: 0;
+}
+
+
+.AvataNameNew text:nth-child(1) {
+    color: #3ed7d9;
+}
+.VipName{
+  color: #c6930d
+}
+.Brand {
+    box-shadow: 0rpx 8rpx 10rpx #f8f5f5;
+}
+
+.BrandBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx;
+}
+
+.BrandLeft {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.BrandLeft image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.BrandZ {
+    flex: 1;
+    margin-left: 20rpx;
+}
+view {
+  overflow:initial;
+
+}
+.BrandTitle {
+    font-size: 30rpx;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.BrandZ text {
+    border-radius: 50rpx;
+    color: var(--red);
+    font-size: 20rpx;
+}
+
+.BrandRight text:nth-child(1) {
+    color: var(--color-red);
+}
+
+.BrandRight text:nth-child(2) {
+     color: var(--color-red);
+}
+
+.Brandtext {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.Brandcontent {
+  margin-right: 5%;
+}
+
+.Brandcontent text {
+    font-size: 24rpx;
+}
+
+.Brandcontent text:nth-child(1) {
+    color: #999;
+}
+
+
+.DetailsBottom {
+    position: fixed;
+    bottom: 0;
+    background: var(--bg-bai);
+    width: 100%;
+    padding: 15rpx 0;
+    border-top: 1rpx solid #f1f1f1;
+    overflow:initial !important;
+}
+
+.action view {
+    color: #999;
+    position: absolute
+}
+.PDBtn {
+  padding: 0 20rpx;
+}
+.service_button,
+.share_button {
+    width: 100%;
+    height: 80rpx;
+    border-color: transparent;
+    position: absolute;
+    z-index: 999
+}
+
+button[plain] {
+    border: none;
+    border-color: transparent;
+}
+
+.DetailsImg {
+}
+
+.Bullet {
+    padding: 30rpx;
+    background: var(--bg-bai);
+}
+
+.Bullet button {
+    background: var(--bg-red);
+    border-radius: 100rpx;
+    color: #fff;
+}
+
+.Bulletservice {
+    padding: 30rpx;
+    background: var(--bg-bai);
+}
+
+.Bulletservice button {
+    background: var(--bg-bule);
+    border-radius: 100rpx;
+    color: #fff;
+}
+
+.bullet {
+    font-size: var(--size);
+    font-weight: 600;
+    text-align: center;
+}
+
+.Bulletbox {
+    padding: 50rpx;
+}
+
+.Bulletcontent {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.couponleft {
+    background: var(--bg-bai);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0rpx 0rpx 15rpx #f1f1f1;
+    border-radius: 20rpx;
+    margin-right: -20rpx;
+}
+
+.couponleft-text {
+    margin: 30rpx 0 30rpx 30rpx;
+    padding-right: 20rpx;
+    border-right: 1rpx solid #dedede;
+}
+
+.couponleft-text text:nth-child(1) {
+    color: var(--color-red);
+}
+
+.couponleft-text text:nth-child(2) {
+    color: var(--color-red);
+    font-size: 110rpx;
+    font-weight: 600;
+}
+
+couponleft::after {
+    content: "";
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    background: var(--bg-bai);
+    position: absolute;
+    left: -30rpx;
+    top: 35%;
+}
+
+.couponleft::before {
+    content: "";
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    background: var(--bg-red);
+    position: absolute;
+    right: -30rpx;
+    top: 35%;
+}
+
+.texttop {
+    font-weight: 600;
+}
+
+.textbottom {
+    color: #999;
+    font-size: 24rpx;
+}
+
+.couponright-text {
+    padding: 0 20rpx;
+}
+
+.couponright {
+    background: var(--bg-red);
+    color: #fff;
+    padding: 40rpx 30rpx 40rpx 50rpx;
+    word-wrap: break-word;
+    flex: 1;
+    border-radius: 10rpx;
+    line-height: 1;
+}
+
+.Bulletservice .Bulletbox view {
+    text-align: left;
+}
+
+
+.buycontent {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 170rpx;
+}
+
+.contentleft {
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.contentleft image {
+  width: 100;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* .contentleft {
+  color: var(--color-red);
+  font-weight: 600;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+} */
+
+.contentright {
+  width: 75%;
+  height: 100%;
+  padding: 0 20rpx;
+}
+.right-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 100%;
+  font-size: 32rpx;
+  text-align: justify;
+  line-height: 50rpx;
+}
+.right-price {
+  text-align: right;
+  margin-top: 20rpx;
+  font-size: 40rpx;
+}
+.buy {
+  padding: 20rpx 0;
+}
+
+.buybottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 5rpx;
+}
+
+.buybottomLeft text:nth-child(2) {
+  color: #999;
+}
+
+
+/*主容器*/
+
+.stepper {
+    width: 80px;
+    height: 26px;
+    /*给主容器设一个边框*/
+    border: 1px solid #f96363;
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+
+/*加号和减号*/
+
+.stepper text {
+    width: 19px;
+    line-height: 26px;
+    text-align: center;
+    float: left;
+}
+
+
+/*数值*/
+
+.stepper input {
+    width: 40px;
+    height: 24px;
+    float: left;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 12px;
+    /*给中间的input设置左右边框即可*/
+    border-left: 1px solid #f96363;
+    border-right: 1px solid #f96363;
+}
+
+
+/*普通样式*/
+
+.stepper .normal {
+    color: black;
+}
+
+
+/*禁用样式*/
+
+.stepper .disabled {
+    color: #f96363;
+}
+.cartNum {
+  position: absolute !important;
+  top: -2rpx !important;
+  right: -2rpx !important;
+}

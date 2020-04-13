@@ -1,0 +1,62 @@
+<!--pages/address-device/address-device.wxml-->
+<view class="box">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search lg text-gray deviceSearch"></text>
+      <input type="text" confirm-type="search" class='searchBarInput_in' placeholder="搜索小区名称" value='{{keyWord}}' bindconfirm='goSearch'></input>
+    </view>
+  </view>
+</view>
+<view class="container">
+  <!-- <view wx:if="{{defultAdd['name']}}" data-target="{{defultAdd}}" class="block blockOn">
+    <view class="history">您最近使用过的设备：</view>
+    <view class='left' bindtap="editDefaultSelect">
+      <image src="/assets/img/home/device-red.png"></image>
+    </view>
+    <view class="middle" bindtap="toMap" data-item="{{item}}">
+      <view class='title'>
+        <view class='name'>{{defultAdd.name}}</view>
+        <view class='phone'>
+          <text class='cuIcon-home lg text-gray'></text>{{defultAdd.communityName}}</view>
+      </view>
+      <view class="distance">
+        <view>
+          <view wx:if="{{defultAdd.distance}}" class="right">
+            距您{{defultAdd.distance}}
+          </view>
+          <view class="right" wx:else>
+            距离未知
+          </view>
+        </view>
+      </view>
+      <view class='address'>
+        <text class='cuIcon-locationfill lg text-gray'></text>{{defultAdd.address?defultAdd.address:''}}</view>
+    </view>
+  </view> -->
+
+  <view wx:for="{{addressList}}" wx:key="item" data-target="{{item}}" wx:for-index="index" class="block blockOn">
+    <view class='left' bindtap="editDefaultSelect">
+      <image src="/assets/img/home/device-red.png"></image>
+    </view>
+    <view class="middle" bindtap="toMap" data-item="{{item}}" data-index="{{index}}">
+      <view class='title'>
+        <view class='name'>{{item.name}}</view>
+        <view class='phone'>
+          <text class='cuIcon-home lg text-gray'></text>{{item.communityName}}</view>
+      </view>
+      <view class='distance'>
+        <view>
+          <view wx:if="{{item.distance}}" class="right">
+            距您{{item.distance}}
+          </view>
+          <view class="right" wx:else>
+            距离未知
+          </view>
+        </view>
+      </view>
+      <view class='address'>
+        <text class='cuIcon-locationfill lg text-gray'></text>{{item.address?item.address:''}}</view>
+    </view>
+
+  </view>
+</view>

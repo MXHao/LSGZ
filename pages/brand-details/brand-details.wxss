@@ -1,0 +1,278 @@
+/* pages/brand-details/brand-details.wxss */
+page {
+  background-color: #fff;
+}
+.brand-details-ad{
+  height: 380rpx;
+}
+
+.brand-details-ad image{
+  height: 100%;
+  width: 100%;
+}
+.long-class {
+  padding: 0 30rpx;
+}
+.brand-details-describe {
+  width: 100%;
+}
+.describe-top {
+  width: 100%;
+display: flex;
+  justify-content: flex-start;
+  padding: 10rpx 30rpx;
+}
+.describe-icon {
+  width: 120rpx;
+  height: 120rpx;
+  display: inline-block;
+}
+.describe-icon image {
+  width: 100%;
+  height: 100%;
+}
+.describe-title {
+  display: inline-block;
+  width: 80%;
+  padding: 5rpx 30rpx;
+}
+/* 文字描述部分 */
+.describe-text {
+  overflow: hidden;
+  color: #999
+}
+.describe-text image {
+}
+.ellipsisBox {
+  height: 85rpx;
+}
+.authorize {
+  display: inline-block;
+  border: 1px solid #f75252;
+  font-size: 20rpx;
+  color: #fff;
+  background-color: #f75252;
+  border-radius: 20rpx;
+  padding: 0rpx 20rpx;
+  vertical-align: middle;
+  margin-left: 40rpx;
+}
+
+/* 品牌简介部分 */
+.pay-hint-content{
+  font-size: 22rpx;
+  color: #666;
+  line-height: 40rpx;
+  display: -webkit-box;
+  -webkit-box-orient:vertical;
+  text-overflow: ellipsis;
+  overflow:hidden; 
+
+}
+.ellipsis{
+  /* height: 100rpx; */
+  color: #666;
+}
+.unellipsis{
+  opacity: 1 ;
+  color: #666;
+}
+.text-ellipsis {
+  text-align: center;
+  font-size: 24rpx;
+  color: #999;
+}
+.cuIcon-unfold,
+ .cuIcon-fold{
+  text-align: center;
+  font-size: 30rpx;
+  color: #999;
+  display: block;
+}
+
+/* 底部 */
+/* 商品tab栏部分 */
+.list-bar {
+  margin-top: 30rpx;
+  height: 88rpx;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #e6e6e6;
+}
+.list-bar-text {
+color: #111;
+font-size: 26rpx;
+line-height: 88rpx;
+text-align: center;
+}
+.price-updown {
+  display: inline-block;
+  vertical-align: middle;
+}
+.cuIcon-triangleupfill,
+.cuIcon-triangledownfill {
+  line-height: 50%;
+}
+.triangle-active,
+.tab-active {
+ color: #36d3d5;
+}
+.cuIcon-cascades {
+ color: #36d3d5;
+  font-size: 40rpx;
+}
+.cuIcon-list {
+  color: #36d3d5;
+  font-size: 40rpx;
+}
+/* 商品列表部分 */
+.showlist-item-column {
+  border-bottom: 1px solid #e6e6e6;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 30rpx 30rpx;
+}
+.item-img-column {
+display: inline-block;
+width: 170rpx;
+  height: 170rpx;
+}
+.item-img-column image {
+  width: 100%;
+  height: 100%;
+  
+}
+.column-item-right {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 75%;
+}
+.item-title-column {
+  /* 超过一行隐藏 */
+  text-align: justify;
+  font-size: 26rpx;
+  color: #111;
+  margin: 0rpx 15rpx 0;
+  line-height: 30rpx; 
+  width: 100%; 
+  display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+.item-price-column {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 15rpx;
+}
+.discount-column {
+  padding: 5rpx 10rpx;
+  display: inline-block;
+  color: #e83c3c;
+  font-size: 22rpx;
+  border: 1px solid #e83c3c;
+  margin-left: 30rpx;
+}
+.count-column {
+  font-size: 26rpx;
+  margin: 15rpx 20rpx 0rpx;
+  position: relative;
+  line-height: 46rpx;
+}
+.add-to-cart-column {
+  font-size:37rpx;
+  position: absolute;
+  bottom: 0rpx;
+  right: 0;
+  color: #3dc8ca;
+}
+/* 商品列表横 */
+.searchshow-list-row {
+  padding: 0 15rpx;
+margin: 30rpx 0;
+
+}
+.list-left,
+.list-right {
+  width: 50%;
+  vertical-align: top;
+  display: inline-block;
+
+}
+.show-list-item {
+  margin: 15rpx  15rpx 15rpx;
+  box-shadow: 0rpx 5rpx 10rpx rgba(0, 0, 0, 0.1);
+  padding-bottom: 10rpx;
+}
+.item-img {
+  width: 333rpx;
+  height: 333rpx;
+  
+}
+.item-img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 15rpx 15rpx 0rpx 0rpx;
+  
+}
+.item-title {
+  /* 超过两行隐藏 */
+  text-align: left;
+  font-size: 24rpx;
+  color: #111;
+  margin: 10rpx 15rpx 0;
+  line-height: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.item-price {
+margin: 0 15rpx;
+}
+.price-red {
+  color: #ef4d4d;
+  font-size: 32rpx;
+  font-weight: 700;
+  display: inline-block;
+}
+.price-gray {
+  color: #333;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  display: inline-block;
+}
+.price-gray::after {
+  content: ' v';
+  font-style: italic;
+  font-weight: 700;
+  color: #f2c52c
+}
+.discount {
+  padding: 5rpx 10rpx;
+  display: inline-block;
+  color: #e83c3c;
+  font-size: 22rpx;
+  border: 1px solid #e83c3c;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+}
+.count {
+  font-size: 24rpx;
+  margin: 15rpx 20rpx 10rpx;
+}
+.sum-text {
+color: #999;
+}
+.sum-num {
+  color:#3dc8ca;
+}
+.add-to-cart {
+  font-size: 37rpx;
+  color: #3dc8ca;
+  float: right
+}

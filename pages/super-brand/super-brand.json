@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "swiper1": "/pages/home/swiper1/swiper1"
+  },
+  "navigationBarTitleText": "超级品牌日"
+}

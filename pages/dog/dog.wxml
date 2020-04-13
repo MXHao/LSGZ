@@ -1,0 +1,235 @@
+<!--pages/dog/dog.wxml-->
+<!-- 搜索栏 -->
+<view class="box">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="狗狗零食" confirm-type="search" bindtap="goSearch"></input>
+    </view>
+  </view>
+</view>
+<!-- 狗狗轮播图 -->
+<swiper class="dog-swiper" indicator-dots="true" circular="true" style="height: 400rpx; width: 100%" indicator-active-color="#36d3d5">
+  <swiper-item class='swiper-img'>
+    <image src="/assets/img/home/swiper1.png"></image>
+  </swiper-item>
+  <swiper-item class='swiper-img'>
+    <image src="/assets/img/home/swiper2.png"></image>
+  </swiper-item>
+  <swiper-item class='swiper-img'>
+    <image src="/assets/img/home/swiper3.png"></image>
+  </swiper-item>
+</swiper>
+<!-- 狗狗广告部分 -->
+<view class="long-class">
+  <!-- 标题 -->
+  <view class="home-title" bindtap="goSearchList">
+    <view class="hometitle-left">
+      <image src="/assets/img/home/home-icon.png"></image>
+      <view class="home-text">狗狗主粮</view>
+    </view>
+    <view class="home-more" bindtap="toBrandDetails">查看更多</view>
+  </view>
+
+  <view class="super-brand">
+    <!-- 广告图 -->
+    <view class="super-ad">
+      <image src="/assets/img/super-brand/super-brand-ad.png"></image>
+    </view>
+    <!-- 商品列表 -->
+    <scroll-view class="super-goodslists" scroll-x="true">
+      <view class="super-goods" bindtap='productDetails'>
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods1.png"></image>
+        </view>
+        <view class="goods-desc">卫仕化毛膏120g</view>
+        <!-- <view class="goods-price">
+          <view class="goods-price-red">￥9.9</view>
+          <view class="goods-price-gray">￥19.9</view>
+        </view> -->
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods2.png"></image>
+        </view>
+        <view class="goods-desc">渴望成狗粮</view>
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods3.png"></image>
+        </view>
+        <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods3.png"></image>
+        </view>
+        <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods3.png"></image>
+        </view>
+        <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 狗狗零食 -->
+  <!-- 标题 -->
+  <view class="home-title">
+    <view class="hometitle-left">
+      <image src="/assets/img/home/home-icon.png"></image>
+      <view class="home-text">狗狗零食</view>
+    </view>
+    <view class="home-more" bindtap="toBrandDetails">查看更多</view>
+  </view>
+
+  <view class="super-brand">
+    <!-- 广告图 -->
+    <view class="super-ad">
+      <image src="/assets/img/super-brand/super-brand-ad.png"></image>
+    </view>
+    <!-- 商品列表 -->
+    <scroll-view class="super-goodslists" scroll-x="true">
+      <view class="super-goods" bindtap='productDetails'>
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods1.png"></image>
+        </view>
+        <view class="goods-desc">卫仕化毛膏120g</view>
+        <!-- <view class="goods-price">
+          <view class="goods-price-red">￥9.9</view>
+          <view class="goods-price-gray">￥19.9</view>
+        </view> -->
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods2.png"></image>
+        </view>
+        <view class="goods-desc">渴望成狗粮</view>
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods3.png"></image>
+        </view>
+        <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods3.png"></image>
+        </view>
+        <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods3.png"></image>
+        </view>
+        <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 其他 -->
+  <!-- 标题 -->
+  <view class="home-title">
+    <view class="hometitle-left">
+      <image src="/assets/img/home/home-icon.png"></image>
+      <view class="home-text">其他</view>
+    </view>
+    <view class="home-more" bindtap="toBrandDetails">查看更多</view>
+  </view>
+
+  <view class="super-brand">
+    <!-- 广告图 -->
+    <view class="super-ad">
+      <image src="/assets/img/super-brand/super-brand-ad.png"></image>
+    </view>
+    <!-- 商品列表 -->
+    <scroll-view class="super-goodslists" scroll-x="true">
+      <view class="super-goods" bindtap='productDetails'>
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods1.png"></image>
+        </view>
+        <view class="goods-desc">卫仕化毛膏120g</view>
+        <!-- <view class="goods-price">
+          <view class="goods-price-red">￥9.9</view>
+          <view class="goods-price-gray">￥19.9</view>
+        </view> -->
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods2.png"></image>
+        </view>
+        <view class="goods-desc">渴望成狗粮</view>
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods3.png"></image>
+        </view>
+        <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods3.png"></image>
+        </view>
+        <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      </view>
+      <view class="super-goods">
+        <view class="goods-img">
+          <image src="/assets/img/home/catdog-goods3.png"></image>
+        </view>
+        <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 推荐商品 -->
+  <!-- 标题 -->
+  <view class="home-title">
+    <view class="hometitle-left">
+      <image src="/assets/img/home/home-icon.png"></image>
+      <view class="home-text">推荐商品</view>
+    </view>
+    <view class="home-more" bindtap="toBrandDetails">查看更多</view>
+  </view>
+  <!-- 推荐商品列表 -->
+  <view class="cat-recommend">
+    <view class="cat-recommend-item">
+      <view class="recommend-item-img">
+        <image src="/assets/img/home/catdog-goods3.png"></image>
+      </view>
+      <view class="goods-desc">皇家幼猫粮猫</view>
+      <view class="goods-price cat-price">
+        <view class="goods-price-red">￥9.9</view>
+      </view>
+    </view>
+
+    <view class="cat-recommend-item">
+      <view class="recommend-item-img">
+        <image src="/assets/img/home/catdog-goods3.png"></image>
+      </view>
+      <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      <view class="goods-price cat-price">
+        <view class="goods-price-red">￥9.9</view>
+      </view>
+    </view>
+    <view class="cat-recommend-item">
+      <view class="recommend-item-img">
+        <image src="/assets/img/home/catdog-goods3.png"></image>
+      </view>
+      <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      <view class="goods-price cat-price">
+        <view class="goods-price-red">￥9.9</view>
+      </view>
+    </view>
+    <view class="cat-recommend-item">
+      <view class="recommend-item-img">
+        <image src="/assets/img/home/catdog-goods3.png"></image>
+      </view>
+      <view class="goods-desc">皇家幼猫粮猫粮猫粮猫粮</view>
+      <view class="goods-price cat-price">
+        <view class="goods-price-red">￥9.9</view>
+      </view>
+    </view>
+  </view>
+
+
+</view>

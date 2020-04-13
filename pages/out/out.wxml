@@ -1,0 +1,6 @@
+<import src="../../assets/wxParse/wxParse.wxml"/>  
+<web-view wx-if="{{type=='0'}}" src="{{url}}" ></web-view>
+<view class='DetailsImg' wx-if="{{type=='2'}}">
+  <!-- <image src="/assets/img/home/Details.jpg"></image> -->
+   <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>

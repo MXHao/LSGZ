@@ -1,0 +1,33 @@
+<!--pages/super-brand/super-brand.wxml-->
+<!-- 顶部广告图 -->
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<swiper1 imgList='{{bannerList}}'></swiper1>
+<!-- 品牌系列 -->
+<view class="long-class">
+  <block wx:for="{{brandList}}" wx:key="index">
+    <view class="home-title">
+      <view class="hometitle-left">
+        <image src="{{homeIcon}}"></image>
+        <view class="home-text">{{item.name}}</view>
+      </view>
+      <view data-id="{{item.i}}" class="home-more" bindtap="toBrandDetails">查看更多</view>
+    </view>
+    <view class="super-brand">
+      <view class="super-ad">
+        <image src="{{item.c}}" mode="aspectFit"></image>
+      </view>
+      <view class="super-goodslists">
+        <view class="super-goods" data-id="{{goods.i}}" data-sou="{{goods.sou}}" bindtap='productDetails' wx:for="{{item.product}}" wx:for-item="goods" wx:key="index">
+          <view class="goods-img">
+            <image src="{{goods.m}}" mode="aspectFill"></image>
+          </view>
+          <view class="goods-desc">{{goods.n}}</view>
+          <view class="goods-price">
+            <view class="goods-price-red">￥{{moneySwitch.moneySwitch(goods.pp, 2)}}</view>
+            <!-- <view class="goods-price-gray">￥{{moneySwitch.moneySwitch(goods.grayPrice, 2)}}</view> -->
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

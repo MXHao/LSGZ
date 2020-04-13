@@ -1,0 +1,48 @@
+<!--pages/coupon/coupon.wxml-->
+<wxs module="restTime3" src="../../assets/js/initTime.wxs"></wxs>
+<wxs module="retainNYR" src="../../assets/js/initTime.wxs"></wxs>
+<view class="coupon-tab">
+  <view class="tab-item {{currentIndex==index ? 'item-active' : '' }}" bindtap="touchItem" data-index="{{index}}" wx:for="{{list}}" wx:key="index">
+    <text>{{item}}</text>
+  </view>
+</view>
+<!-- 优惠券列表 -->
+<scroll-view class="scroll" scroll-y="true" bindscrolltolower="lower">
+  <view class="searchshow-list-column" wx:for="{{info}}" wx:key="index">
+    <view class="showlist-item-column">
+    <view class="shoplogo">
+        <image src="{{item.logo}}"></image>
+      </view>
+      <view wx:if="{{item.type==1}}" class="item-img {{item.status == 1||item.status == 2 ? 'img-used' : 'img-unused'}}">
+        <text class="couponIcon">洗护券</text>
+      </view>
+      <view wx:if="{{item.type==2}}" class="item-img  {{item.status == 1||item.status == 2 ? 'img-used' : 'rainbow'}}">
+        <text class="couponIcon">体检券</text>
+      </view>
+      <view wx:if="{{item.type==3}}" class="item-img {{item.status == 1||item.status == 2 ? 'img-used' : 'azure'}}">
+        <text class="couponIcon">护理券</text>
+      </view>
+      <view class="column-item-right">
+        <view class="title-column-limit">{{item.name}}</view>
+        <view class="title-column-limits">商家电话：{{item.phone}}</view>
+        <view class="title-date date1">启用时间：{{item.use_start}}</view>
+        <view class="title-date date1">截止时间：{{item.use_end}}</view>
+        <view class="title-date date1">商家地址：{{item.addr}}</view>
+        <view class="bottom-btn">
+          <view wx:if="{{item.status==0}}" bindtap="refund" class="item-refund" data-index="{{item}}">退款</view>
+          <view wx:if="{{item.status==0}}" bindtap="goUse" class="item-use" data-index="{{item}}">去使用</view>
+        </view>
+      </view>
+      
+      <view class="item-overdue" wx:if="{{item.status == 0 && restTime3.restTime3(item.useEndDate) < 0}}">
+        <image src="/assets/img/home/overdue.png"></image>
+      </view>
+      <view class="item-used" wx:if="{{item.status==1}}">
+        <image src="{{usedImg}}"></image>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="noOrder" wx:if="{{info.length == 0}}">
+  <image src="/assets/img/home/noServiceTicket.png"></image>
+</view>

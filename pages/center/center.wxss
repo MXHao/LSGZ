@@ -1,0 +1,173 @@
+/* pages/center/center.wxss */
+page{
+  background: #f5f6f8
+}
+.navTop image{
+  width: 100%;
+  height: 320rpx;
+}
+.navTop{
+  /* z-index: -1 */
+}
+.center{
+  padding: 30rpx;
+   /* z-index: 99; */
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top:10%
+}
+.centerBox{
+  background: #fff;
+  border-radius: 10rpx;
+  box-shadow: 5rpx 5rpx 10rpx #f1f1f1
+
+}
+
+.centerContentbox{
+  background: #fff;
+  padding: 0 30rpx;
+  border-radius: 10rpx;
+  margin-top: 24rpx
+}
+.avataNameVip {
+  background: #1b2556;
+  margin-left: 10rpx;
+  color: #ffd259;
+  font-size: 24rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 5rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.avataNameVip::after {
+  content: "";
+  position: absolute;
+  height: 60rpx;
+  width: 10rpx;
+  left: -10rpx;
+  background: #fff;
+  transform: rotate(15deg);
+  opacity: 0.2;
+  animation: vip 2s infinite;
+}
+
+@keyframes vip {
+  from {
+    left: -20rpx;
+  }
+
+  to {
+    left: 80rpx;
+  }
+}
+
+.centerContent{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 30rpx
+}
+.centerImg{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.centerImg image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+.centertitle{
+  flex: 1;
+  margin-left: 20rpx
+}
+/* 提示角标 */
+.badge {
+background-color: #f85858!important;
+}
+.titile{
+  font-weight: 600;
+  font-size: 36rpx
+}
+.titileName{
+  margin-top: 10rpx
+}
+.listicon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20rpx
+}
+.list{
+  margin: 0 2.5%;
+  position: relative;
+}
+.list image{
+  width: 65rpx;
+  height: 55rpx;
+  margin:10rpx auto;
+  display: table
+}
+.vip{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(45deg,#fe6f67,#f6554c);
+  border-radius: 10rpx;
+  box-shadow: 5rox 5rpx 5rpx #f1f1f1;
+  color: #fff;
+  padding: 30rpx;
+  margin-top: 24rpx
+}
+.vipRight text{
+  color: #fff
+}
+.vipLeft text:nth-child(1){
+  padding: 5rpx;
+  color: #fff;
+  margin-right: 10rpx;
+  border-radius: 5rpx
+}
+.contentlist{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #e6e6e6;
+  position: relative
+}
+.centerContentbox view:last-child{
+  border: none
+}
+
+
+.contentlistLeft{
+  display: flex;
+  align-items: center;
+}
+.contentlistLeft view:nth-child(2){
+  font-weight: 600
+}
+.imgbox image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 15rpx
+}
+.contentlistRight text{
+  font-size: 30rpx;
+  color: #999
+}
+.service_button{
+   width: 100%;
+   height: 80rpx;
+   border-color: transparent;
+   position: absolute
+ }
+ 
+ button[plain] {
+  border: none;
+  border-color: transparent;
+}

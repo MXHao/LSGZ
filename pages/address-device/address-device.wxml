@@ -1,0 +1,47 @@
+<!--pages/address-device/address-device.wxml-->
+<view class="box">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search lg text-gray deviceSearch"></text>
+      <input type="text" confirm-type="search" class='searchBarInput_in' placeholder="搜索小区名称" value='{{keyWord}}' bindconfirm='goSearch'></input>
+    </view>
+  </view>
+</view>
+<view class="container">
+  <!-- bindtap="handleSelectChange" -->
+  <view wx:if="{{defultAdd['name']}}" data-target="{{defultAdd}}" bindtap="editDefaultSelect" class="block blockOn">
+    <!-- <view   data-target="{{defultAdd}}" bindtap="editDefaultSelect" class="block blockOn" > -->
+    <view class="history">您最近使用过的设备：</view>
+
+    <view class='left'>
+      <image src="/assets/img/home/device-red.png"></image>
+    </view>
+    <view class="middle">
+      <view class='name'>{{defultAdd.name}}</view>
+      <view class='phone'>{{defultAdd.communityName}}</view>
+      <view class='address'>{{defultAdd.address?defultAdd.address:''}}</view>
+    </view>
+    <view wx:if="{{defultAdd.distance}}" class="right">
+      距您{{defultAdd.distance}}
+    </view>
+    <view class="right" wx:else>
+      距离未知
+    </view>
+  </view>
+  <view wx:for="{{addressList}}" wx:key="item" data-target="{{item}}" bindtap="editDefaultSelect" class="block blockOn">
+    <view class='left'>
+      <image src="/assets/img/home/device-red.png"></image>
+    </view>
+    <view class="middle">
+      <view class='name'>{{item.name}}</view>
+      <view class='phone'>{{item.communityName}}</view>
+      <view class='address'>{{item.address?item.address:''}}</view>
+    </view>
+    <view wx:if="{{item.distance}}" class="right">
+      距您{{item.distance}}
+    </view>
+    <view class="right" wx:else>
+      距离未知
+    </view>
+  </view>
+</view>

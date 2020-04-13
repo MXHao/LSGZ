@@ -1,0 +1,105 @@
+<!--components/search-list/search-list.wxml-->
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<access-box id="box" bindcancle="cancle" bindsuccess="render"  access="{{access}}" />
+<!-- 搜索框 -->
+<view class="cu-bar search bg-white">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="总有一款适合你的宠物" confirm-type="search" value="{{searchValue}}" bindinput="bindKeyInput"></input>
+  </view>
+  <view class="action">
+    <button class="cu-btn bg-greenblue shadow-blur round" bindtap='search' >搜索</button>
+  </view>
+</view>
+<view class="noSearchResult" wx:if="{{isNoResult}}">
+<image src="/assets/img/home/noResult.png"></image>
+</view>
+<!-- 导航切换 -->
+<view class="list-bar">
+  <view class="list-bar-text {{isTab1Active == true ?  'tab-active' : ''}}" bindtap="changeTab1">综合</view>
+  <view class="list-bar-text {{isTab2Active == true ?  'tab-active' : ''}}" bindtap="changeTab2">销量</view>
+  <view class="list-bar-text {{isTab3Active == true ?  'tab-active' : ''}}" bindtap="changeUpDown">价格
+    <view class="price-updown">
+      <view class="cuIcon-triangleupfill lg text-gray {{isActive == true ? 'triangle-active' : ''}}"></view>
+      <view class="cuIcon-triangledownfill lg text-gray {{!isActive == true ? 'triangle-active' : ''}}"></view>
+    </view>
+  </view>
+  <text class="list-bar-text cuIcon-cascades lg text-gray" wx:if="{{isChange}}" bindtap="listChange"></text>
+  <text class="list-bar-text cuIcon-list lg text-gray" wx:if="{{!isChange}}" bindtap="listChange"></text>
+</view>
+
+<!-- 搜索列表横 -->
+<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight-50}}px" class="list"  bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad"  hidden="{{isChange}}">
+<view class="searchshow-list-row" >
+  <!-- 左边一列 -->
+  <view class="list-left">
+    <view class="show-list-item" wx:for="{{goodsList}}"  data-index='{{item}}' wx:key='index' wx:if="{{index%2 == 0}}">
+      <view class="item-img" bindtap='goDetails' data-target="{{item}}">
+        <image src="{{item.m}}" mode="aspectFill"></image>
+      </view>
+      <view class="item-title">{{item.n}}</view>
+      <view class="item-price"   bindtap='goDetails'  data-target="{{item}}">
+        <text class="price-red">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+        <!-- <text class="price-gray">￥{{moneySwitch.moneySwitch(item.pp * plusDiscount/10, 2)}}</text>
+        <text class="price-v">v</text>
+        <view class="discount">遛食儿卡享{{plusDiscount}}折</view> -->
+      </view>
+      <view class="count">
+        <text class="sum-text">累计销量：</text>
+        <text class="sum-num">{{item.saleNum == null? 0:item.saleNum}}</text>
+        <text class="add-to-cart cuIcon-cart lg text-gray" bindtap='addCart' data-target="{{item}}"></text>
+      </view>
+    </view>
+  </view>
+  <!-- 右边一列 -->
+  <view class="list-right">
+    <view class="show-list-item" wx:for="{{goodsList}}" data-index='{{item}}' wx:key='index'  wx:if="{{index%2 != 0}}">
+     <view class="item-img" bindtap='goDetails' data-target="{{item}}">
+        <image src="{{item.m}}" mode="aspectFill"></image>
+      </view>
+      <view class="item-title">{{item.n}}</view>
+      <view class="item-price"   bindtap='goDetails'  data-target="{{item}}">
+        <text class="price-red">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+        <!-- <text class="price-gray">￥{{moneySwitch.moneySwitch(item.pp * plusDiscount/10, 2)}}</text>
+        <text class="price-v">v</text>
+        <view class="discount">遛食儿卡享{{plusDiscount}}折</view> -->
+      </view>
+      <view class="count">
+        <text class="sum-text">累计销量：</text>
+        <text class="sum-num">{{item.saleNum == null? 0:item.saleNum}}</text>
+        <text class="add-to-cart cuIcon-cart lg text-gray" bindtap='addCart' data-target="{{item}}"></text>
+      </view>
+    </view>
+  </view>
+</view>
+</scroll-view>
+<!-- 搜索列表纵 -->
+<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight-40}}px" class="list"  bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad"  hidden="{{!isChange}}">
+<view class="searchshow-list-column" >
+  <view class="showlist-item-column" wx:for="{{goodsList}}" data-index='{{item}}' wx:key='index'>
+    <view class="item-img-column"  bindtap='goDetails' data-target="{{item}}">
+      <image src="{{item.m}}" mode="aspectFill"></image>
+    </view>
+    <view class="column-item-right">
+      <view class="item-title-column"  bindtap='goDetails' data-target="{{item}}">{{item.n}}</view>
+      <view class="item-price-column"  bindtap='goDetails' data-target="{{item}}">
+        <text class="price-red">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+        <!-- <text class="price-gray">￥{{moneySwitch.moneySwitch(item.pp * plusDiscount/10, 2)}}</text>
+
+        <text class="price-v">v</text> -->
+        <!-- <view class="discount-column" hidden="{{false}}">遛食儿卡享{{plusDiscount}}折</view> -->
+      </view>
+      <view class="count-column">
+        <text class="sum-text">累计销量：</text>
+        <text class="sum-num">{{item.saleNum == null? 0:item.saleNum}}</text>
+        <text class="add-to-cart-column cuIcon-cart lg text-gray"  bindtap='addCart' data-target="{{item}}"></text>
+      </view>
+    </view>
+  </view>
+</view>
+</scroll-view>
+<view class="body-view">
+  <loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+  </loading>
+</view>

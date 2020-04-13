@@ -1,0 +1,111 @@
+<!--pages/order/order.wxml-->
+<scroll-view scroll-x class="bg-white nav">
+  <view class="cu-item flex-sub {{index==tabIndex?' cur':''}}" data-index="{{index}}" wx:for="{{6}}" wx:key="index" bindtap="touchItem" data-id="{{index}}">
+    <text wx:if="{{index==0}}">全部</text>
+    <text wx:if="{{index==1}}">待付款</text>
+    <text wx:if="{{index==2}}">待发货</text>
+    <text wx:if="{{index==3}}">待收货</text>
+    <text wx:if="{{index==4}}">待评价</text>
+    <text wx:if="{{index==5}}">已完成</text>
+  </view>
+</scroll-view>
+<scroll-view class="scroll" scroll-y="true" bindscrolltolower="lower">
+  <view wx:for="{{orders}}" class='order' wx:key="index">
+    <view class='Numbering'>
+      <view class='time'>{{item.order.orderNo}}</view>
+      <view class='Numberingvontent'>
+        {{item.order.status==0?'待付款':item.order.status==1?(item.order.transType==0?'配货中':'待发货'):item.order.status==2?(item.order.transType==0&&item.order.selfState==0?'配货中':item.order.transType==0&&item.order.selfState==1?'配送中':item.order.transType==0&&item.order.selfState==2?'待取货':'待收货'):item.order.status==3?'待评价':item.order.status==4?'已完成':'已取消'}}
+      </view>
+    </view>
+    <view class='orderbox' data-source="{{item.order.source}}" data-item="{{item.order.orderId}}" wx:for-item="p" wx:for="{{item.products}}" wx:key="index" bindtap='orderDetails'>
+      <view class='orderimg'>
+        <image src="{{p.img}}" mode="aspectFill"></image>
+      </view>
+      <view class='orderContent'>
+        <view class='MyOrdertitle'>
+          <view class='orderTitle'>{{p.productName}}</view>
+          <view class='digital'>
+            <view class='money'>¥ {{p.price}}</view>
+            <view class='orderDigital'>
+              <text>数量：</text>
+              <text>x{{p.num}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='MyOrdertext'>
+      <text>共计{{item.order.countNum}}件商品，合计：</text>
+      <text>¥ {{item.order.absPrice}}</text>
+    </view>
+    <view wx:if="{{item.order.status==0}}" class='bottom'>
+      <button class='bottombutton' bindtap="showModal" data-id="{{item.order.orderId}}" data-target="cancelOrder">取消订单</button>
+      <button class='bottombuttonON' data-data="{{item.order}}" bindtap="payOrder">去支付</button>
+    </view>
+    <!-- <view wx:elif="{{item.order.status==1}}" class='bottom'>
+            <button data-item="{{item}}" bindtap="alterService" class='bottombutton'>申请退款</button>
+          </view> -->
+          <view wx:elif="{{item.order.status==2&&item.order.transType==1}}" class='bottom'>
+            <button data-item="{{item.order}}" bindtap="viewLogistics" class='bottombutton'>查看物流</button>
+            <button class='bottombuttonON' data-id="{{item.order.orderId}}" bindtap="showModal" data-target="Receipt">确认收货</button> 
+          </view>
+          <view wx:elif="{{item.order.status==3}}" class='bottom'>
+            <button data-item="{{item.products}}" class='bottombuttonON' bindtap="Evaluation">立即评价</button>
+          </view>
+          <view wx:else class='bottom'>
+             
+          </view>
+
+    </view>
+</scroll-view>
+<!-- 取消订单 -->
+<view class="cu-modal {{modalName=='cancelOrder'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">取消订单</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <view class='cancelOrder'>
+        订单取消后无法恢复,优惠券可退回,请注意在有效期内使用。
+      </view>
+    </view>
+    <view class="cu-bar mask-btn justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" data-target="cancelOrder" data-type="confirm" bindtap="hideModal">确定</button>
+
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 确认收货 -->
+<view class="cu-modal {{modalName=='Receipt'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <view class='cancelOrder'>
+        确认收到包裹了吗？
+      </view>
+    </view>
+    <view class="cu-bar mask-btn justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">没有</button>
+        <button class="cu-btn bg-green margin-left" data-target="Receipt" data-type="confirm" bindtap="hideModal">确定</button>
+
+      </view>
+    </view>
+  </view>
+</view>
+<view class="noOrder"  wx:if="{{orders.length == 0}}">
+  <image src="/assets/img/home/noOrder.png"></image>
+</view>

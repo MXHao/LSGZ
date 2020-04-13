@@ -1,0 +1,44 @@
+
+<!-- <search-bar></search-bar> -->
+<view class="box">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search lg text-gray"></text>
+      <input type="text" class='searchBarInput_in' placeholder="{{searchTitle}}" bindtap='goSearch'></input>
+    </view>
+  </view>
+</view>
+
+<view class="VerticalBox">
+  <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(91vh)">
+    <view class="cu-item {{index==TabCur?'text-cyan cur':''}}" wx:for="{{list}}" wx:key="index" bindtap='tabSelect' data-id="{{index}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+  <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc(91vh)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+    <view class="padding-top padding-lr" wx:for="{{list}}" wx:key="index" id="main-{{index}}" data-index='{{item}}'>
+    <view class='cu-bar solid-bottom bg-white'>
+        <view class='action'>
+          <text class='cuIcon-title text-green'></text>{{item.name}}</view>
+      </view>
+      <view class="cu-list menu-avatar">
+        <view class='commodity'>
+
+          <view class='commodityList' wx:for="{{item.childrenClass}}" wx:key="index" wx:for-item="res" bindtap="toSearchByClass" data-item="{{item}}" data-res="{{res}}">
+              <view class='commodityimg'>
+                <image src='{{res.icon}}' mode="aspectFill"></image>
+              </view>
+               <view class='commoditytext'>
+                {{res.name}}
+              </view>
+          </view>
+        </view>
+    </view>
+    </view>
+  </scroll-view>
+</view>
+
+
+
+
+

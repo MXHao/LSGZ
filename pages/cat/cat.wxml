@@ -1,0 +1,98 @@
+<!--pages/cat/cat.wxml-->
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<!-- 搜索栏 -->
+<view class="box">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="{{defalultMap.place}}" confirm-type="search" bindtap="goSearch"></input>
+    </view>
+  </view>
+</view>
+<!-- 猫猫轮播图 -->
+<swiper class="dog-swiper" indicator-dots="true" circular="true" style="height: 400rpx; width: 100%" indicator-active-color="#36d3d5">
+  <swiper-item class='swiper-img' bindtap='goLink' data-item='{{item}}' wx:for="{{defalultMap.bannerList}}" data-index='{{item}}' wx:key='index'>
+    <image src="{{item.m}}"></image>
+  </swiper-item>
+ 
+</swiper>
+<!-- 猫咪广告部分 -->
+<view class="long-class">
+  <!-- 标题 -->
+  <view class="home-title" >
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">{{defalultMap.oneTitle}}</view>
+    </view>
+    <view class="home-more" bindtap='selectMore' data-target="4" data-keyword='{{defalultMap.oneTitle}}'>查看更多</view>
+  </view>
+
+  <view class="super-brand">
+    <!-- 广告图 -->
+    <view class="super-ad">
+      <image src="{{defalultMap.oneF.m}}" bindtap='goLink'  data-item='{{defalultMap.oneF}}'></image>
+    </view>
+    <!-- 商品列表 -->
+    <scroll-view class="super-goodslists" scroll-x="true">
+      <view class="super-goods" wx:for="{{oneList}}" data-index='{{item}}' wx:key='index' bindtap='productDetails'>
+        <view class="goods-img">
+          <image src="{{item.m}}" mode="aspectFill"></image>
+        </view>
+        <view class="goods-desc">{{item.n}}</view>
+        <view class="goods-price">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</view>
+      </view>  
+    </scroll-view>
+  </view>
+  <!-- 猫咪零食 -->
+  <!-- 标题 -->
+  <view class="home-title">
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">{{defalultMap.twoTitle}}</view>
+    </view>
+    <view class="home-more"   bindtap='selectMore' data-target="5" data-keyword='{{defalultMap.twoTitle}}'>查看更多</view>
+  </view>
+
+  <view class="super-brand">
+    <!-- 广告图 -->
+    <view class="super-ad">
+      <image src="{{defalultMap.twoF.m}}" bindtap='goLink'  data-item='{{defalultMap.twoF}}'></image>
+    </view>
+    <!-- 商品列表 -->
+    <scroll-view class="super-goodslists" scroll-x="true">
+      <view class="super-goods" wx:for="{{twoList}}" data-index='{{item}}' wx:key='index' bindtap='productDetails'>
+        <view class="goods-img">
+          <image src="{{item.m}}" mode="aspectFill"></image>
+        </view>
+        <view class="goods-desc">{{item.n}}</view>
+        <view class="goods-price">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</view>
+      </view>  
+    </scroll-view>
+  </view>
+  <!-- 其他 -->
+  <!-- 标题 -->
+  <view class="home-title">
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">{{defalultMap.threeTitle}}</view>
+    </view>
+    <view class="home-more"   bindtap='selectMore' data-target="6" data-keyword='{{defalultMap.threeTitle}}'>查看更多</view>
+  </view>
+
+  <view class="super-brand">
+    <!-- 广告图 -->
+    <view class="super-ad">
+      <image src="{{defalultMap.threeF.m}}" bindtap='goLink'  data-item='{{defalultMap.threeF}}'></image>
+    </view>
+    <!-- 商品列表 -->
+    <scroll-view class="super-goodslists" scroll-x="true">
+      <view class="super-goods" wx:for="{{threeList}}" data-index='{{item}}' wx:key='index' bindtap='productDetails'>
+        <view class="goods-img">
+          <image src="{{item.m}}" mode="aspectFill"></image>
+        </view>
+        <view class="goods-desc">{{item.n}}</view>
+        <view class="goods-price">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</view>
+      </view>  
+    </scroll-view>
+  </view>
+</view>

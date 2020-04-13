@@ -1,0 +1,50 @@
+
+
+<!-- 评价 -->
+<view class='Evaluation'>
+  <view class='top'>
+    <view class='toplist' bindtap='changeTag' data-id='0'>全部评论<text wx-if="{{numMap.evS!=0}}">({{numMap.evS}})</text></view>
+    <view class='toplist' bindtap='changeTag' data-id='1'>有图<text wx-if="{{numMap.ies!=0}}">({{numMap.ies}})</text></view>
+    <view class='toplist' bindtap='changeTag' data-id='2'>好评<text wx-if="{{numMap.ges!=0}}">({{numMap.ges}})</text></view>
+    <view class='toplist' bindtap='changeTag' data-id='3'>差评<text wx-if="{{numMap.bes!=0}}">({{numMap.bes}})</text></view>
+  </view>
+  <scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight-55}}px" class="list"  bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad" bindscroll="scroll">
+
+<!-- wx:for='{{commentList}}' data-index='{{item}}' wx:key='index' -->
+  <view class='commentList' wx:for='{{commentList}}' data-index='{{item}}' wx:for-index="keys" wx:key='index'>
+    <view class='Avatar'>
+      <view class='Avatarimg'>
+        <image src="{{item.mh}}"></image>
+      </view>
+      <view class='Avatatext'>
+        <view class='AvataNameNew'>
+          <text class=" {{item.isPlus == 1 ? 'VipName':''}}">{{item.mn}}</text>
+          <text class='avataNameVip' wx-if="{{item.p=='0'}}">PLUS</text>
+        </view>
+        <view class='Avatatime'>
+          <text>{{item.t}}</text>
+          <!-- <text>14:20</text> -->
+        </view>
+      </view>
+      <view class='satr'>
+        <text class='cuIcon-favorfill lg text-gray'  wx:for='{{item.ce}}' data-index='{{ite}}' wx:key='ite' wx:for-index="key"></text>
+        <!-- <text class='cuIcon-favorfill lg text-gray'></text>
+        <text class='cuIcon-favorfill lg text-gray'></text> -->
+      </view>
+    </view>
+    <view class='EvaluationContent'>
+      {{item.c}}
+    </view>
+    <view class='Evaluationimg' >
+      <view class='imglist'  wx:for='{{item.evM}}' wx:for-index="key" wx:key="index">
+         <image src="{{item}}"  mode="aspectFill"  bindtap="clickImg" data-index='{{item}}' data-id="{{key}}" data-ddid="{{keys}}"></image>
+      </view>
+    </view>
+  </view>
+  </scroll-view>
+   <!-- <view class="body-view">
+    <loading hidden="{{hidden}}" bindchange="loadingChange">
+      加载中...
+    </loading>
+  </view> -->
+</view>

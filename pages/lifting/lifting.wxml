@@ -1,0 +1,22 @@
+<view class="container">
+  <view class='lifting'>
+    <text>所属站点：</text>
+    <text>西安站</text>
+  </view>
+  <view class="cu-form-group">
+    <view class="block  {{defaultIndex == index ? 'blockOn': ''}}" wx:for="{{addressList}}" wx:key="index"  bindtap="handleSelectChange" data-index="{{index}}">
+      <view class='checkedbox'>
+          <icon  type="{{defaultIndex == index ? 'success' : 'circle'}}" color="#36d3d5"></icon>
+      </view>
+      <view class="middle">
+        <view class='title'>
+          <text class='name'>{{item.name}}（NO.{{item.num}}）</text>
+        </view>
+        <text class='address'>{{item.detail}}</text>
+      </view>
+      <view class="right">
+        <text>距您{{item.distance}}km</text>
+      </view>
+    </view>
+  </view>
+</view>

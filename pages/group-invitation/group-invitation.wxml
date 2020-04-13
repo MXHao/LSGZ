@@ -1,0 +1,32 @@
+<!--pages/group-invitation/group-invitation.wxml-->
+<view class="long-class">
+  <view wx:if="{{info.diffNum>0}}" class="countDown">{{spikeLastTime}}</view>
+  <view wx:if="{{info.diffNum>0}}" class="less">还差
+    <text style="color:red">{{info.diffNum}}</text> 人,邀请好友拼单
+  </view>
+  <view wx:else class="success">拼单成功!</view>
+  <view>
+    <view class="invited-btn">邀请好友拼单
+    <button open-type="share" class='invateBtn' plain='true'></button>
+    </view>
+  </view>
+  <view bindtap="goBack">
+    <view class="back-btn">回到订单详情</view>
+  </view>
+  <view class="iconList">
+    <view class="icon" wx:for="{{info.person}}" wx:key="index">
+      <view class="leader" wx:if="{{index==0}}">拼主</view>
+      <image src="{{item.header}}"></image>
+    </view>
+  </view>
+  <!-- <view class="orderDetail">
+    <view class="left">订单详情</view>
+    <view class="middle">xxxxxxxxxxxxxxxxxxxxxxxx</view>
+    <view class="right">></view>
+  </view>
+  <view class="orderDetail">
+    <view class="left">拼单规则</view>
+    <view class="middle">正品保障·七天无理由退款</view>
+    <view class="right">></view>
+  </view> -->
+</view>

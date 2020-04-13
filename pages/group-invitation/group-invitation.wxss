@@ -1,0 +1,120 @@
+/* pages/group-invitation/group-invitation.wxss */
+
+page {
+  background: #fff;
+  border-top: 1rpx solid #eee;
+}
+
+.long-class {
+  padding: 30rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.less {
+  line-height: 58rpx;
+}
+.success {
+  color: #3ed7d9;
+  font-weight: 700;
+  font-size: 50rpx;
+  line-height: 130rpx;
+}
+.countDown {
+  color: #999;
+  line-height: 40rpx;
+  font-size: 26rpx;
+}
+
+.invited-btn, .back-btn {
+  padding: 25rpx 260rpx;
+  display: inline-block;
+  border-radius: 10rpx;
+  margin-top: 28rpx;
+}
+
+.invited-btn {
+  margin-top: 44rpx;
+}
+
+.invited-btn {
+  background: #3ed7d9;
+  color: #fff;
+  position: relative
+}
+
+.invateBtn{
+ 
+   border-color: transparent;
+   position: absolute;
+   z-index: 999;
+    width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+ }
+ 
+ button[plain] {
+  border: none;
+  border-color: transparent;
+}
+.back-btn {
+  background: #fff;
+  color: #3ed7d9;
+  border: 1rpx solid #3ed7d9;
+}
+
+.iconList {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 25rpx 0;
+}
+
+.icon {
+  width: 100rpx;
+  height: 100rpx;
+  position: relative;
+}
+
+.icon image {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.leader {
+  color: #fff;
+  position: absolute;
+  background: red;
+  display: inline-block;
+  padding: 5rpx 15rpx;
+  left: -30rpx;
+  top: 6rpx;
+  z-index: 9;
+  border-radius: 25rpx;
+  line-height: 32rpx;
+  font-size: 24rpx;
+}
+
+/* 订单详情 */
+
+.orderDetail {
+  display: flex;
+  justify-content: space-between;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  border-bottom: 5rpx solid #ada8a80e;
+}
+
+.left {
+  color: #aca3a3;
+}
+
+.middle {
+  margin-right: 30px;
+  width: 387rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowarp;
+}

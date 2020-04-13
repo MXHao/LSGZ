@@ -1,0 +1,100 @@
+/* pages/NewOffer/NewOffer.wxss */
+page{
+  background: #f4f2c1;
+}
+.OfferTop {
+  flex-direction: row;
+  height: 350rpx;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  background-size: 100% 100%;
+}
+.offertext{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  padding: 0 20rpx
+}
+.offertext view{
+  color: #fff;
+  font-size: 22rpx;
+}
+.Offerimg image{
+  width: 100%;
+  height: 330rpx;
+}
+.Offerbox{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  width: 100%;
+  overflow-x: auto;
+  z-index: 99;
+
+}
+.Offerboxlist{
+  width: 31%;
+  margin-right: 24rpx;
+  margin-bottom: 20rpx;
+    border-radius: 10rpx;
+  overflow: hidden;
+  box-shadow: 0 5rpx 5rpx rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+.Offerlist-img{
+  position: relative;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  overflow: hidden
+}
+.Offerlist-img image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: cover;
+}
+
+.Offerlist-img:before {
+  content: "";
+  display: inline-block;
+  padding-bottom: 100%;
+  width: 0.1px;
+  /*必须要有数值，否则无法把高度撑起来*/
+  vertical-align: middle;
+}
+.Offercontent{
+  background: var(--bg-bai);
+  padding: 10rpx
+}
+.contentTitle{
+  font-size: 24rpx;
+  overflow: hidden;/*超出部分隐藏*/
+  text-overflow:ellipsis;/* 超出部分显示省略号 */
+  white-space: nowrap;/*规定段落中的文本不进行换行 */
+}
+.contentText text:nth-child(1){
+  font-weight: 600;
+  color: var(--color-red);
+  margin-right: 10rpx;
+}
+.contentText text:nth-child(2){
+  color: #999;
+  text-decoration:line-through;
+}
+.Offerboxlist:nth-child(3n+0){
+  margin-right: 0
+}
+.scroll {
+  position: sticky;
+  top: 0;
+  z-index: 999
+}

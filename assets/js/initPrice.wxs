@@ -1,0 +1,21 @@
+/*金额转换 1000转为 1000.00 */
+function moneySwitch(money, precision = 2) {//precision是需要精确的位数，如百分位就是2
+  if (money == undefined || isNaN(money))
+    return "";
+
+
+  var symbol = 1
+  if (money < 0) {
+    // 符号为负
+    symbol = -1
+    money *= -1
+  }
+  var num2 = (Math.round(money * Math.pow(10, precision))
+    / Math.pow(10, precision) + Math.pow(10, -(precision + 1)))
+    .toString().slice(0, -1)
+
+  return parseFloat(num2 * symbol).toFixed(precision)
+}
+module.exports = {
+  moneySwitch: moneySwitch
+}

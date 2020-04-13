@@ -1,0 +1,36 @@
+<!--pages/coupon/coupon.wxml-->
+<wxs module="restTime3" src="../../assets/js/initTime.wxs"></wxs>
+<view class="coupon-tab">
+  <view class="tab-item {{currentIndex==index ? 'item-active' : '' }}" bindtap="touchItem" data-index="{{index}}" wx:for="{{list}}" wx:key="index">
+    <text>{{item}}</text>
+  </view>
+</view>
+<!-- 优惠券列表 -->
+<!-- 底部商品列表 -->
+<scroll-view class="scroll" scroll-y="true"   bindscrolltolower="lower">
+          <view class="searchshow-list-column" wx:for="{{coupons}}" wx:key="index" >
+  <view class="showlist-item-column">
+    <view class="item-img {{item.status == 1 ? 'img-used' : 'img-unused'}}">
+      <text class="couponIcon">体验券</text>
+    </view>
+    <view class="column-item-right">
+      <view class="item-title-column">{{item.couponName}}</view>
+      <view class="title-column-limit">{{item.couponDir}}</view>
+      <view class="title-date date1">领取日期：{{item.useStartDate}}</view>
+      <view class="title-date">截止日期：{{item.useEndDate}}</view>
+    </view>
+    <view bindtap="goUse" class="item-use" data-index="{{item}}" wx:if="{{item.status==0 && restTime3.restTime3(item.useEndDate) >= 0}}">去使用</view>
+
+    <view class="item-overdue" wx:if="{{item.status == 0 && restTime3.restTime3(item.useEndDate) < 0}}">
+      <image src="/assets/img/home/overdue.png"></image>
+    </view>
+    <view class="item-used" wx:if="{{item.status==1}}">
+      <image src="{{usedImg}}"></image>
+    </view>
+  </view>
+</view>
+</scroll-view>
+<view class="noOrder" wx:if="{{coupons.length == 0}}">
+  <image src="/assets/img/home/noExpTicket.png"></image>
+</view>
+

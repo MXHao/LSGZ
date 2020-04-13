@@ -1,0 +1,46 @@
+<!--pages/NewOffer/NewOffer.wxml-->
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<view class='OfferTop' style='background-image:url({{titleImg.m}})'>
+  <view class='offertext'>
+    <!-- <view>满9.9元包邮，仅限新用户购买</view> -->
+    <view>9.9专区无法使用其他优惠券</view>
+  </view>
+</view>
+
+<!-- table -->
+<scroll-view scroll-x class="bg-white nav text-center scroll">
+  <view class="cu-item {{index==currentIndex?'text-red cur':''}}" wx:for="{{4}}" wx:key="index" bindtap="tabSelect" data-id="{{index}}">
+    {{index==0?'特惠9.9':index==1?'特惠19.9':index==2 ?'特惠29.9':index==3?'组合商品':''}}
+  </view>
+</scroll-view>
+<view class='Offerbox' wx:if="{{currentIndex != 3}}">
+  <view class='Offerboxlist' wx:for="{{goodsList}}" wx:key="index" bindtap="toProductDetails" data-index="{{item}}">
+    <view class='Offerlist-img'>
+      <image src="{{item.productImg}}" mode="aspectFill"></image>
+    </view>
+    <view class='Offercontent'>
+      <view class='contentTitle'>
+        {{item.productName}}
+      </view>
+      <view class='contentText'>
+        <text>￥{{moneySwitch.moneySwitch(item.salesPrice, 2)}}</text>
+        <text>￥{{moneySwitch.moneySwitch(item.productPrice, 2)}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='Offerbox' wx:if="{{currentIndex == 3}}">
+  <view class='Offerboxlist' wx:for="{{goodsList}}" wx:key="index" bindtap="toCpsProductDetails" data-index="{{item}}">
+    <view class='Offerlist-img'>
+      <image src="{{item.m}}" mode="aspectFill"></image>
+    </view>
+    <view class='Offercontent'>
+      <view class='contentTitle'>
+        {{item.n}}
+      </view>
+      <view class='contentText'>
+        <text>￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+      </view>
+    </view>
+  </view>
+</view>

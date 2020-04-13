@@ -1,0 +1,118 @@
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<access-box id="box" bindcancle="cancle" bindsuccess="render" access="{{access}}" />
+<!-- 返回顶部按钮 -->
+<image class='goTop' src="/assets/img/home/goTop.png" hidden='{{!floorstatus}}' bindtap="goTop"></image>
+<!-- 购物车非空 -->
+<!-- 列表 -->
+<scroll-view scroll-top="{{scrollTop}}" scroll-y="true" style="height:{{scrollHeight-100}}rpx" class="list" wx-if="{{carts.length>0}}" bindscrolltolower="bindDownLoad" bindscrolltoupper="topLoad" bindscroll="scroll">
+  <view class="cart-item-list" hidden="{{isCart}}">
+    <!-- 列表里的物品 -->
+    <view class="cart-item" wx:for="{{carts}}" data-index='{{item}}' wx:key='index'>
+      <!-- 单选按钮 -->
+      <view class="cart-button" hidden="{{item.isShow}}" bindtap="HandleSwitchShow" data-index="{{item}}">
+        <icon type="circle" color="#3dc8ca"></icon>
+      </view>
+      <view class="cart-button" hidden="{{!item.isShow}}" bindtap="HandleSwitchShow" data-index="{{item}}">
+        <icon type="success" color="#3dc8ca"></icon>
+      </view>
+      <!-- 右侧图片和内容 -->
+      <view class="showlist-item-column {{item.isShow ? 'item-active' : '' }}">
+        <view class="item-img-column" bindtap='goDetails' data-target="{{item}}">
+          <image src="{{item.pim}}" mode="aspectFill"></image>
+        </view>
+        <view class="column-item-right">
+          <view class="item-title-column">{{item.pn}}</view>
+
+          <view class="item-price-column">
+            <text class=" cart-red">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+            <!-- 加减按钮 -->
+            <view class="add-move">
+              <text class="{{item.num==1?'disabled':'add'}}" bindtap="bindMinus" data-target="{{item}}">
+              <text class="cuIcon-move lg "></text>
+              </text>
+              <input type="number" readonly placeholder-class="center" class="cart-num" bindchange="bindManual" value="{{item.num}}">1</input>
+              <text class="add {{item.stock==item.num?'disabled':'add'}}" bindtap="bindPlus" data-target="{{item}}">
+              <text class="cuIcon-add lg "></text>
+              </text>
+            </view>
+          </view>
+        </view>
+        <!-- 删除图标 -->
+        <view class="cuIcon-delete lg text-gray" bindtap="del" data-index="{{item}}"></view>
+      </view>
+    </view>
+    <!-- 已下架物品 -->
+    <view class="cart-item" wx:for="{{offSell}}" data-index='{{item}}' wx:key='index'>
+      <!-- 单选按钮 -->
+      <view class="cart-button" bindtap="HandleSwitchShow2" data-index="{{item}}">
+        <icon type="circle" color="#3dc8ca"></icon>
+      </view>
+      <!-- 右侧图片和内容 -->
+      <view class="goods-subscript">该商品已下架</view>
+      <view class="showlist-item-column {{item.isShow ? 'item-active' : '' }}">
+        <view class="item-img-column" bindtap='goDetails' data-target="{{item}}">
+          <image src="{{item.pim}}" mode="aspectFill"></image>
+        </view>
+        <view class="column-item-right">
+          <view class="item-title-column">{{item.pn}}</view>
+
+          <view class="item-price-column">
+            <text class=" cart-red">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+            <!-- 加减按钮 -->
+            <view class="add-move">
+              <text class="disabled"  data-target="{{item}}">
+              <text class="cuIcon-move lg "></text>
+              </text>
+              <input type="number" readonly placeholder-class="center" class="cart-num" bindchange="bindManual" value="{{item.num}}">1</input>
+              <text class="disabled"  data-target="{{item}}">
+              <text class="cuIcon-add lg "></text>
+              </text>
+            </view>
+          </view>
+        </view>
+        <!-- 删除图标 -->
+        <view class="cuIcon-delete lg text-gray" bindtap="del" data-index="{{item}}"></view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!-- 底部结算栏 -->
+<view class="cart-bottom" wx-if="{{carts.length>0}}">
+  <view class='row'>
+    <view class="bottom-btn" bindtap="handleAllChange">
+      <icon type="circle" color="#3dc8ca" hidden="{{isAllSelect}}"></icon>
+      <icon type="success" color="#3dc8ca" hidden="{{!isAllSelect}}"></icon>
+    </view>
+    <view style="color: #111; font-size: 26rpx; line-height: 60rpx; padding: 0 10rpx">全选</view>
+    <view style="color: #111; font-size: 26rpx; line-height: 60rpx; padding: 0 10rpx">合计</view>
+    <view style="color: #ef4d4d; font-size: 32rpx; line-height: 60rpx;">￥{{price}}</view>
+  </view>
+  <view>
+    <view class="cart-sum" bindtap="confirm">结算({{selectProduct.length}})</view>
+  </view>
+</view>
+<view class="shop-cart-top" wx-if="{{carts.length==0}}">
+  <view class="shop-cart-icon">
+    <image src="/assets/img/home/shop-cart.png"></image>
+  </view>
+  <view class="shop-cart-text">购物车空空如也</view>
+  <view style="text-align: center;">
+    <view class="go-shopping" bindtap="goSearch">去逛逛</view>
+  </view>
+  <view class="home-text" wx:if="{{cecommen.length !== 0}}">商品推荐</view>
+  <view class="recommend" wx:if="{{cecommen.length !== 0}}">
+    <view class="show-list-item" wx:for="{{cecommen}}" wx:key="index">
+      <view class="item-img" bindtap='productDetails' data-index="{{item}}">
+        <image src="{{item.m}}" mode="aspectFill"></image>
+      </view>
+      <view class="item-title">{{item.n}}</view>
+      <view class="item-price" bindtap='productDetails' data-index="{{item}}">
+        <text class="price-red">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+        <!-- <text class="price-v">v</text> -->
+      </view>
+      <view class="count">
+
+      </view>
+    </view>
+  </view>
+</view>

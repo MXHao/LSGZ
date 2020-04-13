@@ -1,0 +1,117 @@
+<!--pages/Evaluation/Evaluation.wxml-->
+<view class='content'>
+  <view class='Evaluation'>
+    <view class='EvaluationTitle'>
+      配送评价
+    </view>
+    <view class='EvaluationList'>
+      <view class='listLeft'>
+        商品评分
+      </view>
+      <view class='listRight'>
+        <block wx:for='{{evaluations}}' wx:for-item='i' wx:key='index'>
+          <!-- 单个卡片项 -->
+          <view class='card-item'>
+            <!-- 卡片上方标题 -->
+
+            <!-- 卡片下方评价区 -->
+            <view class='item-content'>
+              <view class='contet-text content-body'>
+                <!-- 为方便数据定位，自定义了wx:for-item为j -->
+                <block wx:for='{{starMap}}' wx:for-item='j' wx:key='index'>
+                  <view class='image-container' data-index='{{i.id}}' bindtap='chooseStar'>
+                    <image wx:if='{{i.star >= index + 1}}' data-star='{{index + 1}}' src='{{starCheckedImgUrl}}' bin></image>
+                    <image wx:if='{{i.star < index + 1}}' data-star='{{index + 1}}' src='{{starUnCheckedImgUrl}}'></image>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class='EvaluationList'>
+      <view class='listLeft'>
+        物流评分
+      </view>
+      <view class='listRight'>
+        <block wx:for='{{evaluations1}}' wx:for-item='i' wx:key='index'>
+          <!-- 单个卡片项 -->
+          <view class='card-item'>
+            <!-- 卡片上方标题 -->
+            <!-- 卡片下方评价区 -->
+            <view class='item-content'>
+              <view class='contet-text content-body'>
+                <!-- 为方便数据定位，自定义了wx:for-item为j -->
+                <block wx:for='{{starMap}}' wx:for-item='j' wx:key='index'>
+                  <view class='image-container' data-index='{{i.id}}' bindtap='chooseStar1'>
+                    <image wx:if='{{i.star >= index + 1}}' data-star='{{index + 1}}' src='{{starCheckedImgUrl}}' bin></image>
+                    <image wx:if='{{i.star < index + 1}}' data-star='{{index + 1}}' src='{{starUnCheckedImgUrl}}'></image>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+     <view class='EvaluationList'>
+      <view class='listLeft'>
+        服务评分
+      </view>
+      <view class='listRight'>
+        <block wx:for='{{evaluations2}}' wx:for-item='i' wx:key='index'>
+          <!-- 单个卡片项 -->
+          <view class='card-item'>
+            <!-- 卡片上方标题 -->
+            <!-- 卡片下方评价区 -->
+            <view class='item-content'>
+              <view class='contet-text content-body'>
+                <!-- 为方便数据定位，自定义了wx:for-item为j -->
+                <block wx:for='{{starMap}}' wx:for-item='j' wx:key='index'>
+                  <view class='image-container' data-index='{{i.id}}' bindtap='chooseStar2'>
+                    <image wx:if='{{i.star >= index + 1}}' data-star='{{index + 1}}' src='{{starCheckedImgUrl}}' bin></image>
+                    <image wx:if='{{i.star < index + 1}}' data-star='{{index + 1}}' src='{{starUnCheckedImgUrl}}'></image>
+                  </view>
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <view class='Evaluation'>
+    <view wx:for="{{product}}" wx:key="index" class='EvaluationListNew'>
+      <view class='listLeftNew'>
+         <image src="{{item.img}}"></image>
+      </view>
+      <view class='listRightNew'>
+        <view class='commodityTitle'>
+          {{item.productName}}
+        </view>
+      </view>
+    </view>
+   	<view class="group">
+		<textarea maxlength="-1" disabled="{{modalName!=null}}" bindinput="textareaAInput" placeholder="请在这里写下精彩评论吧" rows="3"></textarea>
+	</view>
+  	<view class="cu-form-group">
+  	<view class="grid col-4 grid-square flex-sub">
+			<view class="bg-img" wx:for="{{imgList}}" data-index="{{index}}" wx:key="index" bindtap="ChooseImage" data-url="{{imgList[index]}}">
+				<image src='{{imgList[index]}}' mode='aspectFill'></image>
+				<view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+					<text class="cuIcon-close"></text>
+				</view>
+			</view>
+			<view  data-index="-1" class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+				<text class="cuIcon-cameraadd"></text>
+			</view>
+		</view>
+	</view>
+  </view>
+</view>
+
+  <view bindtap="submit" class='EvaluationButton'>
+    <button> 提交</button>
+  </view>

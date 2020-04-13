@@ -1,0 +1,118 @@
+/* pages/super-brand/super-brand.wxss */
+page {
+  background-color: #fff;
+}
+/* 标题部分 */
+.home-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx 0;
+  border-bottom: 2rpx solid #f8f8f8;
+
+}
+.hometitle-left {
+  width: 80%;
+}
+.hometitle-left image {
+  width: 16rpx;
+  height: 40rpx;
+  float: left;
+}
+.home-text {
+  font-weight: 600;
+  font-size: 32rpx;
+  float: left;
+  margin-left: 20rpx;
+}
+
+.home-more {
+  font-size: 26rpx;
+  color: #666666;
+}
+.home-more:active {
+  color: #36d3d5;
+}
+/* 长页面 */
+.long-class {
+  padding: 0rpx 30rpx 30rpx;
+}
+/* 广告图 */
+.super-ad{
+  height: 380rpx;
+  padding: 1rpx;
+  /* border: 10rpx solid #36d2d527;
+  border-radius: 15rpx; */
+}
+
+ .super-ad image{
+  height: 100%;
+  width: 100%;
+}
+/* 滑动商品列表 */
+.super-goodslists
+ {
+ /* background-color: #f8f8f8; */
+background-color: #f8f8f8;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.super-goods {
+   width: 28%;
+  margin: 4% 1% 3%;
+  display: inline-block;
+  border: 1rpx solid rgba(128, 128, 128, 0);
+  box-shadow: 0rpx 0rpx 10rpx rgba(0, 0, 0, 0.1);
+  border-radius: 10rpx;
+  padding-bottom: 5rpx;
+  background: #fff;
+  
+  
+}
+.goods-img {
+  height: 190rpx;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 15rpx 15rpx 0 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goods-img image {
+  width: 100%;
+  height: 135%;
+  object-fit: cover;
+}
+.goods-desc {
+  margin-top: 10%;
+  font-size: 24rpx;
+  color: #444;
+  display: inline-block;
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+  text-align: justify;
+  padding: 0 5rpx;
+}
+.goods-price {
+  padding: 0 20rpx;
+}
+.goods-price-red {
+  font-size: 32rpx;
+  color: #ef4d4d;
+  font-weight: 700;
+  text-align: center;
+  display: inline-block;
+}
+.goods-price-gray {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #999;
+  text-decoration: line-through;
+  text-align: center;
+}
+

@@ -1,0 +1,26 @@
+/**app.wxss**/
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+page{
+  	--bg-bule: #3ed7d9;
+    --size-colorBai:#fff;
+    --bg-red:#f75252;
+    --bg-bai:#fff;
+    --color-red:#f75252;
+    --size:30rpx;
+    
+}
+/* 隐藏滚动条 */
+::-webkit-scrollbar{
+width: 0;
+height: 0;
+color: transparent;
+display: none
+}
+
+     /* // {
+      //   "pagePath": "pages/category/category",
+      //   "text": "分类",
+      //   "iconPath": "assets/img/tabbar/category.png",
+      //   "selectedIconPath": "assets/img/tabbar/category_active.png"
+      // }, */

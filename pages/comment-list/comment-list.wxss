@@ -1,0 +1,162 @@
+/* pages/product-Details/product-Details.wxss */
+
+.tower-swiper .tower-item {
+  transform: scale(calc(0.5 + var(--index) / 10));
+  margin-left: calc(var(--left) * 100rpx - 150rpx);
+  z-index: var(--index);
+}
+
+page {
+  background: #fff;
+}
+.Evaluation {
+  padding: 30rpx 0;
+}
+
+.EvaluationTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Evaluationright text {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.Avatar {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  overflow: hidden;
+}
+
+.Avatarimg {
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.Avatarimg image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.AvataNameNew {
+  align-items: center;
+  display: flex; 
+}
+.Avatatext {
+  flex: 1;
+  margin-left: 10rpx;
+  line-height: 46rpx;
+}
+
+.Avatatime text {
+  color: #999;
+}
+
+.satr text {
+  color: var(--color-red);
+  font-size: 30rpx;
+}
+
+.EvaluationContent {
+  padding-bottom: 20rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+}
+
+.Evaluationimg {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.imglist {
+  width: 23%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  border-radius: 6rpx;
+  position: relative;
+  overflow: hidden;
+
+}
+.imglist image{
+  position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	object-fit: cover;
+}
+.imglist:before {
+	content: "";
+	display: inline-block;
+	padding-bottom: 100%;
+	width: 0.1px;
+	/*必须要有数值，否则无法把高度撑起来*/
+	vertical-align: middle;
+}
+
+.imglist:nth-child(4n+0){
+ margin-right:0;
+}
+.avataNameVip {
+  background: #1b2556;
+  margin-left: 10rpx;
+  color: #ffd259;
+  font-size: 20rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 5rpx;
+  position: relative;
+  overflow: hidden;
+  line-height: 26rpx
+}
+
+.avataNameVip::after {
+  content: "";
+  position: absolute;
+  height: 60rpx;
+  width: 10rpx;
+  left: -10rpx;
+  background: #fff;
+  transform: rotate(15deg);
+  opacity: 0.2;
+  animation: vip 3s infinite;
+}
+@keyframes vip {
+  from {
+    left: -20rpx;
+  }
+
+  to {
+    left: 80rpx;
+  }
+}
+.AvataNameNew text:nth-child(1){
+  color: #3ed7d9
+}
+.top{
+  display: flex;
+  padding: 0 30rpx;
+}
+.commentList {
+  box-shadow: 0rpx 8rpx 10rpx #f8f5f5;
+  padding: 30rpx 30rpx;
+}
+.toplist{
+  background: var(--bg-bule);
+  padding:10rpx 20rpx;
+  color: #fff;
+  margin-right: 10rpx;
+  font-size: 22rpx;
+  border-radius: 50rpx
+}

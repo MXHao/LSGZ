@@ -1,0 +1,22 @@
+<!--pages/bargain/bargain.wxml-->
+<access-box id="box"  bindsuccess="render"  access="{{access}}" />
+<view class="bargain-banner">
+  <image src="/assets/img/bargain/bargain-banner.png"></image>
+</view>
+<!-- 底部商品列表 -->
+<view class="searchshow-list-column">
+  <view class="showlist-item-column" wx:for="{{goodsList}}" wx:key="index">
+    <view class="item-img-column">
+      <image src="{{item.imgSrc}}"></image>
+    </view>
+    <view class="column-item-right">
+      <view class="item-title-column">{{item.title}}</view>
+      <view class="item-price-column">
+        <text class="price-red">￥{{item.redPrice}}</text>
+        <text class="price-gray">￥{{item.grayPrice}}</text>
+      </view>
+    </view>
+    <text class="add-to-cart-column" bindtap="productDetails" data-index="{{item}}">点击购买</text>
+  </view>
+  
+</view>

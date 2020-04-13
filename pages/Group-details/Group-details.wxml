@@ -1,0 +1,392 @@
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<import src="../../assets/wxParse/wxParse.wxml" />
+<access-box id="box" bindcancle="cancle" bindsuccess="render" access="{{access}}" />
+<!--商品详情-->
+<view class='product'>
+  <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+    <swiper-item wx:for="{{swiperList.length == 0?1:swiperList}}" wx:key='index'>
+      <image src="{{swiperList.length == 0?detail.productImg:item.img}}" mode="aspectFill"></image>
+      <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
+    </swiper-item>
+  </swiper>
+</view>
+<view class='toplist'>
+  <view class='toplistLeft'>
+    <text>拼团价</text>
+    <text>￥{{moneySwitch.moneySwitch(detail.groupPrice, 2)}}</text>
+    <text>￥{{moneySwitch.moneySwitch(detail.price, 2)}}</text>
+  </view>
+  <view class='toplistright' wx:if="{{isTimeShow}}">
+    <text>距离结束：</text>
+    <text>{{groupRemainTime.hour}}</text>
+    <text>：</text>
+    <text>{{groupRemainTime.minu}}</text>
+    <text>：</text>
+    <text>{{groupRemainTime.sec}}</text>
+
+
+  </view>
+</view>
+
+<!-- 拼团须知 -->
+<view class='productTitle'>
+  <view class='Group' bindtap="showModal" data-target="group">
+    <view class='ListLeft lh40rpx'>
+      已抢
+      <text>{{detail.saleNum}}</text>件·
+      <text>{{detail.groupNumber}}</text>人团
+    </view>
+    <view class='ListRight'>
+      <text>拼团须知</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+  <view class='title'>
+    {{detail.productName}}
+  </view>
+</view>
+
+
+
+<!-- 活动 -->
+<view class='productList' bindtap="showModal" data-target="activity">
+  <view class='ListLeft'>
+    活动
+  </view>
+  <view class='ListZ'>
+    <!-- <view class='free'>
+      全是免配送费
+    </view> -->
+    <view class='freebox'>
+      <text>拼团</text>
+      <text>比日常省{{moneySwitch.moneySwitch(detail.price-detail.groupPrice,2)}}元</text>
+    </view>
+    <view wx:if="{{detail.groupLimit==1}}" class='freebox'>
+      <text>限购</text>
+      <text>{{detail.groupLimitNumber==0?'不限购次数':'最多购买'+detail.groupLimitNumber+'次'}}，{{detail.groupLimitNum==0?'不限购数量':'每次最多购买'+detail.groupLimitNum+'件'}}</text>
+    </view>
+  </view>
+  <view class='ListRight'>
+    <text class='cuIcon-right lg text-gray'></text>
+  </view>
+</view>
+
+<!-- 参数 -->
+<view class='productList' bindtap="showModal" data-target="parameter">
+  <view class='ListLeft'>
+    参数
+  </view>
+  <view class='ListZ'>
+    <view>
+      商品编号，商品规格
+    </view>
+  </view>
+  <view class='ListRight'>
+    <text class='cuIcon-right lg text-gray'></text>
+  </view>
+</view>
+
+<!-- 服务说明 -->
+<view class='productList' bindtap="showModal" data-target="service">
+  <view class='ListLeft'>
+    服务说明
+  </view>
+  <view class='ListZ'>
+    <view>
+      正品保障 · 七天无理由退款
+    </view>
+  </view>
+  <view class='ListRight'>
+    <text class='cuIcon-right lg text-gray'></text>
+  </view>
+</view>
+<!-- 团购列表 -->
+<view class="group-buying" wx:if="{{isGroupBuyingShow}}">
+  <view class="group-buying-title" bindtap="openGroupedBox">
+    <view style="color: #000">{{detail.group.length}}人正在拼单，可直接参与</view>
+    <view>
+      <text style=" color: gray;">查看更多</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+
+  </view>
+  <swiper class="group-buying-list" indicator-dots="{{false}}" autoplay="{{true}}" circular="{{true}}" vertical="{{true}}" interval="5000" duration="500" previous-margin="0px" next-margin="0px" display-multiple-items="{{detail.group.length == 1? 1:2}}" >
+    <block wx:for="{{detail.group}}" wx:key="index">
+      <swiper-item>
+        <view class="group-buying-item">
+          <view class="item-icon">
+            <image src="{{item.header}}"></image>
+          </view>
+          <view class="item-name">{{item.name}}</view>
+          <view class="grouped-right">
+            <view class="groupedLast">还差{{detail.group[index].groupNum - detail.group[index].num}}人拼成</view>
+            <view class="grouped-countdown" wx:if="{{groupedCountTime[index] != '00:00:00'}}">剩余:{{groupedCountTime[index]}}</view>
+          </view>
+          <text style="margin-left:3px" wx:if="{{detail.buyCount>=detail.groupLimitNumber&&detail.groupLimit==1}}" >次数上限</text>
+          <view wx:else bindtap="showModal" data-target="join" data-id="{{item.id}}" class="group-buying-button">去拼单</view>
+        </view>
+      </swiper-item>  
+    </block>
+  </swiper>
+</view>
+<!-- 团购列表弹窗 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{isGroupedBoxShow}}">
+  <view class="boxClosed cuIcon-close lg text-gray" bindtap="cloeseBox"></view>
+  <scroll-view scroll-y class="groupedBox">
+    <view class="box-title">可参与的拼单</view>
+    <view class="boxItem" wx:for="{{moreList}}" wx:key="index" wx:if="{{groupedMoreCountTime[index] != '00:00:00'}}">
+      <view class="box-icon">
+        <image src="{{item.header}}"></image>
+      </view>
+      <view class="box-middle">
+        <view class="box-name">{{item.name}}</view>
+        <view class="box-countdown" wx:if="{{groupedMoreCountTime[index] != '00:00:00'}}">剩余:{{groupedMoreCountTime[index]}}</view>
+      </view>
+      <view class="box-right">还差{{item.groupNum - item.num}}人</view>
+      <text  wx:if="{{detail.buyCount>=detail.groupLimitNumber&&detail.groupLimit==1}}" >次数上限</text>
+          <view wx:else bindtap="showModal" data-target="join" data-id="{{item.id}}" class="group-buying-button">去拼单</view>
+    </view>
+  </scroll-view>
+</view>
+
+
+<!-- 评价 -->
+<view class='Evaluation'>
+  <view class='EvaluationTitle' bindtap='commentList'>
+    <view class='Evaluationleft'>
+      全部评论
+      <text>({{detail.evalCount}})</text>
+    </view>
+    <view class='Evaluationright'>
+      <text>更多评价</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+  <view class='commentList' wx:for="{{detail.evals}}" wx:key='index' wx:for-index="keys">
+    <view class='Avatar'>
+      <view class='Avatarimg'>
+        <image src="{{item.header}}"></image>
+      </view>
+      <view class='Avatatext'>
+        <view class='AvataName'>
+          <text class="{{item.isPlus? 'blue':''}}">{{item.name}}</text>
+          <text class='avataNameVip' wx:if="{{item.isPlus}}">PLUS</text>
+        </view>
+        <view class='Avatatime'>
+          <text>{{item.createDate}}</text>
+        </view>
+      </view>
+      <view class='satr'>
+        <text class='cuIcon-favorfill lg text-gray' wx:for="{{item.commentEval}}" wx:key='index'></text>
+      </view>
+    </view>
+    <view class='EvaluationContent'>
+      {{item.contents}}
+    </view>
+    <view class='Evaluationimg'>
+      <view class='imglist' wx:for="{{item.imgUrls}}" wx:for-index="key" wx:key='index'>
+        <image src="{{item.imgUrl}}" mode="aspectFill" bindtap="clickImg"  data-id="{{key}}" data-ddid="{{keys}}"></image>
+      </view>
+
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 品牌 -->
+<view class='Brand'>
+  <view class='BrandBox'>
+    <view class='BrandLeft'>
+      <image src="{{detail.icon}}" mode="aspectFit"></image>
+    </view>
+    <view class='BrandZ'>
+      <view>{{detail.name}}</view>
+      <!-- <text>授权品牌</text> -->
+    </view>
+    <view class='BrandRight' bindtap="toBrandDetails">
+      <text>进入品牌</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+  <view class='Brandtext'>
+    <view class='Brandcontent'>
+      <text>全部商品：</text>
+      <text>{{detail.normalCount}}</text>
+    </view>
+    <view class='Brandcontent'>
+      <text>促销商品：</text>
+      <text>{{detail.promotionCount}}</text>
+    </view>
+  </view>
+</view>
+<!-- 详情图片 -->
+<view class='DetailsImg'>
+  <template is="wxParse" data="{{wxParseData: article2.nodes}}" />
+</view>
+
+
+<!-- 底部导航 -->
+<view class='DetailsBottom'>
+  <view class="cu-bar bg-white tabbar border shop">
+    <view class="action" open-type="contact">
+      <button open-type="contact" class='service_button' plain='true'></button>
+      <view class="cuIcon-service text-green">
+      </view>
+      客服
+    </view>
+    <view class="action" >
+    <button open-type="share" class='share_button' plain='true'></button>
+      <view class="cuIcon-favor lg text-green">
+      </view>
+      分享 
+    </view>
+    <!-- <view class="action" bindtap="goShopCart">
+      <view class="cuIcon-cart">
+        <view class="cu-tag badge">9</view>
+      </view>
+      购物车
+    </view> -->
+    <view class="btn-group">
+      <button class="cu-btn bg-orange round shadow-blur" bindtap="backHome">返回首页</button>
+            <text wx:if="{{detail.buyCount>=detail.groupLimitNumber&&detail.groupLimit==1}}">您的购买次数已达上限</text>
+      <button wx:else class="cu-btn bg-orange round shadow-blur" bindtap="showModal" data-target="buy">￥{{moneySwitch.moneySwitch(detail.groupPrice, 2)}}一键开团</button>
+
+    </view>
+  </view>
+</view>
+
+
+<!-- 参数弹窗 -->
+<view class="cu-modal bottom-modal {{modalName=='parameter'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bulletservice">
+      <view class='bullet'>
+        产品规格
+      </view>
+      <view class='parameter'>
+        <template is="wxParse" data="{{wxParseData: article3.nodes}}" />
+      </view>
+      <button bindtap="hideModal">确定</button>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 活动详情弹窗 -->
+<view class="cu-modal bottom-modal {{modalName=='activity'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bulletservice">
+      <view class='bullet'>
+        活动详情
+      </view>
+      <view class='activity'>
+        <template is="wxParse" data="{{wxParseData: article4.nodes}}" />
+      </view>
+      <button bindtap="hideModal">确定</button>
+    </view>
+  </view>
+</view>
+
+
+<!-- 拼团须知弹窗 -->
+<view class="cu-modal bottom-modal {{modalName=='group'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bulletservice">
+      <view class='bullet'>
+        拼团须知
+      </view>
+      <view class='Bulletbox'>
+        <template is="wxParse" data="{{wxParseData:article1.nodes}}" />
+      </view>
+      <button bindtap="hideModal">确定</button>
+    </view>
+  </view>
+</view>
+
+<!-- 服务说明 -->
+<view class="cu-modal bottom-modal {{modalName=='service'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bulletservice">
+      <view class='bullet'>
+        服务说明/拼团须知
+      </view>
+      <view class='Bulletbox'>
+        <view>{{serviceIntro}}</view>
+      </view>
+      <button bindtap="hideModal">确定</button>
+    </view>
+  </view>
+</view>
+
+<view class="cu-modal bottom-modal {{modalName=='join'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bullet">
+      <view class='buy'>
+        <view class='buycontent'>
+          <view class='contentleft'>
+            <image src="{{detail.productImg}}" mode="aspectFill"></image>
+          </view>
+          <view class='contentright'>
+            <view class="right-title">{{detail.productName}}</view>
+            <view class="right-price">￥{{moneySwitch.moneySwitch(detail.groupPrice, 2)}}</view>
+          </view>
+        </view>
+        <view class='buybottom'>
+          <view class='buybottomLeft'>
+            <text style="font-size: 32rpx;">购买数量：</text>
+            <text></text>
+          </view>
+          <view class='buybottomRight'>
+            <view class="stepper">
+              <!-- 减号 -->
+              <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+              <!-- 数值 -->
+              <input type="number" readonly bindchange="bindManual" value="{{num}}" />
+              <!-- 加号 -->
+              <text class="normal" bindtap="bindPlus">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <button bindtap="joinGroup">￥{{moneySwitch.moneySwitch(detail.groupPrice, 2)}}参团</button>
+    </view>
+  </view>
+  </view>
+<!-- 立即购买 -->
+<view class="cu-modal bottom-modal {{modalName=='buy'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bullet">
+      <view class='buy'>
+        <view class='buycontent'>
+          <view class='contentleft'>
+            <image src="{{detail.productImg}}" mode="aspectFill"></image>
+          </view>
+          <view class='contentright'>
+            <view class="right-title">{{detail.productName}}</view>
+            <view class="right-price">￥{{moneySwitch.moneySwitch(detail.groupPrice, 2)}}</view>
+          </view>
+        </view>
+        <view class='buybottom'>
+          <view class='buybottomLeft'>
+            <text style="font-size: 32rpx;">购买数量：</text>
+            <text></text>
+          </view>
+          <view class='buybottomRight'>
+            <view class="stepper">
+              <!-- 减号 -->
+              <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+              <!-- 数值 -->
+              <input type="number" readonly bindchange="bindManual" value="{{num}}" />
+              <!-- 加号 -->
+              <text class="{{detail.groupLimit==1&&num >= detail.groupLimitNum?'disabled':'normal'}}" bindtap="bindPlus">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <button wx:if="{{detail.buyCount>=detail.groupLimitNumber&&detail.groupLimit==1}}">您的购买次数已达上限</button>
+      <button wx:else bindtap="openGroup">￥{{moneySwitch.moneySwitch(detail.groupPrice, 2)}}一键开团</button>
+    </view>
+  </view>
+</view>

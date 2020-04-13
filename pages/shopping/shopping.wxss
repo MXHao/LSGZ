@@ -1,0 +1,170 @@
+/* pages/NewOffer/NewOffer.wxss */
+page{
+  background: #fff
+}
+.Offer{
+  padding: 30rpx;
+  height: 900rpx;
+  overflow-x: auto;
+  position: fixed;
+  top:31%;
+  width: 100%
+}
+.OfferTop {
+  flex-direction: row;
+  height: 280rpx;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  background-size: 100% 100%;
+}
+.offertext{
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  padding: 0 20rpx
+}
+.offertext view{
+  color: #fff;
+  font-size: 20rpx;
+}
+.Offerimg image{
+  width: 100%;
+  height: 330rpx;
+}
+.Offerbox{
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 20rpx;
+  width: 100%;
+  height: 500rpx;
+  overflow-x: auto;
+  top:60%;
+  z-index: 99;
+
+}
+.Offerboxlist{
+  width: 31%;
+  margin-right: 24rpx;
+  margin-bottom: 20rpx;
+    border-radius: 10rpx;
+  overflow: hidden;
+}
+.Offerlist-img{
+  position: relative;
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+  overflow: hidden
+}
+.Offerlist-img image {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.Offerlist-img:before {
+  content: "";
+  display: inline-block;
+  padding-bottom: 100%;
+  width: 0.1px;
+  /*必须要有数值，否则无法把高度撑起来*/
+  vertical-align: middle;
+}
+.Offercontent{
+  background: var(--bg-bai);
+  padding: 10rpx
+}
+.contentTitle{
+  font-size: 24rpx;
+  overflow: hidden;/*超出部分隐藏*/
+  text-overflow:ellipsis;/* 超出部分显示省略号 */
+  white-space: nowrap;/*规定段落中的文本不进行换行 */
+}
+.contentText text:nth-child(1){
+  font-weight: 600;
+  color: var(--color-red);
+  margin-right: 10rpx;
+}
+.contentText text:nth-child(2){
+  color: #999;
+  text-decoration:line-through;
+}
+.Offerboxlist:nth-child(3n+0){
+  margin-right: 0
+}
+.grouplist{
+  background: var(--bg-bai);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  padding-bottom:20rpx;
+  border-bottom:1rpx solid #dedede
+}
+.groupcontent{
+  flex: 1;
+  margin-left: 20rpx
+}
+.groupimg{
+  width: 170rpx;
+  height: 170rpx;
+  overflow: hidden;
+}
+.groupimg image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+.groupTitle{
+  font-size: 26rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.grouptext{
+  font-weight: 600;
+  color: var(--color-red);
+  margin: 20rpx 0;
+  margin-right: 10rpx;
+}
+.groupbox text:nth-child(2){
+  text-decoration:line-through; 
+}
+.grouptexts{
+  color: #999;
+  margin: 10rpx 0;
+}
+.contentbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.groupbox{
+  color: #999
+}
+.groupbutton button{
+  background: var(--bg-red);
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 26rpx;
+  width: 160rpx;
+}
+.groupbuttonNew button{
+  background: #999;
+  color: #fff;
+  width: 160rpx;
+  border-radius: 50rpx;
+  font-size: 26rpx
+}

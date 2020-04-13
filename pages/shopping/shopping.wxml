@@ -1,0 +1,45 @@
+<!--pages/NewOffer/NewOffer.wxml-->
+<view class='OfferTop' style='background-image:url({{imgUrl}}/img/home/shopping.png)'></view>
+
+<!-- table -->
+<scroll-view scroll-x class="bg-white nav text-center">
+  <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{tabs}}" wx:key="index" bindtap="tabSelect" data-id="{{index}}">
+    {{item}}
+  </view>
+</scroll-view>
+<view class="Offer">
+  <view class='grouplist' wx:for="{{tailList}}" wx:key="index">
+    <view class='groupimg'>
+      <image src="{{item.imgSrc}}"></image>
+    </view>
+    <view class='groupcontent'>
+      <view class='groupTitle'>
+        {{item.title}}
+      </view>
+      <view class='grouptexts'>
+        剩余：{{item.number}}件
+      </view>
+      <view class='contentbox'>
+        <view class='groupbox'>
+          <text class='grouptext'>惊爆价:¥ {{item.price}}</text>
+          <text>¥{{item.grayPrice}}</text>
+        </view>
+        <view class='groupbutton' bindtap='GroupDetails'>
+          <button>立刻抢购</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <view wx:if="{{1==TabCur}}" class="Offer">
+  2
+</view>
+<view wx:if="{{2==TabCur}}" class="Offer">
+  3
+</view>
+<view wx:if="{{3==TabCur}}" class="Offer">
+  4
+</view>
+<view wx:if="{{4==TabCur}}" class="Offer">
+  5
+</view> -->

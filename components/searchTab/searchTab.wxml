@@ -1,0 +1,13 @@
+<!--components/search/searchTab/searchTab.wxml-->
+<view class="list-bar">
+  <view data-type="1" class="list-bar-text {{isTab1Active == true ?  'tab-active' : ''}}" bindtap="_changeTab1">综合</view>
+  <view data-type="2" class="list-bar-text {{isTab2Active == true ?  'tab-active' : ''}}" bindtap="_changeTab2">销量</view>
+  <view data-type="3" class="list-bar-text {{isTab3Active == true ?  'tab-active' : ''}}" bindtap="_changeUpDown">价格
+    <view class="price-updown">
+      <view class="cuIcon-triangleupfill lg text-gray {{isActive == true ? 'triangle-active' : ''}}"></view>
+      <view class="cuIcon-triangledownfill lg text-gray {{!isActive == true ? 'triangle-active' : ''}}"></view>
+    </view>
+  </view>
+  <view class="list-bar-text cuIcon-cascades lg text-gray" wx:if="{{isChange}}" bindtap="_listChange"></view>
+  <view class="list-bar-text cuIcon-list lg text-gray" wx:if="{{!isChange}}" bindtap="_listChange"></view>
+</view>

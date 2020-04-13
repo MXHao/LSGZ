@@ -1,0 +1,16 @@
+
+function restTime3(oldTime) {
+  var setTime = getDate(oldTime);
+  var nowTime = getDate();
+  var restSec = setTime.getTime() - nowTime.getTime();
+  return restSec
+}
+function retainNYR(_Time) {
+  var temp = getDate(_Time)
+  var t = temp.getFullYear() + "/" + (temp.getMonth() + 1) + "/" + temp.getDate();
+  return t
+}
+module.exports = {
+  restTime3: restTime3,
+  retainNYR: retainNYR
+}

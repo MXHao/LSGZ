@@ -1,0 +1,7 @@
+<view>
+  <qrcode class="iblock" value="{{textArr}}" width="440">
+    <view slot="text">
+      请向店家出示，核销
+    </view>
+  </qrcode>
+</view>

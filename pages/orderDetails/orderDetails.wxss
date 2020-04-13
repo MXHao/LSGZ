@@ -1,0 +1,242 @@
+/* pages/orderDetails/orderDetails.wxss */
+.content{
+  padding: 30rpx;
+  padding-bottom: 160rpx;
+  background: #fff
+}
+.details{
+  background: var(--bg-bule);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50rpx 0;
+  border-radius: 10rpx;
+}
+.detailsIMG image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx
+}
+.detailsTime{
+  font-size: 30rpx;
+  color: #fff
+}
+.submit{
+  margin-top: 20rpx;
+  background: #fff;
+  box-shadow: 0 0 10rpx #dedede;
+  border-radius: 10rpx;
+  padding: 30rpx 0
+}
+.borderNo{
+  border: none !important;
+}
+.submitlist{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+.submitTitle{
+  font-weight: 600;
+  font-size: 30rpx;
+  line-height: 44rpx
+}
+.submitText{
+  color: #999;
+  font-size: 26rpx;
+  line-height: 44rpx
+}
+.submitlist-right text{
+  color: #333;
+  font-size: 40rpx
+}
+.submitTitle text{
+  margin-right: 20rpx;
+  font-size: 30rpx
+}
+.orderbox {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding:10rpx 30rpx
+}
+
+.orderimg {
+  width: 26%;
+  height: 160rpx;
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+
+.orderimg image {
+  width: 100%;
+  height: 100%;
+}
+
+.orderContent {
+  width: 73%;
+  margin-left: 2%;
+}
+
+.orderTitle {
+  font-weight: 600;
+  font-size: 30rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /*我设置的是文字超过1行显示...；行数可以随便改；*/
+  overflow: hidden;
+}
+
+.text {
+  color: #ef4d4d;
+  font-weight: 600;
+  font-size: 32rpx;
+  margin: 15rpx 0;
+}
+
+.bottom {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  bottom:0;
+  background: #fff;
+  padding: 30rpx
+}
+
+.bottom .bottomText {
+  color: #999;
+}
+
+.text-center {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background: #fff;
+}
+
+.Numbering {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.Ship {
+  color: #36d3d5;
+}
+
+.list {
+  /* margin-bottom: 20rpx */
+}
+
+.bottomprice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottombutton {
+  background: #fff;
+  border: 1rpx solid #999;
+  border-radius: 50rpx;
+  color: #999;
+  padding: 15rpx 20rpx;
+  line-height: 1;
+  margin: 0;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  width: 200rpx;
+}
+.money{
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--color-red);
+  margin: 5rpx 0
+}
+.orderDigital text{
+ color: #999
+}
+.Amount{
+  border-top: 1rpx solid #e6e6e6;
+  margin: 30rpx 30rpx 0 30rpx;
+  padding-top: 30rpx
+}
+.Amountbox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10rpx 0
+}
+.Amountright{
+  color: #999
+}
+.AmountrightColor{
+  color: var(--color-red)
+}
+.information{
+  font-weight: 600;
+  font-size: 30rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #dedede
+}
+.submitNew{
+  padding: 30rpx;
+  background: #fff;
+  box-shadow: 0 0 10rpx #dedede;
+  border-radius: 10rpx;
+  margin-top: 20rpx
+}
+.informationbox{
+  display: flex;
+  margin: 10rpx 0;
+  align-items: center
+}
+.copy{
+  border: 1rpx solid #36d3d5;
+  color: #36d3d5;
+  border-radius: 50rpx;
+  padding: 0 10rpx;
+  margin-left: 10rpx;
+  font-size: 24rpx
+}
+.informationright{
+  color: #999
+}
+
+.bottombutton {
+  background: #fff;
+  border: 1rpx solid #999;
+  border-radius: 50rpx;
+  color: #999;
+  padding: 15rpx 20rpx;
+  line-height: 1;
+  margin: 0;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  width: 200rpx;
+}
+
+.bottom button::after {
+  border: none;
+}
+
+.bottombuttonON {
+  border: 1rpx solid #36d3d5;
+  background: #36d3d5;
+  border-color: #36d3d5;
+  border-radius: 50rpx;
+  color: #fff;
+  padding: 15rpx 20rpx;
+  line-height: 1;
+  margin: 0;
+  font-size: 30rpx;
+  margin-left: 20rpx;
+  width: 200rpx;
+}

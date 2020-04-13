@@ -1,0 +1,112 @@
+<!--pages/orderDetails/orderDetails.wxml-->
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<view class='content'>
+  <view class='details'>
+    <view class='detailsIMG'>
+    {{orderStatus}}
+      <image src="/assets/img/home/time.png" hidden='{{showTime}}'></image>
+    </view>
+    <view class='detailsTime' hidden='{{showTime}}'>{{spikeLastTime}} 后自动取消</view>
+  </view>
+  <view class='submit'>
+    <view class='submitlist'>
+      <view class='submitlist-left'>
+        <view class='submitTitle'>{{order.statusName}}</view>
+        <view class='submitText'>{{order.endTime}}</view>
+      </view>
+      
+    </view>
+    <view class='submitlist borderNo'>
+      <view class='submitlist-left'>
+        <view class='submitTitle'>
+          <text>{{order.contactPerson}}</text>
+          <text>{{order.phone}}</text>
+        </view>
+        <view class='submitText'>{{order.province}}{{order.city}}{{order.country}}{{order.address}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='submit' wx:for='{{order.orderDesc}}' wx:key="index" wx:for-item="p" >
+    <view class='orderbox' bindtap="toDetails" data-index="{{p}}" data-id="{{index}}">
+      <view class='orderimg'>
+        <image src="{{p.img}}" mode="aspectFill"></image>
+      </view>
+      <view class='orderContent'>
+        <view class='MyOrdertitle'>
+          <view class='orderTitle'>{{p.productName}}</view>
+          <view class='digital'>
+            <view class='money'>¥ {{moneySwitch.moneySwitch(p.price, 2)}}</view>
+            <view class='orderDigital'>
+              <text>数量：</text>
+              <text>x {{p.num}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='Amount'>
+      <view class='Amountbox'>
+        <view class='Amountleft'>
+          订单金额
+        </view>
+        <view class='Amountright'>
+          ¥ {{moneySwitch.moneySwitch(order.absPrice-order.transPrice, 2)}}
+        </view>
+      </view>
+      <view class='Amountbox'>
+        <view class='Amountleft'>
+          运费
+        </view>
+        <view class='Amountright'>
+          ¥ {{moneySwitch.moneySwitch(order.transPrice, 2)}}
+        </view>
+      </view>
+      <view class='Amountbox'>
+        <view class='Amountleft'>
+          总金额
+        </view>
+        <view class='AmountrightColor'>
+          ¥ {{moneySwitch.moneySwitch(order.absPrice, 2)}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='submitNew'>
+    <view class='information'>
+      订单信息
+    </view>
+    <view class='informationbox'>
+      <view class='informationleft'>订单编号：</view>
+      <view class='informationright'>{{order.orderNo}}</view>
+      <view class='copy' bindtap='copy' data-no='{{order.orderNo}}'>复制</view>
+    </view>
+    <view class='informationbox'>
+      <view class='informationleft'>下单时间：</view>
+      <view class='informationright'>{{order.createDate}}</view>
+    </view>
+    <view class='informationbox' hidden="{{order.status >= 2||order.transType==0}}">
+      <view class='informationleft'>发货时间：</view>
+      <view class='informationright'>{{order.sendDate}}</view>
+    </view>
+    <view class='informationbox' hidden="{{order.status >= 2||order.transType==0}}">
+      <view class='informationleft'>快递单号：</view>
+      <view class='informationright'>444847845897878</view>
+    </view>
+    <view class='informationbox' hidden="{{order.status >= 2||order.transType==1}}">
+      <view class='informationleft'>自提柜信息：</view>
+      <view class='informationright'>444847845897878</view>
+    </view>
+    <view class='informationbox'>
+      <view class='informationleft'>配送方式：</view>
+      <view class='informationright'>{{order.transType==0?'自提':'快递'}}</view>
+    </view>
+  </view>
+</view>
+<view class='bottom'>
+  <button class='bottombutton' bindtap="groupDetails" wx:if='{{order.orderType==2}}'>拼团详情</button>
+  <button class='bottombutton' bindtap="applyService" hidden='{{btShowAttr[0]||order.unRefundMoney==0||order.refundStatus=="0"}}'>申请售后</button>
+  <button class='bottombutton' bindtap="viewLogistics" hidden='{{btShowAttr[1]}}'>查看物流</button>
+  <button class='bottombutton' hidden='{{btShowAttr[2]}}' bindtap='confirmOrder'>确认收货</button>
+  <button class='bottombutton' hidden='{{btShowAttr[3]}}' bindtap='cancelOrder'>取消订单</button>
+  <!-- <button class='bottombutton' hidden='{{btShowAttr[4]}}' bindtap='payOrder'>支付订单</button> -->
+</view>

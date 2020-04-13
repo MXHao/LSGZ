@@ -1,0 +1,9 @@
+page{
+  width:100%;
+  background: #fff;
+}
+qrcode{
+  display: block;
+  margin:100rpx auto;
+  text-align: center
+}

@@ -1,0 +1,16 @@
+<view wx:if="{{hasMask}}" class="cover">
+  <view class="modalDlg" >
+    <view class='box'>
+      <view class='msg-box'>
+        <text class='title'>{{access.title}}</text>
+        <image class="msguser" src='{{imgUrl}}/img/info.png'></image>
+        <text class='msg'> {{access.msg}} </text>
+        <text class='msg' style='color:#999;'> {{access.msg2}} </text>
+        <view class='btn'>
+          <button type='default' bindtap='cancle' class='btn-cancle'>{{access.cancle}}</button>
+          <button type='default' class='btn-confirm' bindgetuserinfo='login' open-type='getUserInfo'>{{access.confirm}}</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

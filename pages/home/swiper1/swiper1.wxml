@@ -1,0 +1,8 @@
+<!--pages/home/swiper/swiper.wxml-->
+
+<!-- 轮播图2 -->
+<swiper previous-margin='50px' next-margin='50px' bindchange="swiperChange" circular="true" autoplay="true" interval="4000" style='height:{{swiperH}};'>
+  <swiper-item class="swiper-item" wx:for='{{imgList}}' wx:key='index'>
+    <image class='le-img {{nowIdx==index?"le-active":""}}' data-item='{{item}}' bindtap='go' bindload='getHeight' src='{{item.m}}' style='height:{{swiperH}};' mode="aspectFill"></image>
+  </swiper-item>
+</swiper>

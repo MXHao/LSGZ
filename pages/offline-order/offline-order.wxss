@@ -1,0 +1,267 @@
+/* pages/order/order.wxss */
+
+.nav .cu-item {
+  height: 90rpx;
+  display: inline-block;
+  line-height: 90rpx;
+  margin: 0 10rpx;
+  padding: 0 20rpx;
+  color: #999;
+  z-index: 99;
+  width: 17%;
+  text-align: center
+}
+.nav .text-cyan {
+  color: #36d3d5
+}
+.scroll{
+  margin-top:90rpx;
+  height: 89vh;
+}
+.time {
+  font-size: 30rpx;
+}
+
+.Numberingvontent {
+  font-size: 30rpx;
+}
+
+.MyOrdertitle {
+
+}
+
+page {
+  background: #fff;
+}
+
+.nav .cu-item.cur {
+  color: #36d3d5;
+}
+
+.content {
+  padding: 30rpx;
+  margin-top: 80rpx;
+}
+.orderList {
+  margin: 20rpx 30rpx 60rpx;
+  border: 1rpx solid #eee;
+  position: relative;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  padding: 20rpx;
+  box-shadow: 0 0 15rpx #e8e8e8;
+  border-radius: 10rpx;
+}
+.listNo {
+  position: absolute;
+  right: 32rpx;
+  top: 12rpx;
+  font-weight: 700;
+  font-style: italic;
+  color: #36d3d5;
+  font-size: 34rpx;
+}
+.orderMsg {
+  padding: 0 20rpx;
+  position: relative
+}
+.orderFail {
+  position: absolute;
+  right: 0rpx;
+  top: 48rpx;
+  font-size: 26rpx;
+  font-weight: 600
+}
+.order {
+  /* box-shadow: 0 0 15rpx #e8e8e8; */
+  border-radius: 20rpx;
+  padding: 30rpx;
+  border: 1rpx solid #eee;
+  margin: 20rpx 0;
+  position: relative;
+}
+.goodsFail {
+  position: absolute;
+  right: 24rpx;
+  top: 140rpx;
+  font-size: 30rpx;
+}
+.orderbox {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10rpx 0;
+}
+
+.orderimg {
+  width: 26%;
+  height: 160rpx;
+  overflow: hidden;
+  border-radius: 10rpx;
+}
+
+.orderimg image {
+  width: 100%;
+  height: 100%;
+}
+
+.orderContent {
+  width: 73%;
+  position: relative;
+  padding: 0 20rpx
+}
+
+.orderTitle {
+  font-weight: 600;
+  font-size: 30rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /*我设置的是文字超过1行显示...；行数可以随便改；*/
+  overflow: hidden;
+  line-height: 50rpx;
+  text-align: justify
+}
+
+.text {
+  color: #ef4d4d;
+  font-weight: 600;
+  font-size: 32rpx;
+  margin: 15rpx 0;
+}
+
+
+
+
+
+.bg-white {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+.mask-btn {
+  display: flex;
+justify-content: center;
+padding: 30rpx 0;
+
+}
+.Numbering {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.Ship {
+  color: #36d3d5;
+}
+
+.list {
+  /* margin-bottom: 20rpx */
+}
+
+
+
+.Numberingvontent {
+  color: #36d3d5;
+}
+
+.pricetext {
+  color: #999;
+}
+
+.pricetext text:nth-child(1) {
+  margin-right: 10rpx;
+}
+
+.pricetext text:nth-child(2) {
+  color: #ef4d4d;
+  font-weight: 600;
+}
+
+.digital {
+  color: #999;
+  line-height: 40rpx;
+}
+.money {
+  margin-top: 12rpx
+}
+.MyOrdertext {
+  display: flex;
+  justify-content: flex-start;
+  color: #999;
+  margin-top: 20rpx;
+  align-items: center;
+  padding: 0 20rpx;
+  font-size: 26rpx
+}
+
+.MyOrdertext text:nth-child(2) {
+  color: var(--color-red);
+  font-weight: 600;
+}
+
+.cu-bar .content {
+  position: absolute;
+  text-align: center;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  font-size: 32rpx;
+  line-height: 13rpx;
+  cursor: none;
+  font-weight: 600;
+  text-overflow:clip
+}
+.cancelOrder text{
+  color: #ef4d4d
+}
+.noOrder {
+  height: 322rpx;
+  width: 303rpx;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 290rpx;
+  z-index: -1;
+}
+.noOrder image {
+  height: 100%;
+  width: 100%;
+  
+}
+.line {
+  text-align: center;
+  background: #fff
+}
+.service {
+  position: absolute;
+  right: 22rpx;
+  bottom: 18rpx;
+}
+.refund {
+  position: absolute;
+  bottom: 18rpx;
+  right: 166rpx;
+}
+.noOrder {
+  height: 322rpx;
+  width: 303rpx;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 290rpx;
+  z-index: -1;
+}
+.noOrder image {
+  height: 100%;
+  width: 100%;
+  
+}

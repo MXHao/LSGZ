@@ -1,0 +1,104 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/offline-activity/offline-activity",
+    "pages/APPREF/APPREF",
+    "pages/after-service-write/after-service-write",
+    "pages/group-invitation/group-invitation",
+    "pages/MyOrder/MyOrder",
+    "pages/deviceList/deviceList",
+    "pages/search-list/search-list",
+    "pages/shop-cart/shop-cart",
+    "pages/Group-details/Group-details",
+    "pages/PaymentResult/PaymentResult",
+    "pages/Spike/Spike",
+    "pages/comment-list/comment-list",
+    "pages/address/address",
+    "pages/coupon/coupon",
+    "pages/super-brand/super-brand",
+    "pages/LogisticsDetails/LogisticsDetails",
+    "pages/ConfirmOrder/ConfirmOrder",
+    "pages/Evaluation/Evaluation",
+    "pages/membership-open/membership-open",
+    "pages/orderDetails/orderDetails",
+    "pages/after-service/after-service",
+    "pages/NewOffer/NewOffer",
+    "pages/NewGroup/NewGroup",
+    "pages/center/center",
+    "pages/lifting/lifting",
+    "pages/shopping/shopping",
+    "pages/bargain/bargain",
+    "pages/dog/dog",
+    "pages/cat/cat",
+    "pages/brand-details/brand-details",
+    "pages/product-Details/product-Details",
+    "pages/product-Details-On/product-Details-On",
+    "pages/profile/profile",
+    "pages/search-show/search-show",
+    "pages/category/category",
+    "pages/home/swiper1/swiper1",
+    "components/search/search",
+    "pages/seckillDetails/seckillDetails",
+    "pages/address-device/address-device",
+    "pages/veryCheap-details/veryCheap-details",
+    "pages/offline-order/offline-order",
+    "pages/experience-ticket/experience-ticket",
+    "pages/after-sale/after-sale",
+    "pages/ConfirmOrderOn/ConfirmOrderOn",
+    "pages/qr-code/qr-code",
+    "pages/number-entry/number-entry",
+    "pages/offline-service/offline-service",
+    "pages/service-list/service-list",
+    "pages/service-Details/service-Details",
+    "pages/confirm_service/confirm_service",
+    "pages/device-map/device-map"
+  ],
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于溜食儿检索设备位置"
+    }
+  },
+  "tabBar": {
+    "color": "#aaa",
+    "selectedColor": "#3bd3d5",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "assets/img/tabbar/home.png",
+        "selectedIconPath": "assets/img/tabbar/home_active.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "发现",
+        "iconPath": "assets/img/tabbar/category.png",
+        "selectedIconPath": "assets/img/tabbar/category_active.png"
+      },
+      {
+        "pagePath": "pages/shop-cart/shop-cart",
+        "text": "购物车",
+        "iconPath": "assets/img/tabbar/order.png",
+        "selectedIconPath": "assets/img/tabbar/order_active.png"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "我的",
+        "iconPath": "assets/img/tabbar/profile.png",
+        "selectedIconPath": "assets/img/tabbar/profile_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

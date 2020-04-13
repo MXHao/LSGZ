@@ -1,0 +1,38 @@
+<!-- 返回顶部按钮 -->
+<image class='goTop' src="/assets/img/home/goTop.png" hidden='{{!floorstatus}}' bindtap="goTop"></image>
+<!-- 购物车非空 -->
+<!-- 列表 -->
+<view class="cart-item-list">
+  <!-- 列表里的物品 -->
+  <view class="cart-item" wx:for="{{goodsList}}" wx:key="index">
+    <!-- 单选按钮 -->
+    <view class="cart-button" bindtap="handleClickChange" data-index="{{index}}">
+      <icon type="{{currentIndex == index ? 'success' : 'circle' }}"  color="#3dc8ca"></icon>
+    </view>
+    <!-- 右侧图片和内容 -->
+    <view class="showlist-item-column">
+      <view class="item-img-column">
+        <image src="/assets/img/searchlist/searchlist-item1.png"></image>
+      </view>
+      <view class="column-item-right">
+        <view class="item-title-column">{{item.name}}</view>
+       
+        <view class="item-price-column">
+          <text class=" cart-red">￥{{item.price}}</text>
+          <view class="item-num">
+            ×{{item.count}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+ 
+</view>
+<!-- 底部结算栏 -->
+<view class="cart-bottom" bindtap="toAPPREF">
+  <view class="btn-next">
+  下一步
+  </view>
+
+</view>
+

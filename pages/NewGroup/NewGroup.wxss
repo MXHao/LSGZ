@@ -1,0 +1,79 @@
+/* pages/NewGroup/NewGroup.wxss */
+page{
+  height: 100%;
+  background: #9cdaef;
+}
+
+.bg{
+  background-size: 100% 100%;
+  height: 100%;
+  width: 100%;
+  position: fixed
+}
+.topbg {
+  width: 100%;
+  height: 350rpx;
+  position: fixed;
+  z-index: 2
+}
+.topbg image {
+  width: 100%;
+  height: 100%;
+}
+.bgbox{
+  margin-top: 30rpx;
+  padding: 30rpx;
+  position: absolute;
+  top:24%;
+  width: 100%;
+  overflow-y: auto;
+}
+.grouplist{
+  background: var(--bg-bai);
+  padding: 30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+.groupcontent{
+  width: 70%;
+  margin-left: 20rpx
+}
+.groupimg{
+  width: 170rpx;
+  height: 170rpx;
+  overflow: hidden;
+}
+.groupimg image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover
+}
+.groupTitle{
+  font-size: 26rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.grouptext{
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--color-red);
+  margin: 20rpx 0
+}
+.contentbox{
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.groupbox{
+  color: #999
+}
+.groupbutton button{
+  background: var(--bg-red);
+  color: #fff;
+  border-radius: 50rpx;
+  font-size: 26rpx
+}

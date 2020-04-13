@@ -1,0 +1,4 @@
+/* pages/out/out.wxss */
+.DetailsImg image {
+  width: 100%;
+}

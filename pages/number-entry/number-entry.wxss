@@ -1,0 +1,26 @@
+/* pages/number-entry/number-entry.wxss */
+page {
+  background: #fff;
+}
+.phcolor {
+  color: #aaa
+}
+.apply-box {
+  height: 500rpx;
+  display: block;
+  padding: 40rpx;
+}
+.title {
+  line-height: 50rpx;
+  font-size: 36rpx;
+}
+.inputContent {
+  height: 70rpx;
+  border: 1rpx solid #eee;
+  font-size: 30rpx;
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+}
+.btn {
+  margin-top: 20rpx;
+}

@@ -1,0 +1,108 @@
+/* components/search-show/search-show.wxss */
+page {
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 50rpx 30rpx 0;
+  position: fixed;
+  top: 20rpx;
+  width: 100%
+  }
+
+.searview {
+  height: 60rpx;
+  width: 100%;
+  position: relative;
+  border-right: 0;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+ 
+}
+ 
+
+ 
+.searview button {
+  width: 130rpx;
+  
+  position: absolute;
+  right: 0;
+  top: -2rpx;
+  background-color: #36d3d5;
+  color: #fff;
+  font-size: 30rpx;
+  line-height: 60rpx;
+  border-radius: 0 10rpx 10rpx 0;
+}
+ 
+.searview input {
+  font-size: 20rpx;
+  color: #666;
+ height: 60rpx;
+ margin-left: 10rpx;
+}
+
+
+ 
+.searall {
+  position: relative;
+}
+ .cuIcon-search {
+   display: inline-block;
+   line-height: 60rpx;
+   font-size: 30rpx;
+   
+ }
+ .cu-item {
+   width: 81%;
+   height: 60rpx;
+   display: flex;
+   border-radius: 30rpx 30rpx;
+   border: 1px solid #e0e0e0;
+ }
+.cu-bar .search-form [class*="cuIcon-"] {
+margin: 0 0 0 30rpx;
+text-align: center;
+
+}
+.bg-greenblue {
+  background-color: #36d3d5;
+  color: #fff;
+}
+.cu-btn {
+  height: 60rpx;
+}
+
+
+/* 历史搜索 */
+.cuIcon-delete lg text-gray {
+  display: inline-block;
+}
+.search-history,
+.search-hot {
+  margin-top: 20rpx;
+  width: 100%;
+}
+.cuIcon-delete {
+  margin-left: 20rpx;
+}
+.history-show,
+.hot-show {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap; 
+}
+.history-show-item,
+.hot-show-item {
+  margin-right: 22rpx;
+  margin-top: 25rpx;
+  padding: 10rpx 20rpx;
+  display: inline-block;
+  font-size: 24rpx;
+  color: #999;
+  border: 1px solid #ccc;
+  border-radius: 15rpx 15rpx;
+}
+.history-show-item:active,
+.hot-show-item:active {
+  color: #fff;
+  background: #999
+}

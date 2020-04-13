@@ -1,0 +1,93 @@
+/* pages/bargain/bargain.wxss */
+page {
+  background-color: #3e365d;
+}
+.bargain-banner {
+  width: 100%;
+  height: 480rpx
+}
+.bargain-banner image {
+  width: 100%;
+  height: 100%
+}
+/* 底部商品列表 */
+.searchshow-list-column {
+  padding: 0 30rpx 30rpx;
+}
+.showlist-item-column {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #fff;
+  margin-top: 30rpx;
+  border-radius: 15rpx;
+  position: relative;
+border: 14rpx dashed #47a722;
+}
+.item-img-column {
+display: inline-block;
+width: 170rpx;
+  height: 170rpx;
+}
+.item-img-column image {
+  width: 100%;
+  height: 100%;
+  
+}
+.column-item-right {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  width: 75%;
+  padding: 0 20rpx;
+}
+.item-title-column {
+  /* 超过一行隐藏 */
+  text-align: left;
+  font-size: 32rpx;
+  color: #111;
+  margin: 0rpx 15rpx 0;
+  line-height: 40rpx;
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow:ellipsis;
+}
+.number {
+  background-color: #ef4d4d;
+  color: #fff;
+  padding: 2rpx 15rpx;
+  display: inline-block;
+  border-radius: 15rpx;
+  font-size: 16rpx;
+  margin-left: 15rpx;
+}
+.item-price-column {
+  margin: 0 15rpx;
+  font-size: 30rpx;
+  line-height: 66rpx
+  
+}
+.price-red {
+  color: #ef4d4d;
+  font-weight: 700;
+  font-size: 40rpx
+}
+.price-gray {
+  color: #999;
+  text-decoration: line-through;
+  font-size: 28rpx
+}
+
+.add-to-cart-column {
+  font-size: 26rpx;
+  position: absolute;
+  bottom: 14rpx;
+  right: 14rpx;
+  color: #fff;
+  background-color: #ef4d4d;
+  border-radius: 35rpx;
+  padding: 14rpx 30rpx;
+}

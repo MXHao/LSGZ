@@ -1,0 +1,303 @@
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<import src="../../assets/wxParse/wxParse.wxml" />
+<access-box id="box" bindcancle="cancle" bindsuccess="render" access="{{access}}" />
+<!--商品详情-->
+<view class='product'>
+  <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+    <swiper-item wx:for="{{details.u.length == 0? 1:details.u}}" wx:key="index">
+      <image src="{{details.u.length == 0?details.m:item}}" mode="aspectFill"></image>
+      <!-- <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video> -->
+    </swiper-item>
+  </swiper>
+</view>
+<view class='toplist'>
+  <view class='toplistLeft'>
+    <text>￥{{moneySwitch.moneySwitch(details.pp, 2)}}</text>
+    <!-- <text>￥{{details.}}</text> -->
+  </view>
+  <view class='toplistright'>
+    <text>已售：</text>
+    <text>{{details.num}}</text>
+  </view>
+</view>
+<view class='productTitle'>
+  <view class='title'>
+    {{details.n}}
+  </view>
+  <view wx:if="{{details.isFullGift=='1'}}" class="boom">
+    <view wx:if="{{details.isFullGift=='1'}}" class="boom-content">满{{details.full}}赠{{details.gift}}</view>
+  </view>
+  <view bindtap='openCard' wx:if="{{sysParam.plusMoney.length>0&&user.isPlus==0}}" class='titlebox'>
+    <view class='boxleft'>
+      <view class='vip'>vip</view>
+      <view class='textcolor'>奇异遛食卡价
+        <text>{{sysParam.plusMoney[0].price}}</text>元</view>
+    </view>
+    <view class='boxRight'>
+      <text>开卡</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+</view>
+
+
+<view class='productList' bindtap="showModal" data-target="coupon" wx:if="{{details.con.length>0}}">
+  <view class='ListLeft'>
+    可用优惠券
+  </view>
+  <view class='ListZ'>
+    <view class='coupon' wx:for="{{details.con}}" data-index='{{item}}' wx:key='index'>
+      {{item.coupon_desc}}
+    </view>
+  </view>
+  <view class='ListRight'>
+    <text class='cuIcon-right lg text-gray'></text>
+  </view>
+</view>
+
+
+<view class='productList' bindtap="showModal" data-target="service">
+  <view class='ListLeft'>
+    服务说明
+  </view>
+  <view class='ListZ'>
+    <view>
+      正品保障 · 七天无理由退款
+    </view>
+  </view>
+  <view class='ListRight'>
+    <text class='cuIcon-right lg text-gray'></text>
+  </view>
+</view>
+
+
+
+
+<!-- 评价 -->
+<view wx:if="{{details.ev.length>0}}" class='Evaluation'>
+  <view class='EvaluationTitle' bindtap='commentList'>
+    <view class='Evaluationleft'>
+      全部评论
+      <text wx-if="{{details.evS!=0}}">({{details.evS}})</text>
+    </view>
+    <view class='Evaluationright'>
+      <text>更多评价</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+  <view class='commentList' wx:for='{{evList}}' wx:for-index="keys" wx:for-item="itemaa" data-index='{{item}}' wx:key='index'>
+    <view class='Avatar'>
+      <view class='Avatarimg'>
+        <image src="{{itemaa.mh}}"></image>
+      </view>
+      <view class='Avatatext'>
+        <view class='AvataName'>
+          <text class=" {{itemaa.isPlus == 1 ? 'VipName':''}}">{{itemaa.mn}}</text>
+          <text class="avataNameVip" wx:if="{{itemaa.isPlus == 1}}">PLUS</text>
+        </view>
+        <view class='Avatatime'>
+          <text>{{itemaa.t}}</text>
+          <!-- <text>{{item.t.slice(5,item.t.length)}}</text> -->
+        </view>
+      </view>
+      <view class='satr'>
+        <text class='cuIcon-favorfill lg text-gray' wx:for='{{itemaa.ce}}' data-index='{{ite}}' wx:key='ite'></text>
+      </view>
+    </view>
+    <view class='EvaluationContent'>
+      {{itemaa.c}}
+    </view>
+    <view class='Evaluationimg'>
+      <view class='imglist' wx:for='{{itemaa.evM}}' wx:for-index="key" wx:key="index">
+        <image src="{{item}}" mode="aspectFill" bindtap="clickImg" data-index='{{item}}' data-id="{{key}}" data-ddid="{{keys}}"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 品牌 -->
+<view class='Brand'>
+  <view class='BrandBox' wx:if="{{details.bra.all}}">
+    <view class='BrandLeft'>
+      <image src="{{details.bra.c}}" mode="aspectFit"></image>
+    </view>
+    <view class='BrandZ'>
+      <view class='BrandTitle'>{{details.bra.n}}</view>
+      <!-- <text>授权品牌</text> -->
+      <view class='Brandtext'>
+        <view class='Brandcontent'>
+          <text>全部商品：</text>
+          <text>{{details.bra.all}}</text>
+        </view>
+        <view class='Brandcontent'>
+          <text>促销商品：</text>
+          <text>{{details.bra.g}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='BrandRight' bindtap="toBrandDetails">
+      <text>进入品牌</text>
+      <text class='cuIcon-right lg text-gray'></text>
+    </view>
+  </view>
+
+</view>
+<!-- 详情图片 -->
+<view class='DetailsImg'>
+  <!-- <image src="/assets/img/home/Details.jpg"></image> -->
+  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+</view>
+
+
+<!-- 底部导航 -->
+<view class='DetailsBottom'>
+  <view class="cu-bar bg-white tabbar border shop">
+    <view class="action" open-type="contact">
+      <button open-type="contact" class='service_button' plain='true'></button>
+      <view class="cuIcon-service text-green">
+      </view>
+      客服
+    </view>
+    <view class="action" >
+    <button open-type="share"  class='share_button' plain='true'></button>
+      <view class="cuIcon-favor lg text-green">
+      </view>
+      分享 
+    </view>
+    <view class="action" bindtap="goShopCart">
+      <view class="cuIcon-cart">
+        <view class="cu-tag badge cartNum" wx-if="{{details.sss>0}}">{{details.sss}}</view>
+      </view>
+      购物车
+    </view>
+    <view class="btn-group">
+      <button class="cu-btn bg-orange round shadow-blur PDBtn" bindtap="addCart" data-target="addCart">加入购物车</button>
+      <button class="cu-btn bg-red round shadow-red PDBtn" bindtap="buy" data-target="buy">立即购买</button>
+    </view>
+  </view>
+</view>
+
+<!-- 优惠券弹框 -->
+<view class="cu-modal bottom-modal {{modalName=='coupon'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="geCoupon">
+  <view class="cu-dialog" catchtap>
+    <view class="Bullet">
+      <view class='bullet'>
+        优惠券
+      </view>
+      <view class='Bulletbox'>
+        <view class='Bulletcontent' wx:for="{{details.con}}" data-index='{{item}}' wx:key='index'>
+          <view class='couponleft'>
+            <view class='couponleft-text'>
+              <text>￥</text>
+              <text>{{item.account}}</text>
+            </view>
+            <view class='couponright-text'>
+              <view class='texttop'>{{item.coupon_desc}}</view>
+              <view wx:if="{{item.start_time != null}}" class='textbottom'>{{item.start_time}}-{{item.end_time}}</view>
+            </view>
+          </view>
+          <view class='couponright' bindtap='getCoupon' data-target="{{item}}">
+            点击领取
+          </view>
+        </view>
+
+      </view>
+      <button bindtap="geCoupon">确定</button>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 服务说明 -->
+<view class="cu-modal bottom-modal {{modalName=='service'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="hideModal">
+  <view class="cu-dialog" catchtap>
+    <view class="Bulletservice">
+      <view class='bullet'>
+        服务说明/拼团须知
+      </view>
+      <view class='Bulletbox'>
+        <view>{{serviceIntro}}</view>
+      </view>
+      <button bindtap="hideModal">确定</button>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+<!-- 加入购物车弹窗 -->
+<view class="cu-modal bottom-modal {{modalName=='addCart'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="closeCartDialog">
+  <view class="cu-dialog" catchtap>
+    <view class="Bullet">
+      <view class='buy'>
+        <view class='buycontent'>
+          <view class='contentleft'>
+            <image src="{{details.m}}" mode="aspectFill"></image>
+          </view>
+          <view class="contentright">
+            <view class="right-title">{{details.n}}</view>
+            <view class='right-price'>￥{{moneySwitch.moneySwitch(details.pp, 2)}}</view>
+          </view>
+
+        </view>
+        <view class='buybottom'>
+          <view class='buybottomLeft'>
+            <text>购买数量：</text>
+            <text></text>
+          </view>
+          <view class='buybottomRight'>
+            <view class="stepper">
+              <!-- 减号 -->
+              <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+              <!-- 数值 -->
+              <input type="number" bindchange="bindManual" value="{{num}}" />
+              <!-- 加号 -->
+              <text class="normal" bindtap="bindPlus">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <button bindtap="addCart_Y">确定</button>
+    </view>
+  </view>
+</view>
+<!-- 立即购买 -->
+<view class="cu-modal bottom-modal {{modalName=='buy'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="closePayDialog">
+  <view class="cu-dialog" catchtap>
+    <view class="Bullet">
+      <view class='buy'>
+        <view class='buycontent'>
+          <view class='contentleft'>
+            <image src="{{details.m}}" mode="aspectFill"></image>
+          </view>
+          <view class="contentright">
+            <view class='right-title'>{{details.n}}</view>
+            <view class="right-price">￥{{moneySwitch.moneySwitch(details.pp, 2)}}</view>
+          </view>
+
+        </view>
+        <view class='buybottom'>
+          <view class='buybottomLeft'>
+            <text style="font-size: 32rpx;">购买数量：</text>
+          </view>
+          <view class='buybottomRight'>
+            <view class="stepper">
+              <!-- 减号 -->
+              <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+              <!-- 数值 -->
+              <input type="number" bindchange="bindManual" value="{{num}}" />
+              <!-- 加号 -->
+              <text class="normal" bindtap="bindPlus">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <button bindtap="buy_A">确定</button>
+    </view>
+  </view>
+</view>

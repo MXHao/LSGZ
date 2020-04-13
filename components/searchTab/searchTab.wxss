@@ -1,0 +1,52 @@
+/* components/search/searchTab/searchTab.wxss */
+/* 顶部商品tab栏部分 */
+.list-bar {
+  height: 88rpx;
+  display: flex;
+  justify-content: space-around;
+  border-bottom: 1px solid #e6e6e6;
+  background: #fff;
+}
+.list-bar-text {
+color: #111;
+font-size: 26rpx;
+line-height: 88rpx;
+text-align: center;
+}
+.price-updown {
+  display: inline-block;
+  vertical-align: middle;
+}
+.cuIcon-triangleupfill,
+.cuIcon-triangledownfill {
+  line-height: 50%;
+}
+.list-bar .triangle-active,
+.list-bar .tab-active {
+ color: #36d3d5;
+}
+.cuIcon-cascades {
+ color: #36d3d5;
+  font-size: 40rpx;
+}
+.cuIcon-list {
+  color: #36d3d5;
+  font-size: 40rpx;
+}
+.cuIcon-cascades:before {
+	content: "\e67c";
+}
+.cuIcon-list:before {
+	content: "\e682";
+}
+.cuIcon-triangledownfill:before {
+	content: "\e79b";
+}
+
+.cuIcon-triangleupfill:before {
+	content: "\e79c";
+}
+
+.text-gray {
+  color: var(--gray);
+}

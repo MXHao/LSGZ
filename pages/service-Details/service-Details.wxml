@@ -1,0 +1,108 @@
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<wxs module="retainNYR" src="../../assets/js/initTime.wxs"></wxs>
+<import src="../../assets/wxParse/wxParse.wxml" />
+<access-box id="box" bindcancle="cancle" bindsuccess="render" access="{{access}}" />
+<!--商品详情-->
+<view class='product'>
+  <image src="{{product.baseImg}}"  mode="aspectFill"></image>
+</view>
+<view class='toplist'>
+  <view class='toplistLeft'>
+    <text>￥{{moneySwitch.moneySwitch(product.price, 2)}}</text>
+    <!-- <text>￥{{details.}}</text> -->
+  </view>
+  <view class='toplistright'>
+    <text>已售：</text>
+    <text>{{product.saleNum}}</text>
+  </view>
+</view>
+<view class='productTitle'>
+
+  <view class="logoContent">
+    <view class="LOGO">
+      <image src="{{product.logo}}"></image>
+    </view>
+    <view class="LOGOright">
+      <view class="shopname">
+        {{product.shopName}}
+      </view>
+      <view class='titleCoent'>
+        {{product.name}}
+      </view>
+    </view>
+  </view>
+  
+  <view class="address">
+  <!-- <text class="cuIcon-timefill lg"></text> -->
+    <text class="addressText">启用时间：{{product.useStart}}</text>
+  </view>
+  <view class="address">
+    <text class="addressText">截止时间：{{product.useEnd}}</text>
+  </view>
+  <view class="address">
+    <text class="cuIcon-locationfill lg text-orange"></text>  
+    <text class="addressText">店铺地址：{{product.addr}}</text>
+  </view>
+</view>
+
+<!-- 详情图片 -->
+<view class='DetailsImg'>
+  <image src="{{imgUrl}}" bindtap="clickImg"></image>
+</view>
+
+
+<!-- 底部导航 -->
+<view class='DetailsBottom'>
+  <view class="cu-bar bg-white tabbar border shop">
+    <view class="action" open-type="contact">
+      <button open-type="contact" class='service_button' plain='true'></button>
+      <view class="cuIcon-service text-green">
+      </view>
+      客服
+    </view>
+    <view class="action">
+      <button open-type="share" class='share_button' plain='true'></button>
+      <view class="cuIcon-favor lg text-green">
+      </view>
+      分享
+    </view>
+    <view class="btn-bottom">
+      <button class="cu-btn bg-red round shadow-red PDBtn" bindtap="buy" data-target="buy">立即购买</button>
+    </view>
+  </view>
+</view>
+<!-- 立即购买 -->
+<view class="cu-modal bottom-modal {{modalName=='buy'?'show':''}}" catchtouchmove="preventTouchMove" bindtap="closePayDialog">
+  <view class="cu-dialog" catchtap>
+    <view class="Bullet">
+      <view class='buy'>
+        <view class='buycontent'>
+          <view class='contentleft'>
+            <image src="{{product.baseImg}}" mode="aspectFill"></image>
+          </view>
+          <view class="contentright">
+            <view class='right-title'>{{product.name}}</view>
+            <view class="right-price">￥{{moneySwitch.moneySwitch(product.price, 2)}}</view>
+          </view>
+
+        </view>
+        <view class='buybottom'>
+          <view class='buybottomLeft'>
+            <text style="font-size: 32rpx;">购买数量：</text>
+          </view>
+          <view class='buybottomRight'>
+            <view class="stepper">
+              <!-- 减号 -->
+              <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+              <!-- 数值 -->
+              <input type="number" bindchange="bindManual" value="{{num}}" />
+              <!-- 加号 -->
+              <text class="normal" bindtap="bindPlus">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <button bindtap="buy_A">确定</button>
+    </view>
+  </view>
+</view>

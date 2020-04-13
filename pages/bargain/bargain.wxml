@@ -1,0 +1,22 @@
+<!--pages/bargain/bargain.wxml-->
+<view class="bargain-banner">
+  <image src="/assets/img/bargain/bargain-banner.png"></image>
+</view>
+<!-- 底部商品列表 -->
+<view class="searchshow-list-column">
+  <view class="showlist-item-column" wx:for="{{goodsList}}" wx:key="index">
+    <view class="item-img-column">
+      <image src="{{imgUrl}}{{item.imgSrc}}"></image>
+    </view>
+    <view class="column-item-right">
+      <view class="item-title-column">{{item.title}}</view>
+      <view class="number">{{item.number}}人</view>
+      <view class="item-price-column">
+        <view class="price-red">底价：￥{{item.redPrice}}</view>
+        <view class="price-gray">原价：￥{{item.grayPrice}}</view>
+        <text class="add-to-cart-column" bindtap="initiateBargain">发起砍价</text>
+      </view>
+    </view>
+  </view>
+  
+</view>

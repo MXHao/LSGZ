@@ -1,0 +1,10 @@
+<!--components/search/search.wxml-->
+<view class="box">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search lg text-gray"></text>
+      <input type="text" class='searchBarInput_in' placeholder="{{searchTitle}}" value='{{keyWord}}' bindtap='goSearch'></input>
+    </view>
+  </view>
+</view>
+

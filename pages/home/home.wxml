@@ -1,0 +1,293 @@
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<access-box id="box" bindcancle="cancle" bindsuccess="render" access="{{access}}" />
+<!-- 搜索框 -->
+<!-- <search-bar></search-bar> -->
+<view class="box">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <view class="inputbox">
+        <text class="cuIcon-search lg text-gray"></text>
+        <input type="text" class='searchBarInput_in' placeholder="{{searchDefault}}" value='{{keyWord}}' bindtap='goSearch'></input>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 轮播图 -->
+<swiper1 imgList='{{bannerList}}'></swiper1>
+<!-- 返回顶部按钮 -->
+<image class='goTop' src="{{goTop}}" hidden='{{!floorstatus}}' bindtap="goTop"></image>
+<!-- 金刚区 -->
+<div class="diamond-zone">
+  <view class="diamond-item" bindtap="toCat">
+    <image src="{{catImg}}"></image>猫猫</view>
+  <view class="diamond-item" bindtap="toDog">
+    <image src="{{dogImg}}" />狗狗</view>
+  <view class="diamond-item" bindtap="toNewOffer">
+    <image src="{{bargainImg}}"></image>特惠购</view>
+  <view class="diamond-item" bindtap="toNewGroup">
+    <image src="{{groupBuyingImg}}"></image>团购</view>
+  <!-- <view class="diamond-item" bindtap="toShopping"> -->
+  <!-- <view class="diamond-item" bindtap="toDeviceList">
+    <image src="{{tailingsImg}}"></image>零售机</view> -->
+  <view class="diamond-item" bindtap="toOfflineService">
+    <image src="{{tailingsImg}}"></image>服务</view>
+</div>
+
+
+<!-- VIP -->
+<!-- <view wx:if="{{isPlus&&isPlus==0}}" class="vip" bindtap="toOpenMember">
+  <view vip-activities>
+    <image src="{{plusImg}}"></image>
+  </view>
+</view> -->
+<!-- 新人优惠券弹窗 -->
+<view class="cu-modal show" wx:if="{{isCouponCollectionShow}}">
+  <image class="newuser-box" src="{{imgUrl}}/img/home/CouponCollection.png"></image>
+  <view class="close cuIcon-close lg text-gray" bindtap="handleBoxShow"></view>
+  <view class="box-content">
+    <view style="font-size: 28rpx; color: #58d5d6; margin-top: 68rpx; margin-left: 20rpx;">￥</view>
+    <view class="box-left">
+      <text style="font-size: 80rpx; color: #58d5d6">{{coupon.a}}</text>
+      <!-- <view style="font-size: 18rpx; color: #858585; text-align: center">满99元使用</view> -->
+    </view>
+    <view class="box-right">新人专享</view>
+  </view>
+  <view class="IGotIt" bindtap="getCoupon" data-target="{{coupon}}"></view>
+</view>
+<!-- 分类长页面 -->
+<view class="long-class">
+  <!-- 新人专享 显示新人专享界面时，猫狗主粮和零食玩具界面隐藏-->
+  <view wx-if="{{isNew==1&&coupon}}">
+    <view class="home-title">
+      <view class="hometitle-left">
+        <image src="{{homeIcon}}"></image>
+        <view class="home-text">新人专享优惠券</view>
+      </view>
+      <!-- <view class="home-more" bindtap="NewOffer">查看更多</view> -->
+    </view>
+    <view class="newuser-ad" bindtap="CouponCollection">
+      <image src="{{imgUrl}}/img/home/newuser-ad.png"></image>
+    </view>
+  </view>
+
+
+
+  <!-- 猫狗主粮 -->
+  <!-- 10元专区 -->
+  <view class="home-title">
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">10元专区</view>
+      <view class="super-msg">{{foodTitle}}</view>
+    </view>
+    <view class="home-more" bindtap="toSearchList" data-target="1" data-type='4'>查看更多</view>
+  </view>
+
+  <view class="catdog">
+    <view class="catdog-ad">
+      <image src="{{foodImg.m}}" bindtap='goLink' data-item='{{foodImg}}' mode="aspectFill"></image>
+    </view>
+    <scroll-view class="catdog-goodslists" scroll-x="true">
+      <view class="catdog-goods" bindtap='productDetails' wx:for='{{recommend_1F}}' data-index='{{item}}' wx:key='index'>
+        <view class="goods-img">
+          <image src="{{item.m}}" mode="aspectFill"></image>
+        </view>
+        <view class="goods-desc">{{item.n}}</view>
+        <view class="goods-price">
+          <text>￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+          <text class="price-gray">￥{{moneySwitch.moneySwitch(item.price, 2)}}</text>
+        </view>
+
+      </view>
+    </scroll-view>
+  </view>
+
+
+  <!-- 零食玩具 -->
+  <!-- 布局同上，类名样式共用 -->
+  <view class="home-title">
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">20元专区</view>
+      <view class="super-msg">{{snackTitle}}</view>
+    </view>
+    <view class="home-more" bindtap="toSearchList" data-target="3" data-type='5'>查看更多</view>
+  </view>
+  <view class="toys">
+    <view class="toys-ad">
+      <image src="{{snackImg.m}}" bindtap='goLink' data-item='{{snackImg}}' mode="aspectFill"></image>
+    </view>
+    <scroll-view class="toys-goodslists" scroll-x="true">
+      <view class="catdog-goods" bindtap='productDetails' wx:for='{{recommend_2F}}' data-index='{{item}}' wx:key='index'>
+        <view class="goods-imgs">
+          <view class="goods-img">
+            <image src="{{item.m}}" mode="aspectFill"></image>
+          </view>
+        </view>
+        <view class="goods-desc">{{item.n}}</view>
+        <view class="goods-price">
+          <text>￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+          <text class="price-gray">￥{{moneySwitch.moneySwitch(item.price, 2)}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 五折专区 -->
+  <view class="home-title">
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">5折专区</view>
+      <view class="super-msg">{{snackTitle}}</view>
+    </view>
+    <view class="home-more" bindtap="toSearchList" data-target="6" data-type='6'>查看更多</view>
+  </view>
+  <view class="toys">
+    <view class="toys-ad">
+      <image src="{{brandImg.m}}" bindtap='goLink' data-item='{{brandImg}}' mode="aspectFill"></image>
+    </view>
+    <scroll-view class="toys-goodslists" scroll-x="true">
+      <view class="catdog-goods" bindtap='productDetails' wx:for='{{fiveDiscount}}' data-index='{{item}}' wx:key='index'>
+        <view class="goods-imgs">
+          <view class="goods-img">
+            <image src="{{item.m}}" mode="aspectFill"></image>
+          </view>
+        </view>
+        <view class="goods-desc">{{item.n}}</view>
+        <view class="goods-price">
+          <text>￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+          <text class="price-gray">￥{{moneySwitch.moneySwitch(item.price, 2)}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 七折专区 -->
+  <view class="home-title">
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">7折专区</view>
+      <view class="super-msg">{{snackTitle}}</view>
+    </view>
+    <view class="home-more" bindtap="toSearchList" data-target="7" data-type='7'>查看更多</view>
+  </view>
+  <view class="toys">
+    <view class="toys-ad">
+      <image src="{{newproductImg.m}}" bindtap='goLink' data-item='{{newproductImg}}' mode="aspectFill"></image>
+    </view>
+    <scroll-view class="toys-goodslists" scroll-x="true">
+      <view class="catdog-goods" bindtap='productDetails' wx:for='{{sevenDiscount}}' data-index='{{item}}' wx:key='index'>
+        <view class="goods-imgs">
+          <view class="goods-img">
+            <image src="{{item.m}}" mode="aspectFill"></image>
+          </view>
+        </view>
+        <view class="goods-desc">{{item.n}}</view>
+        <view class="goods-price">
+          <text>￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+          <text class="price-gray">￥{{moneySwitch.moneySwitch(item.price, 2)}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 今日秒杀 -->
+  <view class="home-title" wx:if="{{isSecKillShow}}">
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">今日秒杀</view>
+      <view class="seckill-interval" wx:if="{{spike.length==0}}">该时间段暂无秒杀活动</view>
+      <view class="seckill-interval" wx:if="{{spike.length>0}}">本场结束仅剩
+        <text style="color: #3ddee0; font-size: 26rpx; font-weight: 500">{{spikeLastTime}}</text>
+      </view>
+    </view>
+    <view class="home-more" bindtap="toSpike">查看更多</view>
+  </view>
+
+  <scroll-view class="seckill-goodslists" scroll-x="true" wx:if="{{isSecKillShow}}">
+    <view class="seckill-goods" wx:for='{{spike}}' data-index='{{item}}' bindtap="spikeDetails" wx:key='index'>
+      <view class="seckill-goods-img">
+        <image src="{{item.m}}" mode="aspectFill"></image>
+      </view>
+      <view class="seckill-goods-desc">{{item.n}}</view>
+      <view class="seckill-goods-price">￥{{moneySwitch.moneySwitch(item.sp, 2)}}</view>
+      <view class="seckill-btn-gray" wx-if="{{item.sc=='0'}}">售罄</view>
+      <view class="seckill-btn-red" wx-if="{{item.sc>'0'}}">抢购</view>
+    </view>
+  </scroll-view>
+
+
+  <!-- 超级品牌日 -->
+  <!-- <view class="home-title" bindtap="toSuperBrand">
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">超级品牌日</view>
+      <view class="super-msg">{{brandTitle}}</view>
+    </view>
+    <view class="home-more">查看更多</view>
+  </view>
+  <view class="super-ad">
+    <image src="{{brandImg.m}}" bindtap='goLink' data-item='{{brandImg}}'></image>
+  </view>
+  <swiper indicator-dots="true" circular="true" style="height: 400rpx; width: 100%" indicator-active-color="#36d3d5" indicator-dots="{{false}}">
+    <swiper-item class='super-brandlists' wx:for='{{allBrand}}' wx:for-item="oneItem" wx:key='index'>
+      <view class="super-brand" bindtap="toBrandDetails" data-index='{{twoItem}}' wx:for='{{oneItem.list}}' wx:for-item="twoItem" wx:key='i'>
+        <image src="{{twoItem.c}}" mode="aspectFit"></image>
+      </view>
+    </swiper-item>
+  </swiper> -->
+
+  <!-- 新品推荐 -->
+  <!-- <view class="home-title">
+    <view class="hometitle-left">
+      <image src="{{homeIcon}}"></image>
+      <view class="home-text">新品推荐</view>
+      <view class="super-msg">{{newTitle}}</view>
+    </view>
+  </view>
+  <view class="recommend-ad">
+    <image src="{{newproductImg.m}}" bindtap='goLink' data-item='{{newproductImg}}'></image>
+  </view> -->
+  <!-- 搜索列表横 -->
+
+  <view class="searchshow-list-row" wx:if="{{newProduct.length !== 0}}">
+    <!-- 左边一列 -->
+    <view class="list-left">
+      <view class="show-list-item item-left" wx:for="{{newProduct}}" data-index='{{item}}' wx:key='index' wx:if="{{index%2 == 0}}">
+        <view class="item-img" bindtap='productDetails' data-index="{{item}}">
+          <image src="{{item.m}}" mode="aspectFill"></image>
+        </view>
+        <view class="item-title">{{item.n}}</view>
+        <view class="item-price" bindtap='productDetails' data-index="{{item}}">
+          <text class="price-red">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+          <!-- <text class="price-gray">￥{{moneySwitch.moneySwitch(item.p, 2)}}</text> -->
+          <!-- <text class="price-v">v</text> -->
+          <!-- <view class="discount">遛食儿卡享{{plusDiscount}}折</view> -->
+        </view>
+        <view class="count">
+          <!-- <text class="sum-text">累计销量：</text>
+        <text class="sum-num">{{item.num}}</text>
+        <text class="add-to-cart cuIcon-cart lg text-gray" bindtap='addCart' data-index="{{item}}"></text> -->
+        </view>
+      </view>
+    </view>
+    <!-- 右边一列 -->
+    <view class="list-right">
+      <view class="show-list-item item-right" wx:for="{{newProduct}}" data-index='{{item}}' wx:key='index' wx:if="{{index%2 != 0}}">
+        <view class="item-img" bindtap='productDetails' data-index="{{item}}">
+          <image src="{{item.m}}" mode="aspectFill"></image>
+        </view>
+        <view class="item-title">{{item.n}}</view>
+        <view class="item-price" bindtap='productDetails' data-index="{{item}}">
+          <text class="price-red">￥{{moneySwitch.moneySwitch(item.pp, 2)}}</text>
+          <!-- <text class="price-gray">￥{{moneySwitch.moneySwitch(item.p, 2)}}</text> -->
+          <!-- <text class="price-v">v</text> -->
+          <!-- <view class="discount">遛食儿卡享{{plusDiscount}}折</view> -->
+        </view>
+        <view class="count">
+          <!-- <text class="sum-text">累计销量：</text>
+        <text class="sum-num">{{item.num}}</text>
+        <text class="add-to-cart cuIcon-cart lg text-gray" bindtap='addCart' data-index="{{item}}"></text> -->
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

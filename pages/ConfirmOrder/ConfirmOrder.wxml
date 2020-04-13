@@ -1,0 +1,314 @@
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<access-box id="box" bindcancle="cancle" bindsuccess="render" access="{{access}}" />
+<view class='content'>
+  <view class='Confirm' bindtap="toAddress" wx:if="{{pageType}}">
+    <!-- <view class='Confirm' wx:if="{{pageType}}"> -->
+    <!-- 选择地址 -->
+    <view class='ConfirmLeft'>
+      <view class='Confirmicon'>
+        <text class='cuIcon-locationfill lg text-gray'></text>
+      </view>
+    </view>
+    <view class='ConfirmZ' wx:if="{{defaultAddress.per}}">
+      <!-- <view class='ConfirmZ'> -->
+
+      <view class='ConfirmName'>
+        <text>{{defaultAddress.per}}</text>
+        <text>{{defaultAddress.pho}}</text>
+      </view>
+      <view class='address'>{{defaultAddress.pro}}{{defaultAddress.city}}{{defaultAddress.area}}{{defaultAddress.addr}}</view>
+    </view>
+    <view class='ConfirmZ' wx:if="{{!defaultAddress.per}}">
+      <!-- <view class='ConfirmZ'> -->
+      <view class='ConfirmName'>
+        <text>{{contactPerson}}</text>
+        <text></text>
+      </view>
+      <view class='address'>{{defaultAddress.pro}}{{defaultAddress.city}}{{defaultAddress.area}}{{defaultAddress.addr}}</view>
+    </view>
+    <view class='ConfirmRight'>
+      <view class="action">
+        <view class='cuIcon-right lg text-gray'></view>
+      </view>
+    </view>
+  </view>
+  <!-- <view class='Confirm' bindtap="toAddress" wx:if="{{pageType}}">
+    <view class='ConfirmLeft'>
+      <view class='Confirmicon'>
+        <text class='cuIcon-locationfill lg text-gray'></text>
+      </view>
+    </view>
+    <view class='ConfirmZ' wx:if="{{defaultAddress.per}}">
+      <view class='ConfirmName'>
+        <text>{{defaultAddress.per}}</text>
+        <text>{{defaultAddress.pho}}</text>
+      </view>
+      <view class='address'>{{defaultAddress.pro}}{{defaultAddress.city}}{{defaultAddress.area}}{{defaultAddress.addr}}</view>
+    </view>
+    <view class='ConfirmZ' wx:if="{{!defaultAddress.per}}">
+      <view class='ConfirmName'>
+        <text>请选择收货地址</text>
+        <text></text>
+      </view>
+      <view class='address'>{{defaultAddress.pro}}{{defaultAddress.city}}{{defaultAddress.area}}{{defaultAddress.addr}}</view>
+    </view>
+    <view class='ConfirmRight'>
+      <view class="action" >
+        <text class='cuIcon-right lg text-gray'></text>
+      </view>
+    </view>
+  </view> -->
+  <!-- 选择自提点 -->
+  <view bindtap="toDeviceAddress" wx:if="{{pageType&&delivery==0}}" class="selectDevice redBottom">
+    <view class='ConfirmLeft'>
+      <view class="CFicon">
+        <image src="/assets/img/home/device-red.png" style="width: 100%; height: 100%; margin-left: 15rpx;"></image>
+      </view>
+
+    </view>
+    <!-- <view class='ConfirmZ' wx:if="{{defaultAddress.per}}"> -->
+    <view class='ConfirmZ'>
+      <view class='ConfirmName'>
+        <text wx:if="{{selfMention['name']}}">{{selfMention['name']}}-{{selfMention.communityName}}</text>
+        <text wx:else>请选择自提设备</text>
+        <text></text>
+      </view>
+      <view class='address'>{{selfMention.address?selfMention.address:''}}</view>
+    </view>
+    <view class='ConfirmRight'>
+      <view class="action">
+        <text class='cuIcon-right lg text-gray'></text>
+      </view>
+    </view>
+  </view>
+  <view class='Details'>
+    <view class='grouplist' wx:for='{{productList}}' data-index='{{item}}' wx:key='index'>
+      <view class='groupimg'>
+        <image src="{{item.pim}}" mode="aspectFill"></image>
+      </view>
+      <view class='groupcontent'>
+        <view class='groupTitle'>
+          {{item.pn}}
+        </view>
+        <view class='grouptext'>
+          ￥{{moneySwitch.moneySwitch(item.pp, 2)}}
+        </view>
+        <view class='contentbox'>
+          <view class='groupbox'>
+            <view class='Detailstext'>数量：</view>
+            <view class='Detailsbox'>
+              <view class="stepper">
+
+                {{item.num}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='form'>
+
+    </view>
+  </view>
+  <view class='Details'>
+    <view class='form'>
+      <view class='formlist' wx:if="{{pageType&&delivery==1}}">
+        <!-- <view class='formlist'> -->
+        <view class='formleft'>
+          运费
+        </view>
+        <view class='formRight'>
+          <view class='otherS'>
+            <text>{{freight==0?'包邮':freight<0?'请选择收货地址':freight>0?'￥'+moneySwitch.moneySwitch(freight,2):''}}</text>
+          </view>
+        </view>
+      </view>
+      <!-- <view class='border'></view> -->
+      <!-- <view class='formlist' wx:if="{{pageType}}"> -->
+      <view wx:if="{{pageType}}" class='formlist'>
+        <!-- <view class='formlist'> -->
+        <view class='formleft'>
+          配送方式
+        </view>
+        <view class='formRight'>
+          <!-- <view class="switch-delivery" bindtap="changeMention">
+            <view class="switch-left {{delivery==0 ? 'active':''}}">自提</view>
+            <view class="switch-right {{delivery==1 ? 'active':''}}">快递</view>
+          </view> -->
+          <view style="text-align: right">快递</view>
+        </view>
+      </view>
+      <!-- <view class='border' wx:if="{{pageType}}"></view> -->
+      <!-- <view class='formlist'>
+        <view class='formleft'>
+          支付方式
+        </view>
+        <view class='Right'>
+          <view class='Rightimg'>
+            <image src="/assets/img/home/wechat.png"></image>
+          </view>
+          <view class='WeChat'>
+            微信在线支付
+          </view>
+        </view>
+      </view> -->
+      <!-- <view class='border'></view> -->
+      <view wx:if="{{pageType&&orderType=='1'}}">
+        <view class='formlist' bindtap="showModal" data-target="ChooseModal" wx:if="{{couponList.length>0}}">
+          <view class='formleft'>
+            优惠券
+          </view>
+          <view class='price'>
+            {{(selectCoupon['coupon_desc'])?(selectCoupon['coupon_desc']):'选择优惠券>>'}}
+          </view>
+        </view>
+        <view class='formlist' wx:else>
+          <view class='formleft'>
+            优惠券
+          </view>
+          <view class='price'>
+            暂无可使用优惠券
+          </view>
+        </view>
+      </view>
+      <!-- <view class='border'></view> -->
+
+      <!-- <view wx:if="{{plusDiscount != ''}}" class='formlist'>
+        <view class='formleft'>
+          PLUS会员
+        </view>
+        <view class='discount'>
+          {{plusDiscount}}折
+        </view>
+      </view> -->
+      <!-- <view class='border' wx:if="{{plusDiscount != ''}}"></view> -->
+
+      <view bindtap="openRepurchaseBox" wx:if="{{!pageType&&isVerBuy==1&&popus.length>0}}" class='formlist'>
+        <view class='formleft'>
+          <block wx:if="{{!popuPro}}">
+            加价￥{{popuInfo.money}}元可换购任意一种换购商品
+          </block>
+          <!-- <view>换购</view> -->
+          <view class="left-img" wx:if="{{popuPro}}">
+            <image src="{{popuPro.tImg}}"></image>
+          </view>
+        </view>
+        <view class="formMiddle" wx:if="{{popuPro}}">
+          <view class="middle-title">{{popuPro.productName}}</view>
+          <view class="price-red">￥{{popuInfo.money}}</view>
+          <view catchtap="closePro" class="cancelSelect">
+            <text class="cuIcon-close lg y"></text>
+          </view>
+        </view>
+        <view class='Repurchase' bindtap="openRepurchaseBox">
+          <text class="cuIcon-right lg openRepu"></text>
+        </view>
+      </view>
+      <!-- <view class='border'></view> -->
+      <!-- <view wx:if="{{plusDiscount == ''&&isVerBuy==1}}" class='formlist' bindtap="openPlus">
+        <view class='formleft'>
+          <view class="open-text">开通PLUS会员</view>
+          <view class="open-text">本单最高可省{{discountCount
+            < 1? "不足1元":discountCount+ "元"}}</view>
+        </view>
+        <view class='discount'>
+          {{selectPlusIndex!=""?sysParam.plusMoney[selectPlusIndex].month+"个月":"点击开通"}}
+        </view>
+      </view> -->
+      <view class='formlist'>
+        <view class='formleft'>
+          备注
+        </view>
+        <view class='formRight'>
+          <input placeholder='请输入备注' value="{{remarks}}"></input>
+        </view>
+      </view>
+      </view>
+    </view>
+  </view>
+  <!-- 优惠券弹窗 -->
+  <!-- <view class="cu-modal bottom-modal {{modalName=='ChooseModal'?'show':''}}" bindtap="hideModal">
+    <view class="cu-dialog" catchtap>
+      <view class="cu-bar bg-white">
+        <view class="action text-blue" bindtap="hideModal">取消</view>
+        <view class="action text-green" bindtap="hideModal">确定</view>
+      </view>
+      <view class="grid col-3 padding-sm">
+        <view wx:for="{{couponList}}" class="padding-xs" data-index='{{item}}' wx:key="index">
+          <button style="margin-bottom: 50px;" class="cu-btn orange lg block {{item.checked?'bg-orange':'line-orange'}}" data-value="{{item.value}}" bindtap="ChooseCheckbox">
+            {{item.coupon_desc}}{{item.account}}
+          </button>
+        </view>
+      </view>
+    </view>
+  </view> -->
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{isShow}}">
+    <view class="boxClosed cuIcon-close lg text-gray" bindtap="cloeseBox"></view>
+    <scroll-view scroll-y class="couponBox">
+      <view class="box-title">已领取的新人券</view>
+      <view class="boxItem {{currentIndex == index? 'choosed':''}}" data-value="{{item.value}}" bindtap="ChooseCheckbox" data-index="{{index}}" wx:for="{{couponList}}" wx:key="index">
+        <view class="item-icon">
+          <text class="cuIcon-ticket lg "></text>
+        </view>
+        <view class="box-middle">
+          <view class="midContent">{{item.coupon_desc}}
+            <text class="midContentPrice">￥{{item.account}}</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- plus开通弹窗 -->
+  <view class="cover-box" hidden="{{flag2}}" bindtap="hideBox" catchtouchmove="preventTouchMove">
+    <view class="state-box" catchtap="true">
+      <view class="box-title">选择开通时长</view>
+
+      <radio-group class="box-opt-list" bindchange="checkboxChange">
+        <view class="allCancle">
+          <radio value="-1" class="red" checked="{{isCancelSelect}}" />
+          <text style="margin-left: 100rpx;">取消</text>
+        </view>
+        <view class="box-opt-item" wx:for="{{sysParam.plusMoney}}" wx:key="index">
+          <radio value="{{index}}" name="{{item}}" class="blue" />
+          <view class="box-item-text">{{item.price}}元{{item.month}}月</view>
+        </view>
+      </radio-group>
+      <!-- 盒子按钮 -->
+      <view class="box-bottom" bindtap="boxHidden2">
+        <view class="box-confirm">
+          确定
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 换购列表弹窗 -->
+  <view class="cover-box" hidden="{{flag3}}" bindtap="hideBox" catchtouchmove="preventTouchMove">
+    <scroll-view scroll-y class="Repurchase-list" catchtap="true">
+      <view class="Repurchase-title">换购商品列表</view>
+      <view class="box-close" bindtap="hideBox">
+        <text class="cuIcon-close lg text-gray"></text>
+      </view>
+      <view class="Repurchase-item" wx:for="{{popus}}" wx:key="index">
+        <view class="item-left">
+          <image src="{{item.tImg}}"></image>
+        </view>
+        <view class="item-middle">
+          <view class="middle-title">{{item.productName}}</view>
+          <!-- <text class="price-red">￥ 99.00</text>
+          <text class="price-gray">￥ 199.00</text> -->
+        </view>
+        <view bindtap="popuBuy" data-item="{{item}}" class="item-right">去换购</view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 底部 -->
+  <view class='DetailsBottom'>
+    <view class='bottomLeft'>
+      <text>待支付：</text>
+      <text style="color: #f75252">¥ {{sumPrice}}</text>
+      <text wx:if="{{moneySwitch.moneySwitch(productPrice, 2)>sumPrice}}" style="text-decoration:line-through;color: #aaa;font-size: 26rpx;">¥ {{moneySwitch.moneySwitch(productPrice, 2)}}</text>
+    </view>
+    <view class='bottomRight'>
+      <button bindtap="wechatPay">支付</button>
+    </view>
+  </view>

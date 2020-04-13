@@ -1,0 +1,38 @@
+<!--pages/LogisticsDetails/LogisticsDetails.wxml-->
+<view class='contentNew'>
+  <view class='Logistics'>
+    <view wx:if="{{info.list.length==0}}" class='LogisticsList'>
+      <view class='LogisticsName'>
+        物流处理中
+      </view>
+      <view class='LogisticsText'>
+        暂无运单信息
+      </view>
+    </view>
+    <view wx:else class='LogisticsListBottom'>
+      <view class='Logisticsleft'>
+        <view class='LogisticsName'>
+          <text>物流公司：</text>
+          <text>{{info.expName}}</text>
+        </view>
+        <view class='LogisticsText'>
+          物流单号：{{info.number}}
+        </view>
+      </view>
+      <view bindtap="copyBtn" data-content="{{info.number}}" class='LogisticsRight'>
+        <text>复制</text>
+      </view>
+    </view>
+  </view>
+  <view class='Logisticsx'>
+    <view class="cu-timeline">
+      <view wx:for="{{info.list}}" wx:key="index" class="cu-item cur text-green cuIcon-noticefill">
+        <view class="content bg-green">
+         <view class='LogisticsTitle'>{{item.status}}</view>
+           <view class='LogisticsTime'>{{item.time}}</view>
+        </view>
+      </view>
+      
+    </view>
+  </view>
+</view>

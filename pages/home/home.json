@@ -1,0 +1,11 @@
+{
+ "enablePullDownRefresh": true,
+ "usingComponents": {
+    "access-box": "/components/accessBox/accessBox",
+    "swiper1": "/pages/home/swiper1/swiper1",
+    "search-bar": "/components/search/search"
+  },
+  "navigationBarTitleText": "遛食儿"
+  
+
+}

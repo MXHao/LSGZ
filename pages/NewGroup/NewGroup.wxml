@@ -1,0 +1,31 @@
+<!--pages/NewGroup/NewGroup.wxml-->
+<wxs module="moneySwitch" src="../../assets/js/initPrice.wxs"></wxs>
+<!-- <view class='bg'></view> -->
+<view class="topbg">
+<image src="{{imgUrl}}/img/home/groupTop.png"></image>
+</view>
+<view class='bgbox' scroll-y="true">
+  <view class='grouplist' wx:for="{{goodsList}}" wx:key="index"  bindtap='GroupDetails' data-target="{{item}}">
+    <view class='groupimg'>
+      <image src="{{item.productImg}}" mode="aspectFill"></image>
+    </view>
+    <view class='groupcontent'>
+      <view class='groupTitle'>
+        {{item.productName}}
+      </view>
+      <view class='grouptext'>
+        ￥{{moneySwitch.moneySwitch(item.groupPrice, 2)}}
+      </view>
+      <view class='contentbox'>
+        <view class='groupbox'>
+          <text>已抢：</text>
+          <text>{{item.saleNum}}件</text>
+        </view>
+        <view class='groupbutton'>
+          <button>发起拼单</button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
